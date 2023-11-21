@@ -1,1 +1,1 @@
-../build-Debug/DS_PECL2/main.cpp.o   
+../build-Debug/DS_PECL2/sth.cpp.o ../build-Debug/DS_PECL2/main.cpp.o   
