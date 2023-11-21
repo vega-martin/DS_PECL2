@@ -1,0 +1,5 @@
+[{
+  "file": "C:\\DataStructure\\PECL2\\DS_PECL2\\DS_PECL2\\main.cpp",
+  "directory": "C:\\DataStructure\\PECL2\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DataStructure\\PECL2\\DS_PECL2\\DS_PECL2\\main.cpp -o C:\\DataStructure\\PECL2\\DS_PECL2\\DS_PECL2\\main.cpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }]
