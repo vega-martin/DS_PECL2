@@ -93,6 +93,8 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="Package.hpp"/>
+    <File Name="Package.cpp"/>
     <VirtualDirectory Name="DDSS">
       <File Name="Stack.hpp"/>
       <File Name="Stack.cpp"/>
@@ -103,8 +105,6 @@
       <File Name="BSTree.hpp"/>
       <File Name="BSTree.cpp"/>
     </VirtualDirectory>
-    <File Name="sth.cpp"/>
-    <File Name="sth.hpp"/>
     <File Name="main.cpp"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
