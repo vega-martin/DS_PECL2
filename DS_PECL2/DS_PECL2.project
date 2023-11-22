@@ -93,6 +93,8 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="BSTree.hpp"/>
+    <File Name="BSTree.cpp"/>
     <File Name="DLList.hpp"/>
     <File Name="DLList.cpp"/>
     <File Name="Stack.hpp"/>
