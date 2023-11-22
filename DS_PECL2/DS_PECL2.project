@@ -93,6 +93,12 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="DLList.hpp"/>
+    <File Name="DLList.cpp"/>
+    <File Name="Stack.hpp"/>
+    <File Name="Stack.cpp"/>
+    <File Name="Queue.hpp"/>
+    <File Name="Queue.cpp"/>
     <File Name="sth.cpp"/>
     <File Name="sth.hpp"/>
     <File Name="main.cpp"/>
