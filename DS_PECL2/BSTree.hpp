@@ -1,5 +1,5 @@
-#ifndef BST_HPP
-#define BST_HPP
+#ifndef BSTREE_HPP
+#define BSTREE_HPP
 
 template <class T>
 class Node {

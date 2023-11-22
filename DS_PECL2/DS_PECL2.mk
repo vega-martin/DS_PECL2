@@ -6,15 +6,15 @@
 ProjectName            :=DS_PECL2
 ConfigurationName      :=Debug
 WorkspaceConfiguration :=Debug
-WorkspacePath          :=C:/DataStructure/PECL2/DS_PECL2
-ProjectPath            :=C:/DataStructure/PECL2/DS_PECL2/DS_PECL2
+WorkspacePath          :=C:/DS_PECL2
+ProjectPath            :=C:/DS_PECL2/DS_PECL2
 IntermediateDirectory  :=../build-$(WorkspaceConfiguration)/DS_PECL2
 OutDir                 :=$(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Vega
-Date                   :=11/21/2023
+User                   :=lublu
+Date                   :=11/22/2023
 CodeLitePath           :="C:/Program Files/CodeLite"
 MakeDirCommand         :=mkdir
 LinkerName             :=C:/msys64/clang64/bin/clang++.exe
@@ -29,7 +29,7 @@ OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
-OutputDirectory        :=C:/DataStructure/PECL2/DS_PECL2/build-$(WorkspaceConfiguration)/bin
+OutputDirectory        :=C:/DS_PECL2/build-$(WorkspaceConfiguration)/bin
 OutputFile             :=..\build-$(WorkspaceConfiguration)\bin\$(ProjectName).exe
 Preprocessors          :=
 ObjectSwitch           :=-o 
@@ -64,7 +64,7 @@ AS       := C:/msys64/clang64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/sth.cpp$(ObjectSuffix) $(IntermediateDirectory)/main.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/sth.cpp$(ObjectSuffix) $(IntermediateDirectory)/Stack.cpp$(ObjectSuffix) $(IntermediateDirectory)/DLList.cpp$(ObjectSuffix) $(IntermediateDirectory)/BSTree.cpp$(ObjectSuffix) $(IntermediateDirectory)/Queue.cpp$(ObjectSuffix) 
 
 
 
@@ -95,15 +95,35 @@ PreBuild:
 ##
 ## Objects
 ##
+$(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp 
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DS_PECL2/DS_PECL2/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
+
 $(IntermediateDirectory)/sth.cpp$(ObjectSuffix): sth.cpp 
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DataStructure/PECL2/DS_PECL2/DS_PECL2/sth.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/sth.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DS_PECL2/DS_PECL2/sth.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/sth.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/sth.cpp$(PreprocessSuffix): sth.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/sth.cpp$(PreprocessSuffix) sth.cpp
 
-$(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp 
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DataStructure/PECL2/DS_PECL2/DS_PECL2/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
+$(IntermediateDirectory)/Stack.cpp$(ObjectSuffix): Stack.cpp 
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DS_PECL2/DS_PECL2/Stack.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Stack.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Stack.cpp$(PreprocessSuffix): Stack.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Stack.cpp$(PreprocessSuffix) Stack.cpp
+
+$(IntermediateDirectory)/DLList.cpp$(ObjectSuffix): DLList.cpp 
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DS_PECL2/DS_PECL2/DLList.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/DLList.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/DLList.cpp$(PreprocessSuffix): DLList.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/DLList.cpp$(PreprocessSuffix) DLList.cpp
+
+$(IntermediateDirectory)/BSTree.cpp$(ObjectSuffix): BSTree.cpp 
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DS_PECL2/DS_PECL2/BSTree.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/BSTree.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/BSTree.cpp$(PreprocessSuffix): BSTree.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/BSTree.cpp$(PreprocessSuffix) BSTree.cpp
+
+$(IntermediateDirectory)/Queue.cpp$(ObjectSuffix): Queue.cpp 
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/DS_PECL2/DS_PECL2/Queue.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Queue.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Queue.cpp$(PreprocessSuffix): Queue.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Queue.cpp$(PreprocessSuffix) Queue.cpp
 
 ##
 ## Clean

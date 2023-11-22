@@ -1,45 +1,45 @@
 [{
-  "file": "C:\\DS_PECL2\\DS_PECL2\\main.cpp",
-  "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\main.cpp -o C:\\DS_PECL2\\DS_PECL2\\main.cpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
- }, {
-  "file": "C:\\DS_PECL2\\DS_PECL2\\sth.hpp",
-  "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\sth.hpp -o C:\\DS_PECL2\\DS_PECL2\\sth.hpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
- }, {
-  "file": "C:\\DS_PECL2\\DS_PECL2\\sth.cpp",
-  "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\sth.cpp -o C:\\DS_PECL2\\DS_PECL2\\sth.cpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
- }, {
-  "file": "C:\\DS_PECL2\\DS_PECL2\\Queue.hpp",
-  "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\Queue.hpp -o C:\\DS_PECL2\\DS_PECL2\\Queue.hpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
- }, {
-  "file": "C:\\DS_PECL2\\DS_PECL2\\Stack.cpp",
-  "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\Stack.cpp -o C:\\DS_PECL2\\DS_PECL2\\Stack.cpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
- }, {
-  "file": "C:\\DS_PECL2\\DS_PECL2\\DLList.cpp",
-  "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\DLList.cpp -o C:\\DS_PECL2\\DS_PECL2\\DLList.cpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
- }, {
-  "file": "C:\\DS_PECL2\\DS_PECL2\\Queue.cpp",
-  "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\Queue.cpp -o C:\\DS_PECL2\\DS_PECL2\\Queue.cpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
- }, {
   "file": "C:\\DS_PECL2\\DS_PECL2\\BSTree.hpp",
   "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\BSTree.hpp -o C:\\DS_PECL2\\DS_PECL2\\BSTree.hpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\BSTree.hpp -o C:\\DS_PECL2\\DS_PECL2\\BSTree.hpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
  }, {
   "file": "C:\\DS_PECL2\\DS_PECL2\\DLList.hpp",
   "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\DLList.hpp -o C:\\DS_PECL2\\DS_PECL2\\DLList.hpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\DLList.hpp -o C:\\DS_PECL2\\DS_PECL2\\DLList.hpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "C:\\DS_PECL2\\DS_PECL2\\Queue.cpp",
+  "directory": "C:\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\Queue.cpp -o C:\\DS_PECL2\\DS_PECL2\\Queue.cpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
  }, {
   "file": "C:\\DS_PECL2\\DS_PECL2\\BSTree.cpp",
   "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\BSTree.cpp -o C:\\DS_PECL2\\DS_PECL2\\BSTree.cpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\BSTree.cpp -o C:\\DS_PECL2\\DS_PECL2\\BSTree.cpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
  }, {
   "file": "C:\\DS_PECL2\\DS_PECL2\\Stack.hpp",
   "directory": "C:\\DS_PECL2\\DS_PECL2",
-  "command": "g++ -c C:\\DS_PECL2\\DS_PECL2\\Stack.hpp -o C:\\DS_PECL2\\DS_PECL2\\Stack.hpp.o  -I. -I.  -gdwarf-2  -O0  -Wall"
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\Stack.hpp -o C:\\DS_PECL2\\DS_PECL2\\Stack.hpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "C:\\DS_PECL2\\DS_PECL2\\DLList.cpp",
+  "directory": "C:\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\DLList.cpp -o C:\\DS_PECL2\\DS_PECL2\\DLList.cpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "C:\\DS_PECL2\\DS_PECL2\\Queue.hpp",
+  "directory": "C:\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\Queue.hpp -o C:\\DS_PECL2\\DS_PECL2\\Queue.hpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "C:\\DS_PECL2\\DS_PECL2\\Stack.cpp",
+  "directory": "C:\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\Stack.cpp -o C:\\DS_PECL2\\DS_PECL2\\Stack.cpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "C:\\DS_PECL2\\DS_PECL2\\main.cpp",
+  "directory": "C:\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\main.cpp -o C:\\DS_PECL2\\DS_PECL2\\main.cpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "C:\\DS_PECL2\\DS_PECL2\\sth.hpp",
+  "directory": "C:\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\sth.hpp -o C:\\DS_PECL2\\DS_PECL2\\sth.hpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
+ }, {
+  "file": "C:\\DS_PECL2\\DS_PECL2\\sth.cpp",
+  "directory": "C:\\DS_PECL2\\DS_PECL2",
+  "command": "C:/msys64/clang64/bin/clang++.exe -c C:\\DS_PECL2\\DS_PECL2\\sth.cpp -o C:\\DS_PECL2\\DS_PECL2\\sth.cpp.o -target x86_64-w64-windows-gnu -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -IC:\\msys64\\clang64\\include\\c++\\v1 -IC:\\msys64\\clang64\\lib\\clang\\17\\include -IC:\\msys64\\clang64\\include -I. -I.  -gdwarf-2  -O0  -Wall"
  }]
