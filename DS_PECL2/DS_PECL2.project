@@ -93,6 +93,8 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="Util.hpp"/>
+    <File Name="Util.cpp"/>
     <File Name="Package.hpp"/>
     <File Name="Package.cpp"/>
     <VirtualDirectory Name="DDSS">

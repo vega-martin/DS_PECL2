@@ -86,7 +86,7 @@ string Package::generateClientId(){
 
 Package::Package(){
     //All packages start at the Central Station, so its status must be fixed:
-    status = Status::CentralStation;
+    status = Status::SPCS;
     
     //Label generation: 
     label.clientId = Package::generateClientId();
@@ -114,5 +114,5 @@ void Package::setPackageId(string newPackageId) {
 }
 
 void Package::setClientId(string id){
-    Package::getLabel().clientId = id;
+    label.clientId = id;
 }

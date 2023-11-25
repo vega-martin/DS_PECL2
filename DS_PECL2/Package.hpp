@@ -4,7 +4,7 @@
 #include <random>
 using namespace std;
 
-enum Status {CentralStation, Hub, Delivered};
+enum Status {SPCS, Hub, Delivered};
     
 struct Label {
     string packageId;

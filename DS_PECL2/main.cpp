@@ -1,8 +1,8 @@
 #include <iostream>
-#include "sth.hpp"
+#include "Util.hpp"
 
 int main() {
-	sth();
 	std::cout << "Hola";
+    startingMenu();
 	return 0;
 }
