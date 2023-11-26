@@ -3,7 +3,8 @@
 #include "Package.hpp"
 using namespace std;
 
-thread_local mt19937 gen(random_device{}());
+//thread_local mt19937 gen(random_device{}());
+thread_local mt19937 Package::gen(random_device{}());
 
 // This method randomizes three one-digit numbers and one letter, then concatenates them:
 string randNumbersAndLetter() {
@@ -13,10 +14,10 @@ string randNumbersAndLetter() {
     string result;
     
     for (int i = 0; i < 3; ++i) {
-        result += to_string(numDistribution(gen));
+        result += to_string(numDistribution(Package::gen));
     }
 
-    int randomIndex = letterDistribution(gen);
+    int randomIndex = letterDistribution(Package::gen);
     char alphabet[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     result += alphabet[randomIndex];
 

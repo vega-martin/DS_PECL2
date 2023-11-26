@@ -21,7 +21,7 @@ private:
     
     Status status;
     Label label;
-    static thread_local std::mt19937 gen; 
+     
      
     string generateClientId();
     Label::Coords generateCoordinates();
@@ -30,7 +30,7 @@ private:
 public:
 
     Package();
-    
+    static thread_local mt19937 gen;
     Status getStatus();
     void setStatus(Status newStatus);
     Label getLabel();
