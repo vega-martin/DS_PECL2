@@ -93,19 +93,19 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
-    <File Name="Util.hpp"/>
-    <File Name="Util.cpp"/>
+    <File Name="Utilities.hpp"/>
+    <File Name="Utilities.cpp"/>
     <File Name="Package.hpp"/>
     <File Name="Package.cpp"/>
     <VirtualDirectory Name="DDSS">
+      <File Name="AVLTree.cpp"/>
+      <File Name="AVLTree.hpp"/>
       <File Name="Stack.hpp"/>
       <File Name="Stack.cpp"/>
       <File Name="Queue.hpp"/>
       <File Name="Queue.cpp"/>
       <File Name="DLList.hpp"/>
       <File Name="DLList.cpp"/>
-      <File Name="BSTree.hpp"/>
-      <File Name="BSTree.cpp"/>
     </VirtualDirectory>
     <File Name="main.cpp"/>
   </VirtualDirectory>

@@ -3,7 +3,6 @@
 #include "Package.hpp"
 using namespace std;
 
-//thread_local mt19937 gen(random_device{}());
 thread_local mt19937 Package::gen(random_device{}());
 
 // This method randomizes three one-digit numbers and one letter, then concatenates them:
