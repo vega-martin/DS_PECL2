@@ -93,6 +93,8 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="Menu.cpp"/>
+    <File Name="Menu.hpp"/>
     <File Name="Utilities.hpp"/>
     <File Name="Utilities.cpp"/>
     <File Name="Package.hpp"/>
