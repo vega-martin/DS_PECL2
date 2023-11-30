@@ -3,7 +3,10 @@
 #include <string>
 #include "AVLTree.hpp"
 #include "Stack.hpp"
+#include "DLList.hpp"
 using namespace std;
+
+
 
 struct Coords {
     string latitude;
@@ -16,9 +19,13 @@ struct PackageCenter {
     string postalCode;
     string acronym;
     Coords coordinates;
-    Stack<T> hub; 
+    Stack<T> hub;
 };
 
+
 AVLTree generatePackageCenters();
+/*template <typename T>
+DoublyLinkedList<T> generatePackages();*/
+//void generatePackages();
 
 #endif // UTILITIES_HPP

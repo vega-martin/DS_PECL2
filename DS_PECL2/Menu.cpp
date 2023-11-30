@@ -1,9 +1,12 @@
 #include "Menu.hpp"
+#include "Utilities.hpp"
+#include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
 #include <windows.h>
 #include <unistd.h>
 using namespace std;
+
 
 void startingMenu(){
     int choice;
@@ -25,13 +28,17 @@ void startingMenu(){
         switch(choice){
             case 0:
                 cout << "Good bye!" << endl;
-                return;
+                exit(0);
+                break;
                 
             case 1:
                 system("cls");
                 cout << "Packages are being created." << endl;
                 // generate packages
-                sleep(5);
+                //generatePackages();
+                sleep(1);
+                cout << "Packages have been created successfuly." << endl;
+                sleep(1);
                 system("cls");
                 mainMenu();
                 break;
@@ -68,6 +75,7 @@ void mainMenu(){
         switch(choice){
             case 0:
                 cout << "Good bye!" << endl;
+                exit(0);
                 return;
                 
             case 1:

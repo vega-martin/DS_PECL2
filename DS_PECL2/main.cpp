@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Utilities.hpp"
+#include "Menu.hpp"
 #include "AVLTree.hpp"
 
 /*void printElement(int key) {
@@ -8,10 +9,11 @@
 
 int main() {
 	//std::cout << generatePackageCenters();
-    
+    std::cout << "Hola";
+    startingMenu();
     /*AVLTree avltree;
     avltree = generatePackageCenters();
-    //startingMenu();
+    
     avltree.postOrderTraversal(printElement);*/
 	return 0;
 }

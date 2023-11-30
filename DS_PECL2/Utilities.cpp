@@ -1,7 +1,9 @@
 #include "Utilities.hpp"
 #include "AVLTree.hpp"
+#include "Package.hpp"
+#include "DLList.hpp"
 #include <string>
-//#include <iostream>
+#include <iostream>
 using namespace std;
 
 string postalCodes[9] = {"37715","37427","37449","37893","37797","37796","37129","37340","37001"};
@@ -15,12 +17,14 @@ Coords coordinates[9] = {{"41.063717","-5.821883"},
                         {"40.978764","-5.761869"},
                         {"41.006495","-5.500316"},
                         {"40.965059","-5.664039"}};
-                        
 
+
+      
+template <typename T>
 AVLTree generatePackageCenters(){
     AVLTree avltree;
     for (int i = 0; i < 9; i++){
-        PackageCenter packageCenter;
+        PackageCenter<T> packageCenter;
         packageCenter.key = i;
         packageCenter.postalCode = postalCodes[i];
         packageCenter.acronym = acronyms[i];
@@ -29,3 +33,26 @@ AVLTree generatePackageCenters(){
     }
     return avltree;
 };
+/*
+template <typename T>
+//DoublyLinkedList<T> generatePackages(){
+void generatePackages(){
+    DoublyLinkedList<T> packages;
+    
+    Package vega;
+    Package adri;
+    
+    vega.setClientId("05955285X");
+    adri.setClientId("03247820J");
+    
+    packages.insertBack(vega);
+    packages.insertBack(adri);
+    
+    for(int i = 0; i < 7 - 2; i++){
+		Package p;
+        cout << p.getLabel().packageId << endl;
+		packages.insertBack(p);
+	}
+    
+    //return packages;
+};*/
