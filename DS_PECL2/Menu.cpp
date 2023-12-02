@@ -1,9 +1,11 @@
 #include "Menu.hpp"
 #include "Utilities.hpp"
-#include "DLList.hpp"
+//#include "Package.hpp"
+//#include "Logistics.hpp"
+//#include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
-#include <windows.h>
+//#include <windows.h>
 #include <unistd.h>
 using namespace std;
 
@@ -33,8 +35,9 @@ void startingMenu(){
                 
             case 1:
                 system("cls");
+                generatePackages();
                 cout << "Packages are being created." << endl;
-                // generate packages
+                //generate packages
                 //generatePackages();
                 sleep(1);
                 cout << "Packages have been created successfuly." << endl;

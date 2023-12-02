@@ -9,17 +9,17 @@ using namespace std;
 string postalCodes[9] = {"37715","37427","37449","37893","37797","37796","37129","37340","37001"};
 string acronyms[9] = {"ADT","PER","ROD","VDT","CDV","MOZ","CDB","ALD","SAL"};
 Coords coordinates[9] = {{"41.063717","-5.821883"},
-                        {"41.061974","-5.549179"},
-                        {"40.904188","-5.817388"},
-                        {"40.892504","-5.498010"},
-                        {"41.051090","-5.693395"},
-                        {"40.859055","-5.652303"},
-                        {"40.978764","-5.761869"},
-                        {"41.006495","-5.500316"},
-                        {"40.965059","-5.664039"}};
+                         {"41.061974","-5.549179"},
+                         {"40.904188","-5.817388"},
+                         {"40.892504","-5.498010"},
+                         {"41.051090","-5.693395"},
+                         {"40.859055","-5.652303"},
+                         {"40.978764","-5.761869"},
+                         {"41.006495","-5.500316"},
+                         {"40.965059","-5.664039"}};
 
 
-      
+
 template <typename T>
 AVLTree generatePackageCenters(){
     AVLTree avltree;
@@ -33,20 +33,21 @@ AVLTree generatePackageCenters(){
     }
     return avltree;
 };
-/*
-template <typename T>
+
+
+template <typename U>
 //DoublyLinkedList<T> generatePackages(){
 void generatePackages(){
-    DoublyLinkedList<T> packages;
+    DoublyLinkedList<U> packages;
     
-    Package vega;
-    Package adri;
+    //Package vega;
+    //Package adri;
     
-    vega.setClientId("05955285X");
-    adri.setClientId("03247820J");
+    //vega.setClientId("05955285X");
+    //adri.setClientId("03247820J");
     
-    packages.insertBack(vega);
-    packages.insertBack(adri);
+    //packages.insertBack(vega);
+    //packages.insertBack(adri);
     
     for(int i = 0; i < 7 - 2; i++){
 		Package p;
@@ -55,4 +56,4 @@ void generatePackages(){
 	}
     
     //return packages;
-};*/
+};
