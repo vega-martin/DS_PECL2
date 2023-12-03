@@ -24,6 +24,6 @@ public:
     T getFront() const;
 };
 
-#include "Queue.tpp"
+//#include "Queue.tpp"
 
 #endif // QUEUE_HPP

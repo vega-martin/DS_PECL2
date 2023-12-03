@@ -23,6 +23,6 @@ public:
     void makeNull();
 };
 
-#include "Stack.tpp"
+//#include "Stack.tpp"
 
 #endif // STACK_HPP

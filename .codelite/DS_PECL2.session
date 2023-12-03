@@ -13,7 +13,7 @@
     <TabInfo>
       <wxString Value="C:\DataStructure\PECL2\DS_PECL2\DS_PECL2\AVLTree.hpp" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="1" Name="CurrentLine"/>
+      <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

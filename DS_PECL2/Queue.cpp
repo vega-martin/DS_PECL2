@@ -1,3 +1,5 @@
+#include <stdexcept>
+#include "Queue.hpp"
 using namespace std;
 
 template <typename T>

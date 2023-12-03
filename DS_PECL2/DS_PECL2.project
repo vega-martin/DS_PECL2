@@ -4,9 +4,9 @@
   <Dependencies/>
   <VirtualDirectory Name="src">
     <VirtualDirectory Name="DDSS">
-      <File Name="Stack.tpp"/>
-      <File Name="Queue.tpp"/>
-      <File Name="AVLTree.tpp"/>
+      <File Name="Stack.cpp"/>
+      <File Name="Queue.cpp"/>
+      <File Name="AVLTree.cpp"/>
       <File Name="Stack.hpp"/>
       <File Name="Queue.hpp"/>
       <File Name="DLList.tpp"/>
