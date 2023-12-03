@@ -3,7 +3,8 @@
 #include "Package.hpp"
 #include "DLList.hpp"
 #include <string>
-#include <iostream>
+//#include <iostream>
+//#include <iomanip>
 using namespace std;
 
 string postalCodes[9] = {"37715","37427","37449","37893","37797","37796","37129","37340","37001"};
@@ -17,7 +18,6 @@ Coords coordinates[9] = {{"41.063717","-5.821883"},
                          {"40.978764","-5.761869"},
                          {"41.006495","-5.500316"},
                          {"40.965059","-5.664039"}};
-
 
 
 template <typename T>
@@ -47,9 +47,29 @@ DoublyLinkedList<U> generatePackages(){
     packagesList.insertBack(vega);
     packagesList.insertBack(adri);
     
-    for(int i = 0; i < 7 - 2; i++){
+    /*
+    cout << setw(15) << "PackageID:" << setw(16) << vega.getLabel().packageId 
+        << setw(15) << "Latitude:" << setw(15) << vega.getLabel().coordinates.latitude
+        << setw(15) << "Longitude:" << setw(15) << vega.getLabel().coordinates.longitude
+        << setw(15) << "ClientID:" << setw(15) << vega.getLabel().clientId
+        << setw(15) << "Status:" << setw(15) << vega.getStatus()
+        << endl;
+    cout << setw(15) << "PackageID:" << setw(16) << adri.getLabel().packageId 
+        << setw(15) << "Latitude:" << setw(15) << adri.getLabel().coordinates.latitude
+        << setw(15) << "Longitude:" << setw(15) << adri.getLabel().coordinates.longitude
+        << setw(15) << "ClientID:" << setw(15) << adri.getLabel().clientId
+        << setw(15) << "Status:" << setw(15) << adri.getStatus()
+        << endl;
+    */
+    
+    for(int i = 0; i < 248; i++){
 		Package p;
-        cout << p.getLabel().packageId << endl;
+        /*cout << setw(15) << "PackageID:" << setw(16) << p.getLabel().packageId 
+        << setw(15) << "Latitude:" << setw(15) << p.getLabel().coordinates.latitude
+        << setw(15) << "Longitude:" << setw(15) << p.getLabel().coordinates.longitude
+        << setw(15) << "ClientID:" << setw(15) << p.getLabel().clientId
+        << setw(15) << "Status:" << setw(15) << p.getStatus()
+        << endl;*/
 		packagesList.insertBack(p);
 	}
     

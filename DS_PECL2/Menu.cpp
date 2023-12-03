@@ -34,9 +34,9 @@ void startingMenu(){
                     system("cls");
                     allPackages = generatePackages<Package>();
                     cout << "Packages are being created." << endl;
-                    sleep(1);
+                    sleep(10);
                     cout << "Packages have been created successfully." << endl;
-                    sleep(1);
+                    sleep(10);
                     system("cls");
                     mainMenu();
                     break;
