@@ -37,23 +37,23 @@ AVLTree generatePackageCenters(){
 
 template <typename U>
 //DoublyLinkedList<T> generatePackages(){
-void generatePackages(){
-    DoublyLinkedList<U> packages;
+DoublyLinkedList<U> generatePackages(){
+    DoublyLinkedList<U> packagesList;
     
-    //Package vega;
-    //Package adri;
-    
-    //vega.setClientId("05955285X");
-    //adri.setClientId("03247820J");
-    
-    //packages.insertBack(vega);
-    //packages.insertBack(adri);
+    Package vega;
+    Package adri;
+    vega.setClientId("05955285X");
+    adri.setClientId("03247820J");
+    packagesList.insertBack(vega);
+    packagesList.insertBack(adri);
     
     for(int i = 0; i < 7 - 2; i++){
 		Package p;
         cout << p.getLabel().packageId << endl;
-		packages.insertBack(p);
+		packagesList.insertBack(p);
 	}
     
-    //return packages;
+    return packagesList;
 };
+
+template DoublyLinkedList<Package> generatePackages<Package>();

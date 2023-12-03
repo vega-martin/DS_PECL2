@@ -1,5 +1,6 @@
 #ifndef STACK_HPP
 #define STACK_HPP
+#include <stdexcept>
 
 template <typename T>
 struct StackNode {
@@ -21,5 +22,7 @@ public:
     bool isEmpty() const;
     void makeNull();
 };
+
+#include "Stack.tpp"
 
 #endif // STACK_HPP

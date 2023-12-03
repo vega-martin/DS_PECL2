@@ -1,6 +1,3 @@
-#include "AVLTree.hpp"
-#include <algorithm>
-
 AVLTree::AVLTree() : root(nullptr) {}
 
 int AVLTree::height(Node* node) {

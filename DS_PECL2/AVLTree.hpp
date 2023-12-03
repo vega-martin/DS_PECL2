@@ -26,4 +26,6 @@ public:
     void postOrderTraversal(void (*visit)(int));
 };
 
+#include "AVLTree.tpp"
+
 #endif // AVL_TREE_HPP

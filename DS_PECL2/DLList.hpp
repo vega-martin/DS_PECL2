@@ -1,5 +1,6 @@
 #ifndef DLLIST_HPP
 #define DLLIST_HPP
+#include <stdexcept>
 
 template <typename T>
 struct DoublyNode {
@@ -28,5 +29,7 @@ public:
     T getFront() const;
     T getBack() const;
 };
+
+#include "DLList.tpp"
 
 #endif // DLLIST_HPP

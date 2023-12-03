@@ -1,5 +1,6 @@
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
+#include <stdexcept>
 
 template <typename T>
 struct Node {
@@ -22,5 +23,7 @@ public:
     void makeNull();
     T getFront() const;
 };
+
+#include "Queue.tpp"
 
 #endif // QUEUE_HPP

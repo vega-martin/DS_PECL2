@@ -1,8 +1,7 @@
 #include "Menu.hpp"
 #include "Utilities.hpp"
-//#include "Package.hpp"
-//#include "Logistics.hpp"
-//#include "DLList.hpp"
+#include "Package.hpp"
+#include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
 //#include <windows.h>
@@ -10,6 +9,7 @@
 using namespace std;
 
 
+DoublyLinkedList<Package> allPackages;
 void startingMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PARCEL SERVICE SIMULATOR   -------------------------------------" << endl;
@@ -35,7 +35,7 @@ void startingMenu(){
                 
             case 1:
                 system("cls");
-                generatePackages();
+                allPackages = generatePackages<Package>();
                 cout << "Packages are being created." << endl;
                 //generate packages
                 //generatePackages();
