@@ -4,7 +4,6 @@
 #include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
-//#include <windows.h>
 #include <unistd.h>
 using namespace std;
 
@@ -13,9 +12,8 @@ DoublyLinkedList<Package> allPackages;
 void startingMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PARCEL SERVICE SIMULATOR   -------------------------------------" << endl;
-
+    cout << endl;
     do {
-        cout << endl;
         cout << "Just in case we want to add some of the improvements" << endl;
         cout << endl;
         cout << "STARTING MENU (enter a number to choose an action):" << endl;
@@ -23,43 +21,50 @@ void startingMenu(){
         cout << " 1. Start simulation and go to main menu (You won't be able to come back to this menu)." << endl;
         cout << " 0. Exit\n" << endl;
         cout << "Enter a number: " << endl;
-        cin >> choice;
-        cout << endl;
         
-        string label;
-        switch(choice){
-            case 0:
-                cout << "Good bye!" << endl;
-                exit(0);
-                break;
-                
-            case 1:
-                system("cls");
-                allPackages = generatePackages<Package>();
-                cout << "Packages are being created." << endl;
-                //generate packages
-                //generatePackages();
-                sleep(1);
-                cout << "Packages have been created successfuly." << endl;
-                sleep(1);
-                system("cls");
-                mainMenu();
-                break;
-                
-            default:
-                system("cls");
-                cout << "Invalid choice"<< endl;
-                break;
+        if (cin >> choice) {
+            cout << endl;
+            switch (choice) {
+                case 0:
+                    cout << "Goodbye!" << endl;
+                    exit(0);
+                    break;
+
+                case 1:
+                    system("cls");
+                    allPackages = generatePackages<Package>();
+                    cout << "Packages are being created." << endl;
+                    sleep(1);
+                    cout << "Packages have been created successfully." << endl;
+                    sleep(1);
+                    system("cls");
+                    mainMenu();
+                    break;
+
+                default:
+                    cout << "Invalid choice." << endl;
+                    sleep(1);
+                    system("cls");
+                    break;
+            }
+        } else {
+            cout << endl;
+            cout << "Invalid input. Please enter a number." << endl;
+            sleep(1);
+            system("cls");
+
+            // Clear the input buffer to avoid an infinite loop
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-    } while (choice != 0);
+    } while (true);
 }
 
 void mainMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PARCEL SERVICE SIMULATOR   -------------------------------------" << endl;
-
+    cout << endl;
     do {
-        cout << endl;
         cout << "MAIN MENU (enter a number to choose an action):" << endl;
         cout << endl;
         cout << " 1. Show packages ready to be sent to given Packet Centre." << endl;
@@ -71,53 +76,64 @@ void mainMenu(){
         cout << " 7. Next step." << endl;
         cout << " 0. Exit\n" << endl;
         cout << "Enter a number: " << endl;
-        cin >> choice;
-        cout << endl;
         
-        string label;
-        switch(choice){
-            case 0:
-                cout << "Good bye!" << endl;
-                exit(0);
-                return;
-                
-            case 1:
-                cout << "Nothing is going on here right now :(  -> packages ready to be delivered to PCs" << endl;
-                break;
-                
-            case 2:
-                cout << "Nothing is going on here right now :(  -> PCs statistics" << endl;
-                break;
-                
-            case 3:
-                cout << "Introduce the label of the package you are looking for:" << endl;
-                //getline(cin >> ws, label);
-                //cout << endl;
-                break;
-                
-            case 4:
-                cout << "Introduce the label of the package you want to delete:" << endl;
-                //getline(cin >> ws, label);
-                //cout << endl;
-                break;
-                
-            case 5:
-                cout << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
-                break;
-                
-            case 6:
-                cout << "Nothing is going on here right now :(  -> transport from PC to PC" << endl;
-                break;
-                
-            case 7:
-                cout << "Nothing is going on here right now :(  -> 1 Step" << endl;
-                break;
-                
-            default:
-                system("cls");
-                cout << "Invalid choice"<< endl;
-                break;
-        }
-    } while (choice != 0);
-}
+        if (cin >> choice) {
+            cout << endl;
+            switch (choice) {
+                case 0:
+                    cout << "Goodbye!" << endl;
+                    exit(0);
+                    break;
 
+                case 1:
+                    cout << "Nothing is going on here right now :(  -> packages ready to be delivered to PCs" << endl;
+                    break;
+
+                case 2:
+                    cout << "Nothing is going on here right now :(  -> PCs statistics" << endl;
+                    break;
+
+                case 3:
+                    cout << "Introduce the label of the package you are looking for:" << endl;
+                    // string label;
+                    // getline(cin >> ws, label);
+                    // cout << endl;
+                    break;
+
+                case 4:
+                    cout << "Introduce the label of the package you want to delete:" << endl;
+                    // string label;
+                    // getline(cin >> ws, label);
+                    // cout << endl;
+                    break;
+
+                case 5:
+                    cout << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
+                    break;
+
+                case 6:
+                    cout << "Nothing is going on here right now :(  -> transport from PC to PC" << endl;
+                    break;
+
+                case 7:
+                    cout << "Nothing is going on here right now :(  -> 1 Step" << endl;
+                    break;
+
+                default:
+                    cout << "Invalid choice" << endl;
+                    sleep(1);
+                    system("cls");
+                    break;
+            }
+        } else {
+            cout << endl;
+            cout << "Invalid input. Please enter a number." << endl;
+            sleep(1);
+            system("cls");
+
+            // Clear the input buffer to avoid an infinite loop
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    } while (true);
+}
