@@ -2,37 +2,32 @@
 #include "Stack.hpp"
 using namespace std;
 
-template <typename T>
-Stack<T>::Stack() : top(nullptr) {}
+Stack::Stack() : top(nullptr) {}
 
-template <typename T>
-void Stack<T>::push(const T& element) {
-    StackNode<T>* newNode = new StackNode<T>(element);
+void Stack::push(const Package& element) {
+    StackNode* newNode = new StackNode(element);
     newNode->next = top;
     top = newNode;
 }
 
-template <typename T>
-T Stack<T>::pop() {
+Package Stack::pop() {
     if (isEmpty()) {
         throw underflow_error("Empty stack");
     }
 
-    T value = top->element;
-    StackNode<T>* temp = top;
+    Package value = top->element;
+    StackNode* temp = top;
     top = top->next;
     delete temp;
 
     return value;
 }
 
-template <typename T>
-bool Stack<T>::isEmpty() const {
+bool Stack::isEmpty() const {
     return top == nullptr;
 }
 
-template <typename T>
-void Stack<T>::makeNull() {
+void Stack::makeNull() {
     while (!isEmpty()) {
         pop();
     }

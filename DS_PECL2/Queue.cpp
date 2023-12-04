@@ -2,17 +2,14 @@
 #include "Queue.hpp"
 using namespace std;
 
-template <typename T>
-Queue<T>::Queue() : front(nullptr), rear(nullptr) {}
+Queue::Queue() : front(nullptr), rear(nullptr) {}
 
-template <typename T>
-bool Queue<T>::isEmpty() const {
+bool Queue::isEmpty() const {
     return front == nullptr;
 }
 
-template <typename T>
-void Queue<T>::enqueue(const T& newElement) {
-    Node<T>* newNode = new Node<T>(newElement);
+void Queue::enqueue(const Package& newElement) {
+    QueueNode* newNode = new QueueNode(newElement);
     if (rear == nullptr) {
         front = rear = newNode;
     } else {
@@ -21,13 +18,12 @@ void Queue<T>::enqueue(const T& newElement) {
     }
 }
 
-template <typename T>
-T Queue<T>::dequeue() {
+Package Queue::dequeue() {
     if (isEmpty()) {
         throw std::underflow_error("Empty queue");
     } else {
-        T value = front->element;
-        Node<T>* temp = front;
+        Package value = front->element;
+        QueueNode* temp = front;
         front = front->next;
         delete temp;
 
@@ -39,15 +35,13 @@ T Queue<T>::dequeue() {
     }
 }
 
-template <typename T>
-void Queue<T>::makeNull() {
+void Queue::makeNull() {
     while (!isEmpty()) {
         dequeue();
     }
 }
 
-template <typename T>
-T Queue<T>::getFront() const {
+Package Queue::getFront() const {
     if (isEmpty()) {
         throw underflow_error("Empty queue");
     }

@@ -1,7 +1,5 @@
 #ifndef DLLIST_HPP
 #define DLLIST_HPP
-
-#include <stdexcept>
 #include "Package.hpp"
 
 struct DoublyNode {
@@ -9,8 +7,9 @@ struct DoublyNode {
     DoublyNode* prev;
     DoublyNode* next;
 
-    DoublyNode(const Package& value);
+    DoublyNode(const Package& value) : element(value), prev(nullptr), next(nullptr) {}
 };
+
 
 class DoublyLinkedList {
 private:

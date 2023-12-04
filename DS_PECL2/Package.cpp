@@ -24,7 +24,7 @@ string randNumbersAndLetter() {
     return result;
 }
 
-Label::Coords Package::generateCoordinates(){
+Coords Package::generateCoordinates(){
     
     uniform_real_distribution<double> distributionLat(40.854057, 41.070999);
     double lat = distributionLat(gen); 
@@ -38,7 +38,7 @@ Label::Coords Package::generateCoordinates(){
     int lonM = (int) ((lon - (double)lonD) * 60.f);
     int lonS = (int) (((lon - (double)lonD) * 60.f - (double)lonM) * 60.f);
     
-    Label::Coords coordinates;
+    Coords coordinates;
     
     coordinates.latitude = to_string(latD) + " " + to_string(latM) + " " + to_string(latS);
     coordinates.longitude = to_string(lonD) + " " + to_string(lonM) + " " + to_string(lonS);
@@ -63,7 +63,7 @@ string Package::generateDate(){
     return date;
 }
 
-std::string postalCodeAssignment(const Label::Coords &coordinates) {
+string Package::postalCodeAssignment(const Coords &coordinates) {
     string postalCode;
     const string* postalCodesArray = getPostalCodes();
     const Coords* coordinatesArray = getCoordinates();
@@ -92,7 +92,7 @@ std::string postalCodeAssignment(const Label::Coords &coordinates) {
     return postalCode;
 }
 
-string Package::generateLabelId(const Label::Coords &coordinates) {
+string Package::generateLabelId(const Coords &coordinates) {
     
     // OJO VEGA!! A ESTE LABEL LE FALTARÍA AL PRINCIPIO CUATRO NUMEROS MÁS!! SON LOS QUE IDENTIFICAN
     // EL NUMERO DEL PAQUETE!! (LEETE DEL ENUNCIADO LO QUE NO ENTIENDAS). NO SÉ SI DEJAR ESPACIO O
@@ -128,8 +128,6 @@ Package::Package(){
     
     //All packages start at the Central Station, so its status must be fixed:
     status = Status::SPCS;
-    
-    //Label generation: 
     label.clientId = Package::generateClientId();
     label.coordinates = Package::generateCoordinates();
     label.packageId = Package::generateLabelId(label.coordinates);
@@ -146,7 +144,7 @@ void Package::setStatus(Status newStatus){
     status = newStatus;
 }
 
-Label Package::getLabel(){
+PackageLabel Package::getLabel(){
     return label;
 }
 

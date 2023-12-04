@@ -1,24 +1,25 @@
 #ifndef AVL_TREE_HPP
 #define AVL_TREE_HPP
 
+struct avlNode {
+        int key;
+        avlNode* left;
+        avlNode* right;
+        int height;
+        avlNode(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
+};
+
 class AVLTree {
 private:
-    struct Node {
-        int key;
-        Node* left;
-        Node* right;
-        int height;
-        Node(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
-    };
 
-    Node* root;
+    avlNode* root;
 
-    int height(Node* node);
-    int balanceFactor(Node* node);
-    Node* rotateRight(Node* y);
-    Node* rotateLeft(Node* x);
-    Node* insert(Node* node, int key);
-    void postOrderTraversal(Node* node, void (*visit)(int));
+    int height(avlNode* node);
+    int balanceFactor(avlNode* node);
+    avlNode* rotateRight(avlNode* y);
+    avlNode* rotateLeft(avlNode* x);
+    avlNode* insert(avlNode* node, int key);
+    void postOrderTraversal(avlNode* node, void (*visit)(int));
 
 public:
     AVLTree();

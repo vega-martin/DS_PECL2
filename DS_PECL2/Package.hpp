@@ -5,30 +5,30 @@
 using namespace std;
 
 enum Status {SPCS, Hub, Delivered};
-    
-struct Label {
+
+struct Coords {
+    string latitude;
+    string longitude;
+};
+
+struct PackageLabel {
     string packageId;
-    struct Coords {
-        string latitude;
-        string longitude;
-    } coordinates;
+    Coords coordinates;
     string clientId;
 };
 
 class Package {
-    
 private:
     
     Status status;
-    Label label;
+    PackageLabel label;
      
-    string generateDate(); 
-    string cpPackageAssignment();
-    string postalCodeAssignment(const Label::Coords &coordinates);
+    string generateDate();
+    string postalCodeAssignment(const Coords &coordinates);
      
     string generateClientId();
-    Label::Coords generateCoordinates();
-    string generateLabelId(const Label::Coords &coordinates);    
+    Coords generateCoordinates();
+    string generateLabelId(const Coords &coordinates);    
 
 public:
 
@@ -36,9 +36,9 @@ public:
     static thread_local mt19937 gen;
     Status getStatus();
     void setStatus(Status newStatus);
-    Label getLabel();
+    PackageLabel getLabel();
     void setPackageId(string newPackageId);
-    void setClientId(std::string id);
+    void setClientId(string id);
     
    
 

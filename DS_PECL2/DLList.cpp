@@ -1,7 +1,5 @@
 #include "DLList.hpp"
 
-DoublyNode::DoublyNode(const Package& value) : element(value), prev(nullptr), next(nullptr) {}
-
 DoublyLinkedList::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
 
 DoublyLinkedList::~DoublyLinkedList() {

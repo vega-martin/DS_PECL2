@@ -1,23 +1,23 @@
 #ifndef STACK_HPP
 #define STACK_HPP
 
-template <typename T>
-struct StackNode {
-    T element;
-    StackNode<T>* next;
+#include "Package.hpp"
 
-    StackNode(const T& value) : element(value), next(nullptr) {}
+struct StackNode {
+    Package element;
+    StackNode* next;
+
+    StackNode(const Package& value) : element(value), next(nullptr) {}
 };
 
-template <typename T>
 class Stack {
 private:
-    StackNode<T>* top;
+    StackNode* top;
 
 public:
     Stack();
-    void push(const T& element);
-    T pop();
+    void push(const Package& element);
+    Package pop();
     bool isEmpty() const;
     void makeNull();
 };

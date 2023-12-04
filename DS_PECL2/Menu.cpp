@@ -1,6 +1,6 @@
 #include "Menu.hpp"
 #include "Utilities.hpp"
-#include "Package.hpp"
+//#include "Package.hpp"
 #include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
@@ -34,10 +34,10 @@ void startingMenu(){
                     system("cls");
                     allPackages = generatePackages();
                     cout << "Packages are being created..." << endl;
-                    sleep(2);
+                    sleep(5);
                     cout << "Packages have been created successfully." << endl;
                     cout << "Redirecting to the main menu..." << endl;
-                    sleep(2);
+                    sleep(5);
                     system("cls");
                     mainMenu();
                     break;

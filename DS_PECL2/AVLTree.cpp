@@ -3,17 +3,17 @@
 
 AVLTree::AVLTree() : root(nullptr) {}
 
-int AVLTree::height(Node* node) {
+int AVLTree::height(avlNode* node) {
     return node ? node->height : 0;
 }
 
-int AVLTree::balanceFactor(Node* node) {
+int AVLTree::balanceFactor(avlNode* node) {
     return node ? height(node->left) - height(node->right) : 0;
 }
 
-AVLTree::Node* AVLTree::rotateRight(Node* y) {
-    Node* x = y->left;
-    Node* T2 = x->right;
+avlNode* AVLTree::rotateRight(avlNode* y) {
+    avlNode* x = y->left;
+    avlNode* T2 = x->right;
 
     x->right = y;
     y->left = T2;
@@ -24,9 +24,9 @@ AVLTree::Node* AVLTree::rotateRight(Node* y) {
     return x;
 }
 
-AVLTree::Node* AVLTree::rotateLeft(Node* x) {
-    Node* y = x->right;
-    Node* T2 = y->left;
+avlNode* AVLTree::rotateLeft(avlNode* x) {
+    avlNode* y = x->right;
+    avlNode* T2 = y->left;
 
     y->left = x;
     x->right = T2;
@@ -37,9 +37,9 @@ AVLTree::Node* AVLTree::rotateLeft(Node* x) {
     return y;
 }
 
-AVLTree::Node* AVLTree::insert(Node* node, int key) {
+avlNode* AVLTree::insert(avlNode* node, int key) {
     if (node == nullptr) {
-        return new Node(key);
+        return new avlNode(key);
     }
 
     if (key < node->key) {
@@ -82,7 +82,7 @@ void AVLTree::insert(int key) {
     root = insert(root, key);
 }
 
-void AVLTree::postOrderTraversal(Node* node, void (*visit)(int)) {
+void AVLTree::postOrderTraversal(avlNode* node, void (*visit)(int)) {
     if (node != nullptr) {
         postOrderTraversal(node->left, visit);
         postOrderTraversal(node->right, visit);
