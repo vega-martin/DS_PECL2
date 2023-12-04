@@ -1,6 +1,7 @@
 #include <ctime>
 #include <random>
 #include "Package.hpp"
+#include "Utilities.hpp"
 using namespace std;
 
 thread_local mt19937 Package::gen(random_device{}());
@@ -22,28 +23,6 @@ string randNumbersAndLetter() {
 
     return result;
 }
-
-string Package::generateLabelId(const Label::Coords &coordinates) {
-
-    // date
-    time_t time = std::time(nullptr);
-    tm *now = localtime(&time);
-    string day = to_string(now->tm_mday);
-    while(day.length() < 2){
-        day = "0" + day;
-    }
-    string month = to_string(now->tm_mon + 1);
-    while(month.length() < 2){
-        month = "0" + month;
-    }
-    string date = day + month + to_string(now->tm_year + 1900);
-
-    string threeRandNumbersOneLetter = randNumbersAndLetter();
-    string labelId = threeRandNumbersOneLetter + date;
-
-    return labelId;
-}
-
 
 Label::Coords Package::generateCoordinates(){
     
@@ -68,6 +47,67 @@ Label::Coords Package::generateCoordinates(){
     
 }
 
+string Package::generateDate(){
+    
+    time_t time = std::time(nullptr);
+    tm *now = localtime(&time);
+    string day = to_string(now->tm_mday);
+    while(day.length() < 2){
+        day = "0" + day;
+    }
+    string month = to_string(now->tm_mon + 1);
+    while(month.length() < 2){
+        month = "0" + month;
+    }
+    string date = day + month + to_string(now->tm_year + 1900);
+    return date;
+}
+
+std::string postalCodeAssignment(const Label::Coords &coordinates) {
+    string postalCode;
+    const string* postalCodesArray = getPostalCodes();
+    const Coords* coordinatesArray = getCoordinates();
+
+    double minDistance = 100000;
+    int minIndex = -1;
+
+    for (int i = 0; i < 9; i++) {
+        const Coords& centerCoords = coordinatesArray[i];
+
+        double distance = sqrt(
+            pow(stod(coordinates.latitude) - stod(centerCoords.latitude), 2) +
+            pow(stod(coordinates.longitude) - stod(centerCoords.longitude), 2)
+        );
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            minIndex = i;
+        }
+    }
+
+    if (minIndex != -1) {
+        postalCode = postalCodesArray[minIndex];
+    }
+
+    return postalCode;
+}
+
+string Package::generateLabelId(const Label::Coords &coordinates) {
+    
+    // OJO VEGA!! A ESTE LABEL LE FALTARÍA AL PRINCIPIO CUATRO NUMEROS MÁS!! SON LOS QUE IDENTIFICAN
+    // EL NUMERO DEL PAQUETE!! (LEETE DEL ENUNCIADO LO QUE NO ENTIENDAS). NO SÉ SI DEJAR ESPACIO O
+    // NO HACER NADA, Y A LA HORA DE GENERAR EL PAQUETE, MODIFICAR ESTE VALOR ASIGNANDOLE UNOS NUMEROS
+    // DELANTE. Igual suena todo esto un poco confuso, cualquier duda dime, cuando veas esto bórralo tambien
+
+    string threeRandNumbersOneLetter = randNumbersAndLetter();
+    string date = generateDate();
+    string postalCode = postalCodeAssignment(coordinates);
+    string labelId = threeRandNumbersOneLetter + '-' + date + '-' + postalCode;
+
+    return labelId;
+}
+
+
 
 string Package::generateClientId(){
     uniform_int_distribution<int> distribution(10000000, 99999999);
@@ -85,6 +125,7 @@ string Package::generateClientId(){
 
 
 Package::Package(){
+    
     //All packages start at the Central Station, so its status must be fixed:
     status = Status::SPCS;
     

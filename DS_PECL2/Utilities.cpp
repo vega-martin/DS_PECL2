@@ -18,6 +18,18 @@ Coords coordinates[9] = {{"41.063717","-5.821883"},
                          {"40.978764","-5.761869"},
                          {"41.006495","-5.500316"},
                          {"40.965059","-5.664039"}};
+                         
+const string* getPostalCodes() {
+    return postalCodes;
+}
+
+const string* getAcronyms() {
+    return acronyms;
+}
+
+const Coords* getCoordinates() {
+    return coordinates;
+}
 
 
 template <typename T>

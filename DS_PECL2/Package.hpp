@@ -22,6 +22,9 @@ private:
     Status status;
     Label label;
      
+    string generateDate(); 
+    string cpPackageAssignment();
+    string postalCodeAssignment(const Label::Coords &coordinates);
      
     string generateClientId();
     Label::Coords generateCoordinates();
@@ -36,6 +39,8 @@ public:
     Label getLabel();
     void setPackageId(string newPackageId);
     void setClientId(std::string id);
+    
+   
 
 };
 
