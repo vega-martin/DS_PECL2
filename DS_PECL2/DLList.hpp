@@ -1,35 +1,33 @@
 #ifndef DLLIST_HPP
 #define DLLIST_HPP
+
 #include <stdexcept>
+#include "Package.hpp"
 
-template <typename T>
 struct DoublyNode {
-    T element;
-    DoublyNode<T>* prev;
-    DoublyNode<T>* next;
+    Package element;
+    DoublyNode* prev;
+    DoublyNode* next;
 
-    DoublyNode(const T& value) : element(value), prev(nullptr), next(nullptr) {}
+    DoublyNode(const Package& value);
 };
 
-template <typename T>
 class DoublyLinkedList {
 private:
-    DoublyNode<T>* head;
-    DoublyNode<T>* tail;
+    DoublyNode* head;
+    DoublyNode* tail;
 
 public:
     DoublyLinkedList();
-    ~DoublyLinkedList(); // Destructor to clean up memory
-    void insertFront(const T& element);
-    void insertBack(const T& element);
-    T removeFront();
-    T removeBack();
+    ~DoublyLinkedList();
+    void insertFront(const Package& element);
+    void insertBack(const Package& element);
+    Package removeFront();
+    Package removeBack();
     bool isEmpty() const;
     void makeNull();
-    T getFront() const;
-    T getBack() const;
+    Package getFront() const;
+    Package getBack() const;
 };
-
-#include "DLList.tpp"
 
 #endif // DLLIST_HPP

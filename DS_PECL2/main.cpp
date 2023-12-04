@@ -13,7 +13,6 @@ using namespace std;
 
 int main() {
 	//std::cout << generatePackageCenters();
-    std::cout << "Hola";
     
     /*template <typename U>
     DoublyLinkedList<U> packages;

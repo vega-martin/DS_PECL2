@@ -8,7 +8,7 @@
 using namespace std;
 
 
-DoublyLinkedList<Package> allPackages;
+DoublyLinkedList allPackages;
 void startingMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PARCEL SERVICE SIMULATOR   -------------------------------------" << endl;
@@ -32,25 +32,27 @@ void startingMenu(){
 
                 case 1:
                     system("cls");
-                    allPackages = generatePackages<Package>();
-                    cout << "Packages are being created." << endl;
-                    sleep(10);
+                    allPackages = generatePackages();
+                    cout << "Packages are being created..." << endl;
+                    sleep(2);
                     cout << "Packages have been created successfully." << endl;
-                    sleep(10);
+                    cout << "Redirecting to the main menu..." << endl;
+                    sleep(2);
                     system("cls");
                     mainMenu();
                     break;
 
                 default:
-                    cout << "Invalid choice." << endl;
-                    sleep(1);
+                    cout << "Invalid input. Please enter a number." << endl;
+                    cout << "Redirecting to a new main menu..." << endl;
+                    sleep(2);
                     system("cls");
                     break;
             }
         } else {
             cout << endl;
             cout << "Invalid input. Please enter a number." << endl;
-            sleep(1);
+            sleep(2);
             system("cls");
 
             // Clear the input buffer to avoid an infinite loop
@@ -121,14 +123,15 @@ void mainMenu(){
 
                 default:
                     cout << "Invalid choice" << endl;
-                    sleep(1);
+                    sleep(2);
                     system("cls");
                     break;
             }
         } else {
             cout << endl;
             cout << "Invalid input. Please enter a number." << endl;
-            sleep(1);
+            cout << "Redirecting to a new main menu..." << endl;
+            sleep(2);
             system("cls");
 
             // Clear the input buffer to avoid an infinite loop

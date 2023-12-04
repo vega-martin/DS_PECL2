@@ -24,10 +24,8 @@ struct PackageCenter {
 
 
 AVLTree generatePackageCenters();
-/*template <typename T>
-DoublyLinkedList<T> generatePackages();*/
-template <typename U> 
-DoublyLinkedList<U> generatePackages();
+
+DoublyLinkedList generatePackages();
 
 template <typename N>
 void locateInPC(PackageCenter<N> PC);

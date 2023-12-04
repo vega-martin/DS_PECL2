@@ -4,12 +4,12 @@
   <Dependencies/>
   <VirtualDirectory Name="src">
     <VirtualDirectory Name="DDSS">
+      <File Name="DLList.cpp"/>
       <File Name="Stack.cpp"/>
       <File Name="Queue.cpp"/>
       <File Name="AVLTree.cpp"/>
       <File Name="Stack.hpp"/>
       <File Name="Queue.hpp"/>
-      <File Name="DLList.tpp"/>
       <File Name="DLList.hpp"/>
       <File Name="AVLTree.hpp"/>
     </VirtualDirectory>

@@ -1,14 +1,15 @@
-template <typename T>
-DoublyLinkedList<T>::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
+#include "DLList.hpp"
 
-template <typename T>
-DoublyLinkedList<T>::~DoublyLinkedList() {
-    makeNull(); // Clean up memory when the list is destroyed
+DoublyNode::DoublyNode(const Package& value) : element(value), prev(nullptr), next(nullptr) {}
+
+DoublyLinkedList::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
+
+DoublyLinkedList::~DoublyLinkedList() {
+    makeNull();
 }
 
-template <typename T>
-void DoublyLinkedList<T>::insertFront(const T& element) {
-    DoublyNode<T>* newNode = new DoublyNode<T>(element);
+void DoublyLinkedList::insertFront(const Package& element) {
+    DoublyNode* newNode = new DoublyNode(element);
     if (head == nullptr) {
         head = tail = newNode;
     } else {
@@ -18,9 +19,8 @@ void DoublyLinkedList<T>::insertFront(const T& element) {
     }
 }
 
-template <typename T>
-void DoublyLinkedList<T>::insertBack(const T& element) {
-    DoublyNode<T>* newNode = new DoublyNode<T>(element);
+void DoublyLinkedList::insertBack(const Package& element) {
+    DoublyNode* newNode = new DoublyNode(element);
     if (tail == nullptr) {
         head = tail = newNode;
     } else {
@@ -30,14 +30,13 @@ void DoublyLinkedList<T>::insertBack(const T& element) {
     }
 }
 
-template <typename T>
-T DoublyLinkedList<T>::removeFront() {
+Package DoublyLinkedList::removeFront() {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
 
-    T value = head->element;
-    DoublyNode<T>* temp = head;
+    Package value = head->element;
+    DoublyNode* temp = head;
     head = head->next;
 
     if (head == nullptr) {
@@ -50,14 +49,13 @@ T DoublyLinkedList<T>::removeFront() {
     return value;
 }
 
-template <typename T>
-T DoublyLinkedList<T>::removeBack() {
+Package DoublyLinkedList::removeBack() {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
 
-    T value = tail->element;
-    DoublyNode<T>* temp = tail;
+    Package value = tail->element;
+    DoublyNode* temp = tail;
     tail = tail->prev;
 
     if (tail == nullptr) {
@@ -70,28 +68,24 @@ T DoublyLinkedList<T>::removeBack() {
     return value;
 }
 
-template <typename T>
-bool DoublyLinkedList<T>::isEmpty() const {
+bool DoublyLinkedList::isEmpty() const {
     return head == nullptr;
 }
 
-template <typename T>
-void DoublyLinkedList<T>::makeNull() {
+void DoublyLinkedList::makeNull() {
     while (!isEmpty()) {
         removeFront();
     }
 }
 
-template <typename T>
-T DoublyLinkedList<T>::getFront() const {
+Package DoublyLinkedList::getFront() const {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
     return head->element;
 }
 
-template <typename T>
-T DoublyLinkedList<T>::getBack() const {
+Package DoublyLinkedList::getBack() const {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
