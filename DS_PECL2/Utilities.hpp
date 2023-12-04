@@ -29,4 +29,7 @@ DoublyLinkedList<T> generatePackages();*/
 template <typename U> 
 DoublyLinkedList<U> generatePackages();
 
+template <typename N>
+void locateInPC(PackageCenter<N> PC);
+
 #endif // UTILITIES_HPP

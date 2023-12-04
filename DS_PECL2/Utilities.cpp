@@ -36,7 +36,6 @@ AVLTree generatePackageCenters(){
 
 
 template <typename U>
-//DoublyLinkedList<T> generatePackages(){
 DoublyLinkedList<U> generatePackages(){
     DoublyLinkedList<U> packagesList;
     
@@ -76,4 +75,10 @@ DoublyLinkedList<U> generatePackages(){
     return packagesList;
 };
 
+template <typename N>
+void locateInPC(PackageCenter<N> PC){
+    
+}
+
+// This has to go at the en of the file
 template DoublyLinkedList<Package> generatePackages<Package>();
