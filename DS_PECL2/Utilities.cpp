@@ -75,12 +75,12 @@ DoublyLinkedList generatePackages(){
     
     for(int i = 0; i < 248; i++){
 		Package p;
-        /*cout << setw(15) << "PackageID:" << setw(16) << p.getLabel().packageId 
+        cout << setw(15) << "PackageID:" << setw(16) << p.getLabel().packageId 
         << setw(15) << "Latitude:" << setw(15) << p.getLabel().coordinates.latitude
         << setw(15) << "Longitude:" << setw(15) << p.getLabel().coordinates.longitude
         << setw(15) << "ClientID:" << setw(15) << p.getLabel().clientId
         << setw(15) << "Status:" << setw(15) << p.getStatus()
-        << endl;*/
+        << endl;
 		packagesList.insertBack(p);
 	}
     

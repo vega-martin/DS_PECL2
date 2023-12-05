@@ -5,6 +5,7 @@
 using namespace std;
 
 thread_local mt19937 Package::gen(random_device{}());
+int packageCounter = 1;
 
 // This method randomizes three one-digit numbers and one letter, then concatenates them:
 string randNumbersAndLetter() {
@@ -92,17 +93,27 @@ string Package::postalCodeAssignment(const Coords &coordinates) {
     return postalCode;
 }
 
+string Package::generatePackageNum(){
+    // Create a copy so we don't modify the original variable
+    int PgNum = packageCounter;
+    string num = to_string(PgNum);
+    // Add 0 if needed 
+    while(num.length() < 4) {
+        num = "0" + num;
+    }
+    // Update the Package counter
+    packageCounter++;
+    
+    return num;
+}
+
 string Package::generateLabelId(const Coords &coordinates) {
     
-    // OJO VEGA!! A ESTE LABEL LE FALTARÍA AL PRINCIPIO CUATRO NUMEROS MÁS!! SON LOS QUE IDENTIFICAN
-    // EL NUMERO DEL PAQUETE!! (LEETE DEL ENUNCIADO LO QUE NO ENTIENDAS). NO SÉ SI DEJAR ESPACIO O
-    // NO HACER NADA, Y A LA HORA DE GENERAR EL PAQUETE, MODIFICAR ESTE VALOR ASIGNANDOLE UNOS NUMEROS
-    // DELANTE. Igual suena todo esto un poco confuso, cualquier duda dime, cuando veas esto bórralo tambien
-
+    string counter = generatePackageNum();
     string threeRandNumbersOneLetter = randNumbersAndLetter();
     string date = generateDate();
     string postalCode = postalCodeAssignment(coordinates);
-    string labelId = threeRandNumbersOneLetter + '-' + date + '-' + postalCode;
+    string labelId = counter + '-' + threeRandNumbersOneLetter + '-' + date + '-' + postalCode;
 
     return labelId;
 }
