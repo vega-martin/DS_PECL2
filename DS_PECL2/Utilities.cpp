@@ -58,7 +58,7 @@ DoublyLinkedList generatePackages(){
     packagesList.insertBack(vega);
     packagesList.insertBack(adri);
     
-    
+    /*
     cout << setw(15) << "PackageID:" << setw(16) << vega.getLabel().packageId 
         << setw(15) << "Latitude:" << setw(15) << vega.getLabel().coordinates.latitude
         << setw(15) << "Longitude:" << setw(15) << vega.getLabel().coordinates.longitude
@@ -71,16 +71,18 @@ DoublyLinkedList generatePackages(){
         << setw(15) << "ClientID:" << setw(15) << adri.getLabel().clientId
         << setw(15) << "Status:" << setw(15) << adri.getStatus()
         << endl;
-    
+    */
     
     for(int i = 0; i < 248; i++){
 		Package p;
+        /*
         cout << setw(15) << "PackageID:" << setw(16) << p.getLabel().packageId 
         << setw(15) << "Latitude:" << setw(15) << p.getLabel().coordinates.latitude
         << setw(15) << "Longitude:" << setw(15) << p.getLabel().coordinates.longitude
         << setw(15) << "ClientID:" << setw(15) << p.getLabel().clientId
         << setw(15) << "Status:" << setw(15) << p.getStatus()
         << endl;
+        */
 		packagesList.insertBack(p);
 	}
     

@@ -5,10 +5,11 @@
 #include <iostream>
 #include <iomanip>
 #include <unistd.h>
+#include <cstdlib>
 using namespace std;
 
-
 DoublyLinkedList allPackages;
+
 void startingMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PARCEL SERVICE SIMULATOR   -------------------------------------" << endl;
@@ -22,43 +23,71 @@ void startingMenu(){
         cout << " 0. Exit\n" << endl;
         cout << "Enter a number: " << endl;
         
-        if (cin >> choice) {
-            cout << endl;
-            switch (choice) {
-                case 0:
-                    cout << "Goodbye!" << endl;
-                    exit(0);
-                    break;
-
-                case 1:
-                    system("cls");
-                    allPackages = generatePackages();
-                    cout << "Packages are being created..." << endl;
-                    sleep(5);
-                    cout << "Packages have been created successfully." << endl;
-                    cout << "Redirecting to the main menu..." << endl;
-                    sleep(5);
-                    system("cls");
-                    mainMenu();
-                    break;
-
-                default:
-                    cout << "Invalid input. Please enter a number." << endl;
-                    cout << "Redirecting to a new main menu..." << endl;
-                    sleep(2);
-                    system("cls");
-                    break;
+        // Stores input as string
+        string input;
+        getline(cin, input);
+        
+        // Checks if the input is empty
+        if (!input.empty()) {
+            // Tries converting the input to int
+            try {
+                choice = stoi(input);
+                
+                // Checking numeric input
+                switch (choice) {
+                    
+                    // 0. Exit
+                    case 0:
+                        cout << endl;
+                        cout << "Goodbye!" << endl;
+                        exit(0);
+                        break;
+                    
+                    // 1. Start simulation and go to main menu
+                    case 1:
+                        system("cls");
+                        allPackages = generatePackages();
+                        cout << "Packages are being created..." << endl;
+                        sleep(2);
+                        cout << "Packages have been created successfully." << endl;
+                        cout << "Redirecting to the main menu..." << endl;
+                        sleep(2);
+                        system("cls");
+                        mainMenu();
+                        break;
+                    
+                    // Not valid number
+                    default:
+                        cout << endl;
+                        cout << "Invalid input. Please enter a valid number." << endl;
+                        sleep(1);
+                        system("cls");
+                        break;
+                }
+            
+            // Catching exceptions
+            } catch (const std::invalid_argument& e) {
+                cout << endl;
+                cout << "Invalid input. Please enter a valid number." << endl;
+                sleep(1);
+                system("cls");
+                
+            } catch (const std::out_of_range& e) {
+                cout << endl;
+                cout << "Invalid input. Please enter a valid number." << endl;
+                sleep(1);
+                system("cls");
             }
+        
+        
+        // If the input buffer is empty
         } else {
             cout << endl;
-            cout << "Invalid input. Please enter a number." << endl;
-            sleep(2);
+            cout << "Invalid input. Please enter a valid number." << endl;
+            sleep(1);
             system("cls");
-
-            // Clear the input buffer to avoid an infinite loop
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
+        
     } while (true);
 }
 
@@ -75,68 +104,125 @@ void mainMenu(){
         cout << " 4. Delete package." << endl;
         cout << " 5. Transport package form Salamanca's Packet Central Station to given Packet Centre." << endl;
         cout << " 6. Transport package from its Packet Centre to given Packet Centre." << endl;
-        cout << " 7. Next step." << endl;
+        cout << " 7. Carry on with the packet's delivery." << endl;
         cout << " 0. Exit\n" << endl;
+        cout << "===  BEWARE  ========================================================================\n" << endl;
+        cout << "If you press the ENTER key without entering anything else\npackages WILL be processed.\n" << endl;
+        cout << "=====================================================================================\n" << endl;
         cout << "Enter a number: " << endl;
         
-        if (cin >> choice) {
-            cout << endl;
-            switch (choice) {
-                case 0:
-                    cout << "Goodbye!" << endl;
-                    exit(0);
-                    break;
-
-                case 1:
-                    cout << "Nothing is going on here right now :(  -> packages ready to be delivered to PCs" << endl;
-                    break;
-
-                case 2:
-                    cout << "Nothing is going on here right now :(  -> PCs statistics" << endl;
-                    break;
-
-                case 3:
-                    cout << "Introduce the label of the package you are looking for:" << endl;
-                    // string label;
-                    // getline(cin >> ws, label);
-                    // cout << endl;
-                    break;
-
-                case 4:
-                    cout << "Introduce the label of the package you want to delete:" << endl;
-                    // string label;
-                    // getline(cin >> ws, label);
-                    // cout << endl;
-                    break;
-
-                case 5:
-                    cout << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
-                    break;
-
-                case 6:
-                    cout << "Nothing is going on here right now :(  -> transport from PC to PC" << endl;
-                    break;
-
-                case 7:
-                    cout << "Nothing is going on here right now :(  -> 1 Step" << endl;
-                    break;
-
-                default:
-                    cout << "Invalid choice" << endl;
-                    sleep(2);
-                    system("cls");
-                    break;
+        // Stores input as string
+        string input;
+        getline(cin, input);
+        
+        // Checks if the input is empty
+        if (!input.empty()) {
+            // Tries converting the input to int
+            try {
+                choice = stoi(input);
+                
+                // Checking numeric input
+                switch (choice) {
+                    
+                    // 0. Exit
+                    case 0:
+                        cout << endl;
+                        cout << "Goodbye!" << endl;
+                        exit(0);
+                        break;
+                    
+                    // 1. Show packages ready to be sent to given Packet Centre
+                    case 1:
+                        cout << endl;
+                        cout << "Nothing is going on here right now :(  -> packages ready to be delivered to PCs" << endl;
+                        break;
+                    
+                    // 2. Show statistics of all Paket Centres
+                    case 2:
+                        cout << endl;
+                        cout << "Nothing is going on here right now :(  -> PCs statistics" << endl;
+                        break;
+                        
+                    // 3. Search package
+                    case 3:
+                        cout << endl;
+                        cout << "Introduce the label of the package you are looking for:" << endl;
+                        // string label;
+                        // getline(cin >> ws, label);
+                        // cout << endl;
+                        break;
+                    
+                    // 4. Delete package
+                    case 4:
+                        cout << endl;
+                        cout << "Introduce the label of the package you want to delete:" << endl;
+                        // string label;
+                        // getline(cin >> ws, label);
+                        // cout << endl;
+                        break;
+                    
+                    // 5. Transport package form Salamanca's Packet Central Station to given Packet Centre
+                    case 5:
+                        cout << endl;
+                        cout << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
+                        break;
+                    
+                    // 6. Transport package from its Packet Centre to given Packet Centre
+                    case 6:
+                        cout << endl;
+                        cout << "Nothing is going on here right now :(  -> transport from PC to PC" << endl;
+                        break;
+                    
+                    // 7. Carry on with the packet's delivery
+                    case 7:
+                        cout << endl;
+                        cout << "Nothing is going on here right now :(  -> 1 Step" << endl;
+                        break;
+                    
+                    // Not valid number
+                    default:
+                        cout << endl;
+                        cout << "Invalid input. Please enter a valid number." << endl;
+                        sleep(2);
+                        system("cls");
+                        break;
+                }
+            
+            // Catching exceptions
+            } catch (const std::invalid_argument& e) {
+                cout << endl;
+                cout << "Invalid input. Please enter a valid number." << endl;
+                sleep(1);
+                system("cls");
+                
+            } catch (const std::out_of_range& e) {
+                cout << endl;
+                cout << "Invalid input. Please enter a valid number." << endl;
+                sleep(1);
+                system("cls");
             }
+        
+        // If the input buffer is empty
         } else {
+            
+            /************************   CUIDADO   ************************/
+            /*
+             * AQUI SE SUPONE QUE TENEMOS QUE HACER EL CÓDIGO PARA EL 
+             * PASO. QUIERO DECIR, Q LOS PAQUETES SE MUEVAN A DONDE SE
+             * TENGAN Q MOVER
+             * TAMBIEN HAY QUE AÑADIR UNA VARIABLE GLOBAL QUE CUENTE 
+             * CUANTAS VECES SE HA PRESIONADO ENTRE (CUANTOS PASOS HA
+             * DADO EL PROGRAMA)
+             */
+            /************************   CUIDADO   ************************/
+            
+            
             cout << endl;
-            cout << "Invalid input. Please enter a number." << endl;
-            cout << "Redirecting to a new main menu..." << endl;
+            cout << "Packages are being processed." << endl;
             sleep(2);
             system("cls");
-
-            // Clear the input buffer to avoid an infinite loop
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            
         }
+        
     } while (true);
 }
