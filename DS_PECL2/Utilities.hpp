@@ -6,6 +6,12 @@
 #include <string>
 using namespace std;
 
+// Global constant variables:
+#define PACKAGE_CARGO 4700
+#define PACKAGE_CENTRES 9
+#define EXTRACTED_PACKAGES 197
+#define HUB_CAPACITY 86
+
 // Global variables holding logistics' info:
 extern string postalCodes[9];
 extern string acronyms[9];
@@ -29,14 +35,14 @@ const string* getPostalCodes();
 const string* getAcronyms();
 const Coords* getCoordinates();
 
-// Methods regarding the other global variables:
+// Getter + setter methods regarding the other global variables:
 int getPackageNumber();
 void increasePackageNumber();
 int getStepsTaken();
 void increaseStepsTaken();
 
 // Other various methods:
-AVLTree generatePackageCenters();
+AVLTree generatePackageCentres();
 DoublyLinkedList generatePackages();
 void locateInPC(PackageCenter PC);
 

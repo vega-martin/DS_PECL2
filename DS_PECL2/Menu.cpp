@@ -28,13 +28,9 @@ void startingMenu(){
         string input;
         getline(cin, input);
         
-        // Checks if the input is empty
         if (!input.empty()) {
-            // Tries converting the input to int
             try {
-                choice = stoi(input);
-                
-                // Checking numeric input
+                choice = stoi(input); // String to integer
                 switch (choice) {
                     
                     // 0. Exit

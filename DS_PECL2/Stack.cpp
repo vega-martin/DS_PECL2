@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include "Stack.hpp"
+#include "Utilities.hpp"
 using namespace std;
 
 Stack::Stack() : top(nullptr) {}
@@ -48,8 +49,8 @@ int Stack::length(){
 }
 
 /* Watch out! The stack will technically never get full, as its implementation is dynamic. Still, 
- * the exercise requires the stack to have a max capacity, hence this method is a must. */
-// OJO VEGA: EL 23 ES LA CONSTANTE QUE NECESITEMOS, NO ME ACUERDO AHORA (BORRA ESTO CUANDO LO VEAS)
+ * the exercise requires the stack to have a max capacity. Therefore, this method is a must. */
+
 bool Stack::isFull(){
-    return (length() >= 23);
+    return (length() >= HUB_CAPACITY);
 }

@@ -48,22 +48,23 @@ void increaseStepsTaken(){
 
 // Other methods:
 
-AVLTree generatePackageCenters(){
-    AVLTree PC_AVLTree;
+AVLTree generatePackageCentres(){
+    AVLTree pcTree;
     for (int i = 0; i < 9; i++){
         PackageCenter packageCenter;
         packageCenter.key = i;
         packageCenter.postalCode = postalCodes[i];
         packageCenter.acronym = acronyms[i];
         packageCenter.coordinates = coordinates[i];
-        PC_AVLTree.insert(packageCenter.key);
+        pcTree.insert(packageCenter.key);
     }
-    return PC_AVLTree;
+    return pcTree;
 };
 
 DoublyLinkedList generatePackages(){
     DoublyLinkedList packagesList;
     
+    // The first two packages must be set to our personal IDs:
     Package vega;
     Package adri;
     vega.setClientId("05955285X");
@@ -71,33 +72,10 @@ DoublyLinkedList generatePackages(){
     packagesList.insertBack(vega);
     packagesList.insertBack(adri);
     
-    /*
-    cout << setw(15) << "PackageID:" << setw(16) << vega.getLabel().packageId 
-        << setw(15) << "Latitude:" << setw(15) << vega.getLabel().coordinates.latitude
-        << setw(15) << "Longitude:" << setw(15) << vega.getLabel().coordinates.longitude
-        << setw(15) << "ClientID:" << setw(15) << vega.getLabel().clientId
-        << setw(15) << "Status:" << setw(15) << vega.getStatus()
-        << endl;
-    cout << setw(15) << "PackageID:" << setw(16) << adri.getLabel().packageId 
-        << setw(15) << "Latitude:" << setw(15) << adri.getLabel().coordinates.latitude
-        << setw(15) << "Longitude:" << setw(15) << adri.getLabel().coordinates.longitude
-        << setw(15) << "ClientID:" << setw(15) << adri.getLabel().clientId
-        << setw(15) << "Status:" << setw(15) << adri.getStatus()
-        << endl;
-    */
-    
-    for(int i = 0; i < 248; i++){
-		Package p;
-        /*
-        cout << setw(15) << "PackageID:" << setw(16) << p.getLabel().packageId 
-        << setw(15) << "Latitude:" << setw(15) << p.getLabel().coordinates.latitude
-        << setw(15) << "Longitude:" << setw(15) << p.getLabel().coordinates.longitude
-        << setw(15) << "ClientID:" << setw(15) << p.getLabel().clientId
-        << setw(15) << "Status:" << setw(15) << p.getStatus()
-        << endl;
-        */
-		packagesList.insertBack(p);
-	}
+    for(int i = 0; i < PACKAGE_CARGO - 2; i++){
+        Package p;
+        packagesList.insertBack(p);
+    }
     
     return packagesList;
 };
