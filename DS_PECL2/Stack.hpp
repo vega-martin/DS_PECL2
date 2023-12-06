@@ -20,6 +20,10 @@ public:
     Package pop();
     bool isEmpty() const;
     void makeNull();
+    
+    // We must extend the basic implementation of a stack with these methods:
+    int length();
+    bool isFull();
 };
 
 #endif // STACK_HPP
