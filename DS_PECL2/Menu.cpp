@@ -12,15 +12,16 @@ DoublyLinkedList allPackages;
 
 void startingMenu(){
     int choice;
-    cout << setw(85) << "-------------------------------------   PARCEL SERVICE SIMULATOR   -------------------------------------" << endl;
+    cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
     cout << endl;
     do {
-        cout << "Just in case we want to add some of the improvements" << endl;
+        cout << "(Just in case we want to add any extra improvement)" << endl;
         cout << endl;
-        cout << "STARTING MENU (enter a number to choose an action):" << endl;
+        cout << "STARTING MENU || Enter a number to choose an action:" << endl;
         cout << endl;
-        cout << " 1. Start simulation and go to main menu (You won't be able to come back to this menu)." << endl;
-        cout << " 0. Exit\n" << endl;
+        cout << " 1. Start the simulation and go to main the menu (You won't be able to come back to this menu!)" << endl;
+        cout << " 0. Exit" << endl;
+        cout << endl;
         cout << "Enter a number: " << endl;
         
         // Stores input as string
@@ -66,13 +67,13 @@ void startingMenu(){
                 }
             
             // Catching exceptions
-            } catch (const std::invalid_argument& e) {
+            } catch (const invalid_argument& e) {
                 cout << endl;
                 cout << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
                 system("cls");
                 
-            } catch (const std::out_of_range& e) {
+            } catch (const out_of_range& e) {
                 cout << endl;
                 cout << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
@@ -93,21 +94,21 @@ void startingMenu(){
 
 void mainMenu(){
     int choice;
-    cout << setw(85) << "-------------------------------------   PARCEL SERVICE SIMULATOR   -------------------------------------" << endl;
+    cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
     cout << endl;
     do {
-        cout << "MAIN MENU (enter a number to choose an action):" << endl;
+        cout << "MAIN MENU || Enter a number to choose an action:" << endl;
         cout << endl;
-        cout << " 1. Show packages ready to be sent to given Packet Centre." << endl;
-        cout << " 2. Show statistics of all Paket Centres." << endl;
+        cout << " 1. Show packages ready to be sent to a given Package Centre." << endl;
+        cout << " 2. Show statistics of all Package Centres." << endl;
         cout << " 3. Search package." << endl;
         cout << " 4. Delete package." << endl;
-        cout << " 5. Transport package form Salamanca's Packet Central Station to given Packet Centre." << endl;
-        cout << " 6. Transport package from its Packet Centre to given Packet Centre." << endl;
-        cout << " 7. Carry on with the packet's delivery." << endl;
+        cout << " 5. Transport package form Salamanca's Package Central Station to a given Package Centre." << endl;
+        cout << " 6. Transport package from its Package Centre to a different Package Centre." << endl;
+        cout << " 7. Carry on with the packages' delivery." << endl;
         cout << " 0. Exit\n" << endl;
         cout << "===  BEWARE  ========================================================================\n" << endl;
-        cout << "If you press the ENTER key without entering anything else\npackages WILL be processed.\n" << endl;
+        cout << "If you press the ENTER key without entering any option \npackages WILL be processed!!\n" << endl;
         cout << "=====================================================================================\n" << endl;
         cout << "Enter a number: " << endl;
         
@@ -189,13 +190,13 @@ void mainMenu(){
                 }
             
             // Catching exceptions
-            } catch (const std::invalid_argument& e) {
+            } catch (const invalid_argument& e) {
                 cout << endl;
                 cout << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
                 system("cls");
                 
-            } catch (const std::out_of_range& e) {
+            } catch (const out_of_range& e) {
                 cout << endl;
                 cout << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
