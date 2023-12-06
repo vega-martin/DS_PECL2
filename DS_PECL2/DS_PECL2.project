@@ -3,6 +3,8 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="Logistics.cpp"/>
+    <File Name="Logistics.hpp"/>
     <VirtualDirectory Name="DDSS">
       <File Name="DLList.cpp"/>
       <File Name="Stack.cpp"/>

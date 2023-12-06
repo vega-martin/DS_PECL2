@@ -3,10 +3,11 @@
 #include "Package.hpp"
 #include "DLList.hpp"
 #include <string>
-#include <iostream>
-#include <iomanip>
+//#include <iostream>
+//#include <iomanip>
 using namespace std;
 
+// Global variables initialisation:
 string postalCodes[9] = {"37715","37427","37449","37893","37797","37796","37129","37340","37001"};
 string acronyms[9] = {"ADT","PER","ROD","VDT","CDV","MOZ","CDB","ALD","SAL"};
 Coords coordinates[9] = {{"41.063717","-5.821883"},
@@ -19,34 +20,46 @@ Coords coordinates[9] = {{"41.063717","-5.821883"},
                          {"41.006495","-5.500316"},
                          {"40.965059","-5.664039"}};
                          
+int packageNumber = 1;
+int stepsTaken = 0;
+
+// Getters + setters:        
 const string* getPostalCodes() {
     return postalCodes;
 }
-
 const string* getAcronyms() {
     return acronyms;
 }
-
 const Coords* getCoordinates() {
     return coordinates;
 }
+int getPackageNumber(){
+    return packageNumber;
+}
+void increasePackageNumber(){
+    packageNumber++;
+}
+int getStepsTaken(){
+    return stepsTaken;
+}
+void increaseStepsTaken(){
+    stepsTaken++;
+}
 
-
+// Other methods:
 
 AVLTree generatePackageCenters(){
-    AVLTree PCavltree;
+    AVLTree PC_AVLTree;
     for (int i = 0; i < 9; i++){
         PackageCenter packageCenter;
         packageCenter.key = i;
         packageCenter.postalCode = postalCodes[i];
         packageCenter.acronym = acronyms[i];
         packageCenter.coordinates = coordinates[i];
-        PCavltree.insert(packageCenter.key);
+        PC_AVLTree.insert(packageCenter.key);
     }
-    return PCavltree;
+    return PC_AVLTree;
 };
-
-
 
 DoublyLinkedList generatePackages(){
     DoublyLinkedList packagesList;

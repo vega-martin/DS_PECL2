@@ -4,7 +4,7 @@
 #include <random>
 using namespace std;
 
-extern int packageCounter;
+//extern int packageCounter;
 
 enum Status {SPCS, Hub, Delivered};
 
@@ -30,7 +30,7 @@ private:
      
     string generateClientId();
     Coords generateCoordinates();
-    string generatePackageNum();
+    string generatePackageNumber();
     string generateLabelId(const Coords &coordinates);    
 
 public:

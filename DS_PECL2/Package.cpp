@@ -5,7 +5,6 @@
 using namespace std;
 
 thread_local mt19937 Package::gen(random_device{}());
-int packageCounter = 1;
 
 // This method randomizes three one-digit numbers and one letter, then concatenates them:
 string randNumbersAndLetter() {
@@ -64,6 +63,12 @@ string Package::generateDate(){
     return date;
 }
 
+/* This next method may seem somewhat complicated to understand just by looking at its implementation, so allow
+ * us to explain it: whenever a package is generated, its coordinates are also randomly obtained (inside the
+ * square given to us by the exercise). Most packages, if not all of them, will not fall under the exact Package 
+ * Center's postal code, so we have to assign them to a PC. The easiest and most obvious way to solve this is by
+ * moving them to the CLOSEST PC. This is exactly what the following method does */
+
 string Package::postalCodeAssignment(const Coords &coordinates) {
     string postalCode;
     const string* postalCodesArray = getPostalCodes();
@@ -93,23 +98,24 @@ string Package::postalCodeAssignment(const Coords &coordinates) {
     return postalCode;
 }
 
-string Package::generatePackageNum(){
-    // Create a copy so we don't modify the original variable
-    int PgNum = packageCounter;
-    string num = to_string(PgNum);
-    // Add 0 if needed 
-    while(num.length() < 4) {
-        num = "0" + num;
-    }
-    // Update the Package counter
-    packageCounter++;
+string Package::generatePackageNumber(){
     
-    return num;
+    string packageNumber = to_string(getPackageNumber());
+    
+    // This number must be 4 digits long: 
+    while(packageNumber.length() < 4) {
+        packageNumber = "0" + packageNumber;
+    }
+    
+    // Update the Package counter:
+    increasePackageNumber();
+    
+    return packageNumber;
 }
 
 string Package::generateLabelId(const Coords &coordinates) {
     
-    string counter = generatePackageNum();
+    string counter = generatePackageNumber();
     string threeRandNumbersOneLetter = randNumbersAndLetter();
     string date = generateDate();
     string postalCode = postalCodeAssignment(coordinates);
