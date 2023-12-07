@@ -1,32 +1,12 @@
 #ifndef LOGISTICS_HPP
 #define LOGISTICS_HPP
-#include "AVLTree.hpp"
-#include "DLList.hpp"
-#include "DLList.hpp"
-//#include "Utilities.hpp"
 
-class Logistics
-{
-private:
-    AVLTree pcTree;
-    DLList packageList;
+// Methods to create:    
+void generatePackageCentres();
+void generatePackages();
 
-public:
-    
-    // Constructor:
-    Logistics();
-    
-    // Getters:
-    AVLTree getPcTree();
-    DLList getPackageList();
-    
-    // Other methods:    
-    void generatePackageCentres();
-    void generatePackages();
-    
-    void packageDelivery(Logistics logistics);
+// Methods to move packages:
+void packageDelivery();
 
-
-};
 
 #endif // LOGISTICS_HPP

@@ -1,22 +1,10 @@
 #include "Logistics.hpp"
 #include "Utilities.hpp"
-#include "DLList.hpp"
 #include "Package.hpp"
 #include <iostream>
 
-Logistics::Logistics()
-{    
-}
 
-AVLTree Logistics::getPcTree(){
-    return pcTree;
-}
-
-DLList Logistics::getPackageList(){
-    return packageList;
-}
-
-void Logistics::generatePackageCentres(){
+void generatePackageCentres(){
 
     for (int i = 0; i < PACKAGE_CENTRES; i++){
         PackageCenter packageCenter;
@@ -28,7 +16,7 @@ void Logistics::generatePackageCentres(){
     }
 };
 
-void Logistics::generatePackages(){
+void generatePackages(){
     
     // The first two packages must be set to our personal IDs:
     Package vega;
@@ -44,13 +32,13 @@ void Logistics::generatePackages(){
     }
 };
 
-void Logistics::packageDelivery(Logistics logistics){
+void packageDelivery(){
     
     for (int i = 0; i < PACKAGES_PER_DELIVERY; i++){
         
         // We must first check if there are pending packages:
    
-        if (logistics.packageList.isEmpty()){
+        if (packageList.isEmpty()){
             cout << "Oh no! The package list emptied out! The leftover packages will be delivered now..." << endl;
             return; // ESTO DEBERÍA HACER QUE SE SALIERA DEL METODO
         }
@@ -60,7 +48,7 @@ void Logistics::packageDelivery(Logistics logistics){
         /* To begin with the delivery, we must know where the package must
          * be sent. Therefore, we need to obtain its postal code: */
     
-        Package p = logistics.packageList.removeFront();
+        Package p = packageList.removeFront();
         string pLabel = p.getLabel().packageId;
         string postalCode = pLabel.substr(pLabel.length() - 5,5); // Last 5 characters (postal code)
         

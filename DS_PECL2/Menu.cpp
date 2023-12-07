@@ -7,7 +7,7 @@
 #include <cstdlib>
 using namespace std;
 
-void startingMenu(Logistics logistics){
+void startingMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
     cout << endl;
@@ -35,14 +35,14 @@ void startingMenu(Logistics logistics){
                     
                     case 1: // Start the simulation and go to main menu
                         system("cls");
-                        logistics.generatePackages(); 
+                        generatePackages(); 
                         cout << "Packages are being created..." << endl;
                         sleep(2);
                         cout << "Packages have been created successfully." << endl;
                         cout << "Redirecting to the main menu..." << endl;
                         sleep(2);
                         system("cls");
-                        mainMenu(logistics);
+                        mainMenu();
                         break;
                     
                     default: // Not a valid number
@@ -72,7 +72,7 @@ void startingMenu(Logistics logistics){
     } while (true);
 }
 
-void mainMenu(Logistics logistics){
+void mainMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
     cout << endl;
@@ -160,7 +160,7 @@ void mainMenu(Logistics logistics){
             }
             
         } else { // If the input buffer is empty
-            logistics.packageDelivery(logistics); // NO SÉ SI ASÍ ESTÁ BIEN
+            packageDelivery(); // NO SÉ SI ASÍ ESTÁ BIEN
             cout << endl << "Packages are being delivered..." << endl;
             sleep(2);
             system("cls");
