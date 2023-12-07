@@ -2,6 +2,7 @@
 #define LOGISTICS_HPP
 #include "AVLTree.hpp"
 #include "DLList.hpp"
+#include "DLList.hpp"
 //#include "Utilities.hpp"
 
 class Logistics
@@ -23,7 +24,7 @@ public:
     void generatePackageCentres();
     void generatePackages();
     
-    void packageDelivery();
+    void packageDelivery(Logistics logistics);
 
 
 };

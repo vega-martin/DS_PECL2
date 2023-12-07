@@ -160,22 +160,10 @@ void mainMenu(Logistics logistics){
             }
             
         } else { // If the input buffer is empty
-            
-            /************************   CUIDADO   ************************/
-            /*
-             * AQUI SE SUPONE QUE TENEMOS QUE HACER EL CÓDIGO PARA EL 
-             * PASO. QUIERO DECIR, Q LOS PAQUETES SE MUEVAN A DONDE SE
-             * TENGAN Q MOVER
-             * TAMBIEN HAY QUE AÑADIR UNA VARIABLE GLOBAL QUE CUENTE 
-             * CUANTAS VECES SE HA PRESIONADO ENTRE (CUANTOS PASOS HA
-             * DADO EL PROGRAMA)
-             */
-            /************************   CUIDADO   ************************/
-
+            logistics.packageDelivery(logistics); // NO SÉ SI ASÍ ESTÁ BIEN
             cout << endl << "Packages are being delivered..." << endl;
             sleep(2);
             system("cls");
-            
         }
         
     } while (true);
