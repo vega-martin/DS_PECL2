@@ -1,16 +1,13 @@
 #include "Menu.hpp"
+#include "Logistics.hpp"
 #include "Utilities.hpp"
-//#include "Package.hpp"
-#include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
 #include <unistd.h>
 #include <cstdlib>
 using namespace std;
 
-DoublyLinkedList allPackages;
-
-void startingMenu(){
+void startingMenu(Logistics logistics){
     int choice;
     cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
     cout << endl;
@@ -43,14 +40,14 @@ void startingMenu(){
                     // 1. Start simulation and go to main menu
                     case 1:
                         system("cls");
-                        allPackages = generatePackages();
+                        logistics.generatePackages(); 
                         cout << "Packages are being created..." << endl;
                         sleep(2);
                         cout << "Packages have been created successfully." << endl;
                         cout << "Redirecting to the main menu..." << endl;
                         sleep(2);
                         system("cls");
-                        mainMenu();
+                        mainMenu(logistics);
                         break;
                     
                     // Not valid number
@@ -88,13 +85,13 @@ void startingMenu(){
     } while (true);
 }
 
-void mainMenu(){
+void mainMenu(Logistics logistics){
     int choice;
     cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
     cout << endl;
     do {
-        cout << "MAIN MENU || Enter a number to choose an action:" << endl;
-        cout << endl;
+        cout << "MAIN MENU || Steps taken: " << getStepsTaken() << endl << endl;
+        cout << "Enter a number to choose an action:" << endl << endl;
         cout << " 1. Show packages ready to be sent to a given Package Centre." << endl;
         cout << " 2. Show statistics of all Package Centres." << endl;
         cout << " 3. Search package." << endl;
@@ -107,18 +104,12 @@ void mainMenu(){
         cout << "If you press the ENTER key without entering any option \npackages WILL be processed!!\n" << endl;
         cout << "=====================================================================================\n" << endl;
         cout << "Enter a number: " << endl;
-        
-        // Stores input as string
+
         string input;
         getline(cin, input);
-        
-        // Checks if the input is empty
         if (!input.empty()) {
-            // Tries converting the input to int
             try {
                 choice = stoi(input);
-                
-                // Checking numeric input
                 switch (choice) {
                     
                     // 0. Exit

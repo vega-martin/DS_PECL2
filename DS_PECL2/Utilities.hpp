@@ -1,7 +1,5 @@
 #ifndef UTILITIES_HPP
 #define UTILITIES_HPP
-#include "DLList.hpp"
-#include "AVLTree.hpp"
 #include "Stack.hpp"
 #include <string>
 using namespace std;
@@ -42,8 +40,6 @@ int getStepsTaken();
 void increaseStepsTaken();
 
 // Other various methods:
-AVLTree generatePackageCentres();
-DoublyLinkedList generatePackages();
 void locateInPC(PackageCenter PC);
 
 #endif // UTILITIES_HPP

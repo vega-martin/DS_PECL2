@@ -11,14 +11,13 @@ struct DoublyNode {
 };
 
 
-class DoublyLinkedList {
+class DLList {
 private:
     DoublyNode* head;
     DoublyNode* tail;
 
 public:
-    DoublyLinkedList();
-    ~DoublyLinkedList();
+    DLList();
     void insertFront(const Package& element);
     void insertBack(const Package& element);
     Package removeFront();

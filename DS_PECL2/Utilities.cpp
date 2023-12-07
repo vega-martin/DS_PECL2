@@ -1,10 +1,6 @@
 #include "Utilities.hpp"
-#include "AVLTree.hpp"
 #include "Package.hpp"
-#include "DLList.hpp"
 #include <string>
-//#include <iostream>
-//#include <iomanip>
 using namespace std;
 
 // Global variables initialisation:
@@ -47,40 +43,6 @@ void increaseStepsTaken(){
 }
 
 // Other methods:
-
-AVLTree generatePackageCentres(){
-    AVLTree pcTree;
-    for (int i = 0; i < 9; i++){
-        PackageCenter packageCenter;
-        packageCenter.key = i;
-        packageCenter.postalCode = postalCodes[i];
-        packageCenter.acronym = acronyms[i];
-        packageCenter.coordinates = coordinates[i];
-        pcTree.insert(packageCenter.key);
-    }
-    return pcTree;
-};
-
-DoublyLinkedList generatePackages(){
-    DoublyLinkedList packagesList;
-    
-    // The first two packages must be set to our personal IDs:
-    Package vega;
-    Package adri;
-    vega.setClientId("05955285X");
-    adri.setClientId("03247820J");
-    packagesList.insertBack(vega);
-    packagesList.insertBack(adri);
-    
-    for(int i = 0; i < PACKAGE_CARGO - 2; i++){
-        Package p;
-        packagesList.insertBack(p);
-    }
-    
-    return packagesList;
-};
-
-
 void locateInPC(PackageCenter PC){
     
 }

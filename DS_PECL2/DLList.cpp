@@ -1,12 +1,8 @@
 #include "DLList.hpp"
 
-DoublyLinkedList::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
+DLList::DLList() : head(nullptr), tail(nullptr) {}
 
-DoublyLinkedList::~DoublyLinkedList() {
-    makeNull();
-}
-
-void DoublyLinkedList::insertFront(const Package& element) {
+void DLList::insertFront(const Package& element) {
     DoublyNode* newNode = new DoublyNode(element);
     if (head == nullptr) {
         head = tail = newNode;
@@ -17,7 +13,7 @@ void DoublyLinkedList::insertFront(const Package& element) {
     }
 }
 
-void DoublyLinkedList::insertBack(const Package& element) {
+void DLList::insertBack(const Package& element) {
     DoublyNode* newNode = new DoublyNode(element);
     if (tail == nullptr) {
         head = tail = newNode;
@@ -28,7 +24,7 @@ void DoublyLinkedList::insertBack(const Package& element) {
     }
 }
 
-Package DoublyLinkedList::removeFront() {
+Package DLList::removeFront() {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
@@ -47,7 +43,7 @@ Package DoublyLinkedList::removeFront() {
     return value;
 }
 
-Package DoublyLinkedList::removeBack() {
+Package DLList::removeBack() {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
@@ -66,24 +62,24 @@ Package DoublyLinkedList::removeBack() {
     return value;
 }
 
-bool DoublyLinkedList::isEmpty() const {
+bool DLList::isEmpty() const {
     return head == nullptr;
 }
 
-void DoublyLinkedList::makeNull() {
+void DLList::makeNull() {
     while (!isEmpty()) {
         removeFront();
     }
 }
 
-Package DoublyLinkedList::getFront() const {
+Package DLList::getFront() const {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
     return head->element;
 }
 
-Package DoublyLinkedList::getBack() const {
+Package DLList::getBack() const {
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }

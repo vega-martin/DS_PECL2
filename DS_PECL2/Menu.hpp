@@ -1,11 +1,8 @@
 #ifndef MENU_HPP
 #define MENU_HPP
-#include "DLList.hpp"
+#include "Logistics.hpp"
 
-extern DoublyLinkedList allPackages;
-
-void mainMenu();
-void startingMenu();
-
+void mainMenu(Logistics logistics);
+void startingMenu(Logistics logistics);
 
 #endif // MENU_HPP
