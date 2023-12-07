@@ -12,13 +12,10 @@ void startingMenu(Logistics logistics){
     cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
     cout << endl;
     do {
-        cout << "(Just in case we want to add any extra improvement)" << endl;
-        cout << endl;
-        cout << "STARTING MENU || Enter a number to choose an action:" << endl;
-        cout << endl;
+        cout << "(Just in case we want to add any extra improvement)" << endl << endl;
+        cout << "STARTING MENU || Enter a number to choose an action:" << endl << endl;
         cout << " 1. Start the simulation and go to main the menu (You won't be able to come back to this menu!)" << endl;
-        cout << " 0. Exit" << endl;
-        cout << endl;
+        cout << " 0. Exit" << endl << endl;
         cout << "Enter a number: " << endl;
         
         // Stores input as string
@@ -29,16 +26,14 @@ void startingMenu(Logistics logistics){
             try {
                 choice = stoi(input); // String to integer
                 switch (choice) {
-                    
-                    // 0. Exit
-                    case 0:
+
+                    case 0: // Exit
                         cout << endl;
                         cout << "Goodbye!" << endl;
                         exit(0);
                         break;
                     
-                    // 1. Start simulation and go to main menu
-                    case 1:
+                    case 1: // Start the simulation and go to main menu
                         system("cls");
                         logistics.generatePackages(); 
                         cout << "Packages are being created..." << endl;
@@ -50,10 +45,8 @@ void startingMenu(Logistics logistics){
                         mainMenu(logistics);
                         break;
                     
-                    // Not valid number
-                    default:
-                        cout << endl;
-                        cout << "Invalid input. Please enter a valid number." << endl;
+                    default: // Not a valid number
+                        cout << endl << "Invalid input. Please enter a valid number." << endl;
                         sleep(1);
                         system("cls");
                         break;
@@ -61,27 +54,21 @@ void startingMenu(Logistics logistics){
             
             // Catching exceptions
             } catch (const invalid_argument& e) {
-                cout << endl;
-                cout << "Invalid input. Please enter a valid number." << endl;
+                cout << endl << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
                 system("cls");
                 
             } catch (const out_of_range& e) {
-                cout << endl;
-                cout << "Invalid input. Please enter a valid number." << endl;
+                cout << endl << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
                 system("cls");
             }
-        
-        
-        // If the input buffer is empty
-        } else {
-            cout << endl;
-            cout << "Invalid input. Please enter a valid number." << endl;
+                
+        } else { // If the input buffer is empty
+            cout << endl << "Invalid input. Please enter a valid number." << endl;
             sleep(1);
             system("cls");
-        }
-        
+        }        
     } while (true);
 }
 
@@ -111,66 +98,50 @@ void mainMenu(Logistics logistics){
             try {
                 choice = stoi(input);
                 switch (choice) {
-                    
-                    // 0. Exit
-                    case 0:
-                        cout << endl;
-                        cout << "Goodbye!" << endl;
+                
+                    case 0: // Exit
+                        cout << endl << "Goodbye!" << endl;
                         exit(0);
                         break;
-                    
-                    // 1. Show packages ready to be sent to given Packet Centre
-                    case 1:
+
+                    case 1: // Show packages ready to be sent to a given Packet Centre
                         cout << endl;
                         cout << "Nothing is going on here right now :(  -> packages ready to be delivered to PCs" << endl;
                         break;
-                    
-                    // 2. Show statistics of all Paket Centres
-                    case 2:
+                               
+                    case 2: // Show statistics of all Package Centres
                         cout << endl;
                         cout << "Nothing is going on here right now :(  -> PCs statistics" << endl;
-                        break;
-                        
-                    // 3. Search package
-                    case 3:
-                        cout << endl;
-                        cout << "Introduce the label of the package you are looking for:" << endl;
+                        break;        
+                    
+                    case 3: // Search for a package
+                        cout << endl << "Introduce the label of the package you are looking for:" << endl;
                         // string label;
                         // getline(cin >> ws, label);
                         // cout << endl;
                         break;
                     
-                    // 4. Delete package
-                    case 4:
-                        cout << endl;
-                        cout << "Introduce the label of the package you want to delete:" << endl;
+                    case 4: // Delete a package
+                        cout << endl << "Introduce the label of the package you want to delete:" << endl;
                         // string label;
                         // getline(cin >> ws, label);
                         // cout << endl;
                         break;
-                    
-                    // 5. Transport package form Salamanca's Packet Central Station to given Packet Centre
-                    case 5:
-                        cout << endl;
-                        cout << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
+
+                    case 5: // Transport package form Salamanca's PCS to a given Package Centre
+                        cout << endl << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
                         break;
                     
-                    // 6. Transport package from its Packet Centre to given Packet Centre
-                    case 6:
-                        cout << endl;
-                        cout << "Nothing is going on here right now :(  -> transport from PC to PC" << endl;
+                    case 6: // Transport package from its Package Centre to a different Package Centre
+                        cout << endl << "Nothing is going on here right now :(  -> transport from PC to PC" << endl;
                         break;
                     
-                    // 7. Carry on with the packet's delivery
-                    case 7:
-                        cout << endl;
-                        cout << "Nothing is going on here right now :(  -> 1 Step" << endl;
-                        break;
+                    case 7: // Carry on with the packages' delivery
+                        cout << endl << "Nothing is going on here right now :(  -> 1 Step" << endl;
+                        break;    
                     
-                    // Not valid number
-                    default:
-                        cout << endl;
-                        cout << "Invalid input. Please enter a valid number." << endl;
+                    default: // Not valid number
+                        cout << endl << "Invalid input. Please enter a valid number." << endl;
                         sleep(2);
                         system("cls");
                         break;
@@ -178,20 +149,17 @@ void mainMenu(Logistics logistics){
             
             // Catching exceptions
             } catch (const invalid_argument& e) {
-                cout << endl;
-                cout << "Invalid input. Please enter a valid number." << endl;
+                cout << endl << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
                 system("cls");
                 
             } catch (const out_of_range& e) {
-                cout << endl;
-                cout << "Invalid input. Please enter a valid number." << endl;
+                cout << endl << "Invalid input. Please enter a valid number." << endl;
                 sleep(1);
                 system("cls");
             }
-        
-        // If the input buffer is empty
-        } else {
+            
+        } else { // If the input buffer is empty
             
             /************************   CUIDADO   ************************/
             /*
@@ -203,10 +171,8 @@ void mainMenu(Logistics logistics){
              * DADO EL PROGRAMA)
              */
             /************************   CUIDADO   ************************/
-            
-            
-            cout << endl;
-            cout << "Packages are being processed." << endl;
+
+            cout << endl << "Packages are being delivered..." << endl;
             sleep(2);
             system("cls");
             

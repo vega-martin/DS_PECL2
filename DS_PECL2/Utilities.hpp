@@ -7,7 +7,7 @@ using namespace std;
 // Global constant variables:
 #define PACKAGE_CARGO 4700
 #define PACKAGE_CENTRES 9
-#define EXTRACTED_PACKAGES 197
+#define PACKAGES_PER_DELIVERY 197
 #define HUB_CAPACITY 86
 
 // Global variables holding logistics' info:
