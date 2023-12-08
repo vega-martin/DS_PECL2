@@ -83,17 +83,19 @@ void AVLTree::insert(const PackageCenter& PC) {
     root = insert(root, PC);
 }
 
-PackageCenter AVLTree::postOrderHelp(avlNode* node, string postalCode) {
-    if(postalCode == node->PC.postalCode){
-        return node->PC;
+void AVLTree::postOrderTraversal(avlNode* node, string postalCode) {
+    // No se muy bn qué hacer aquí xq e error está dfinitivamente en el return
+    // Asiq podemos pasar el paquete en vez de el codigo postal y que lo
+    // introduzca directamente o no se q hacer. Por que hay que tener en 
+    // cuenta que este método se supone q tambien se tiene que usar para otras
+    // cosas como las estadíticas.
+    //if (postalCode == node->PC.postalCode){}
+    if (node != nullptr) {
+        postOrderTraversal(node->left, postalCode);
+        postOrderTraversal(node->right, postalCode);
     }
-    else if (node != nullptr) {
-        PackageCenter pcLeft = postOrderHelp(node->left, postalCode);
-        PackageCenter pcRight = postOrderHelp(node->right, postalCode);
-    }
-    return PackageCenter(); // Empty PackageCenter 
 }
 
-PackageCenter AVLTree::postOrderTraversalSearch(string postalCode) {
-    return postOrderHelp(root, postalCode);
+void AVLTree::postOrderTraversalSearch(string postalCode) {
+    postOrderTraversal(root, postalCode);
 }

@@ -20,12 +20,12 @@ private:
     avlNode* rotateRight(avlNode* y);
     avlNode* rotateLeft(avlNode* x);
     avlNode* insert(avlNode* node, const PackageCenter& PC);
-    PackageCenter postOrderHelp(avlNode* node, string postalCode);
+    void postOrderTraversal(avlNode* node, string postalCode);
 
 public:
     AVLTree();
     void insert(const PackageCenter& PC);
-    PackageCenter postOrderTraversalSearch(string postalCode);
+    void postOrderTraversalSearch(string postalCode);
 };
 
 #endif // AVL_TREE_HPP
