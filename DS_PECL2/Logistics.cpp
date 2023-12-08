@@ -13,7 +13,6 @@ void generatePackageCentres(){
         packageCenter.postalCode = postalCodes[i];
         packageCenter.acronym = acronyms[i];
         packageCenter.coordinates = coordinates[i];
-        cout << "adios: " << i << endl;
         pcTree.insert(packageCenter);
     }
 };
@@ -56,11 +55,10 @@ void packageDelivery(){
         
         // Now we must find what Package Centre is this package assigned to:
         PackageCenter searchedPC = pcTree.getPC(postalCode);
-        cout << "Se encontró el PC del paquete " << pLabel << endl;
         // Insert the package in the PC stack:
         searchedPC.hub.push(p);
         // Just testing
-        //cout << searchedPC.postalCode << searchedPC.acronym << searchedPC.hub.length() << endl;
+        cout << searchedPC.postalCode << "   " << searchedPC.acronym << "   " << searchedPC.hub.length() << endl;
         
         }
     }
@@ -68,3 +66,15 @@ void packageDelivery(){
     increaseStepsTaken();
 }
 
+int countPackagesInPC(std::string postalCode) {
+    PackageCenter searchedPC = pcTree.getPC(postalCode);
+    return searchedPC.hub.length();
+}
+
+void printNumPackagesPC() {
+    cout << endl << " The number of packages in each Package Centre at the moment is:" << endl << endl;
+    for (int i = 0; i < PACKAGE_CENTRES; i++){
+        cout << "- Package Centre " << acronyms[i] << " with postal code " << postalCodes[i] << ": " <<
+        countPackagesInPC(postalCodes[i]) << " packages." << endl;
+    }
+}

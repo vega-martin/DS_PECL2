@@ -47,3 +47,15 @@ Package Queue::getFront() const {
     }
     return front->element;
 }
+
+int Queue::length(){
+    int counter = 0;
+    QueueNode* current = front;
+
+    while (current != nullptr) {
+        counter++;
+        current = current->next;
+    }
+
+    return counter;
+}

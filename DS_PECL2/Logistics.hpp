@@ -13,5 +13,9 @@ void generatePackages();
 // Methods to move packages:
 void packageDelivery();
 
+// Stadistics methods:
+int countPackagesInPC(std::string postalCode);
+void printNumPackagesPC();
+
 
 #endif // LOGISTICS_HPP

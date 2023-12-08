@@ -21,6 +21,9 @@ public:
     bool isEmpty() const;
     void makeNull();
     Package getFront() const;
+    
+    // We must extend the basic implementation of a stack with these methods:
+    int length();
 };
 
 #endif // QUEUE_HPP

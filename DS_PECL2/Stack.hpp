@@ -6,7 +6,6 @@
 struct StackNode {
     Package element;
     StackNode* next;
-
     StackNode(const Package& value) : element(value), next(nullptr) {}
 };
 
