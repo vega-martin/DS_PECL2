@@ -21,7 +21,6 @@ extern int stepsTaken;
 
 // Every PC is modelled as follows:
 struct PackageCenter {
-    int key;
     string postalCode;
     string acronym;
     Coords coordinates;

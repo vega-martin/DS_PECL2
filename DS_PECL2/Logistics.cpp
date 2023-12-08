@@ -10,11 +10,10 @@ void generatePackageCentres(){
 
     for (int i = 0; i < PACKAGE_CENTRES; i++){
         PackageCenter packageCenter;
-        packageCenter.key = i;
         packageCenter.postalCode = postalCodes[i];
         packageCenter.acronym = acronyms[i];
         packageCenter.coordinates = coordinates[i];
-        pcTree.insert(packageCenter.key);
+        pcTree.insert(packageCenter);
     }
 };
 
@@ -62,9 +61,9 @@ void packageDelivery(){
         // IGUAL QUEREMOS BUSCAR POR CODIGO POSTAL, SE NOS COMPLICA LA COSA
         // A VER SI ERES CAPAZ DE TERMINARLO
         
-        // At the end of the method, the global variable stepsTaken must be updated:
-        increaseStepsTaken();
         }
     }
+    // At the end of the method, the global variable stepsTaken must be updated:
+    increaseStepsTaken();
 }
 
