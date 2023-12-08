@@ -8,12 +8,12 @@ AVLTree pcTree;
 DLList packageList;
 
 void generatePackageCentres(){
-
     for (int i = 0; i < PACKAGE_CENTRES; i++){
         PackageCenter packageCenter;
         packageCenter.postalCode = postalCodes[i];
         packageCenter.acronym = acronyms[i];
         packageCenter.coordinates = coordinates[i];
+        cout << "adios: " << i << endl;
         pcTree.insert(packageCenter);
     }
 };
@@ -55,11 +55,10 @@ void packageDelivery(){
         string postalCode = pLabel.substr(pLabel.length() - 5,5); // Last 5 characters (postal code)
         
         // Now we must find what Package Centre is this package assigned to:
-        //PackageCenter searchedPC = pcTree.postOrderTraversalSearch(postalCode);
-        
+        PackageCenter searchedPC = pcTree.getPC(postalCode);
+        cout << "Se encontró el PC del paquete " << pLabel << endl;
         // Insert the package in the PC stack:
-        //searchedPC.hub.push(p);
-        
+        searchedPC.hub.push(p);
         // Just testing
         //cout << searchedPC.postalCode << searchedPC.acronym << searchedPC.hub.length() << endl;
         

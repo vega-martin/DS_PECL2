@@ -25,11 +25,12 @@ private:
     //Internal insert method:
     avlNode* insert(avlNode* node, const PackageCenter& PC);
 
-    //Helper method to find the node corresponding tho a given postalCode:
+    //Helper method to find the node corresponding to a given postalCode:
     avlNode* findNode(avlNode* node, const string& postalCode);
     
     //Internal traversing method:
     void postOrderTraversalSearch(avlNode* node, const string& postalCode);
+    void postOrderTraversalSearch2(avlNode* node);
 
 public:
     AVLTree();
@@ -37,6 +38,8 @@ public:
     //Public methods:
     void insert(const PackageCenter& PC);
     void searchPackageCentre(const string& postalCode);
+    void searchPackageCentre2();
+    PackageCenter getPC(const string& postalCode);
 };
 
 #endif // AVL_TREE_HPP
