@@ -35,6 +35,7 @@ void startingMenu(){
                     
                     case 1: // Start the simulation and go to main menu
                         system("cls");
+                        generatePackageCentres();
                         generatePackages(); 
                         cout << "Packages are being created..." << endl;
                         sleep(2);

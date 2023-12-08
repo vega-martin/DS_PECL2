@@ -13,19 +13,30 @@ struct avlNode {
 class AVLTree {
 private:
 
+    //Private attributes:
     avlNode* root;
-
     int height(avlNode* node);
     int balanceFactor(avlNode* node);
+    
+    //Private balancing methods:
     avlNode* rotateRight(avlNode* y);
     avlNode* rotateLeft(avlNode* x);
+    
+    //Internal insert method:
     avlNode* insert(avlNode* node, const PackageCenter& PC);
-    void postOrderTraversal(avlNode* node, string postalCode);
+
+    //Helper method to find the node corresponding tho a given postalCode:
+    avlNode* findNode(avlNode* node, const string& postalCode);
+    
+    //Internal traversing method:
+    void postOrderTraversalSearch(avlNode* node, const string& postalCode);
 
 public:
     AVLTree();
+    
+    //Public methods:
     void insert(const PackageCenter& PC);
-    void postOrderTraversalSearch(string postalCode);
+    void searchPackageCentre(const string& postalCode);
 };
 
 #endif // AVL_TREE_HPP
