@@ -35,6 +35,7 @@ void startingMenu(){
                     
                     case 1: // Start the simulation and go to main menu
                         system("cls");
+                        generatePackageCentres();
                         generatePackages(); 
                         cout << "Packages are being created..." << endl;
                         sleep(2);
@@ -160,7 +161,7 @@ void mainMenu(){
             }
             
         } else { // If the input buffer is empty
-            packageDelivery(); // NO SÉ SI ASÍ ESTÁ BIEN
+            packageDelivery();
             cout << endl << "Packages are being delivered..." << endl;
             sleep(2);
             system("cls");

@@ -4,8 +4,6 @@
 using namespace std;
 
 // Global variables initialisation:
-AVLTree pcTree;
-DLList packageList;
 string postalCodes[9] = {"37715","37427","37449","37893","37797","37796","37129","37340","37001"};
 string acronyms[9] = {"ADT","PER","ROD","VDT","CDV","MOZ","CDB","ALD","SAL"};
 Coords coordinates[9] = {{"41.063717","-5.821883"},

@@ -1,5 +1,6 @@
 #include "AVLTree.hpp"
 #include <algorithm>
+#include <iostream>
 
 AVLTree::AVLTree() : root(nullptr) {}
 
@@ -37,15 +38,15 @@ avlNode* AVLTree::rotateLeft(avlNode* x) {
     return y;
 }
 
-avlNode* AVLTree::insert(avlNode* node, int key) {
+avlNode* AVLTree::insert(avlNode* node, const PackageCenter& PC) {
     if (node == nullptr) {
-        return new avlNode(key);
+        return new avlNode(PC);
     }
 
-    if (key < node->key) {
-        node->left = insert(node->left, key);
-    } else if (key > node->key) {
-        node->right = insert(node->right, key);
+    if (PC.postalCode < node->PC.postalCode) {
+        node->left = insert(node->left, PC);
+    } else if (PC.postalCode > node->PC.postalCode) {
+        node->right = insert(node->right, PC);
     } else {
         // Duplicate keys are not allowed in this example
         return node;
@@ -57,7 +58,7 @@ avlNode* AVLTree::insert(avlNode* node, int key) {
 
     // Left Heavy
     if (balance > 1) {
-        if (key < node->left->key) {
+        if (PC.postalCode < node->left->PC.postalCode) {
             return rotateRight(node);
         } else {
             node->left = rotateLeft(node->left);
@@ -67,7 +68,7 @@ avlNode* AVLTree::insert(avlNode* node, int key) {
 
     // Right Heavy
     if (balance < -1) {
-        if (key > node->right->key) {
+        if (PC.postalCode > node->right->PC.postalCode) {
             return rotateLeft(node);
         } else {
             node->right = rotateRight(node->right);
@@ -78,18 +79,18 @@ avlNode* AVLTree::insert(avlNode* node, int key) {
     return node;
 }
 
-void AVLTree::insert(int key) {
-    root = insert(root, key);
+void AVLTree::insert(const PackageCenter& PC) {
+    root = insert(root, PC);
 }
 
-void AVLTree::postOrderTraversal(avlNode* node, void (*visit)(int)) {
+void AVLTree::postOrderHelp(avlNode* node) {
     if (node != nullptr) {
-        postOrderTraversal(node->left, visit);
-        postOrderTraversal(node->right, visit);
-        visit(node->key);
+        postOrderHelp(node->left);
+        postOrderHelp(node->right);
+        std::cout << node->PC.postalCode << std::endl;
     }
 }
 
-void AVLTree::postOrderTraversal(void (*visit)(int)) {
-    postOrderTraversal(root, visit);
+void AVLTree::postOrderTraversal() {
+    postOrderHelp(root);
 }

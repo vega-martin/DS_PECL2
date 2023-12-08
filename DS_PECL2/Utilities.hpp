@@ -1,7 +1,5 @@
 #ifndef UTILITIES_HPP
 #define UTILITIES_HPP
-#include "DLList.hpp"
-#include "AVLTree.hpp"
 #include "Stack.hpp"
 #include <string>
 using namespace std;
@@ -11,10 +9,6 @@ using namespace std;
 #define PACKAGE_CENTRES 9
 #define PACKAGES_PER_DELIVERY 197
 #define HUB_CAPACITY 86
-
-// Global structures:
-extern AVLTree pcTree;
-extern DLList packageList;
 
 // Global variables holding logistics' info:
 extern string postalCodes[9];

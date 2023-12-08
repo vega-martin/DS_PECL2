@@ -1,12 +1,13 @@
 #ifndef AVL_TREE_HPP
 #define AVL_TREE_HPP
+#include "Utilities.hpp"
 
 struct avlNode {
-        int key;
+        PackageCenter PC;
         avlNode* left;
         avlNode* right;
         int height;
-        avlNode(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
+        avlNode(const PackageCenter& pc) : PC(pc), left(nullptr), right(nullptr), height(1) {}
 };
 
 class AVLTree {
@@ -18,13 +19,13 @@ private:
     int balanceFactor(avlNode* node);
     avlNode* rotateRight(avlNode* y);
     avlNode* rotateLeft(avlNode* x);
-    avlNode* insert(avlNode* node, int key);
-    void postOrderTraversal(avlNode* node, void (*visit)(int));
+    avlNode* insert(avlNode* node, const PackageCenter& PC);
+    void postOrderHelp(avlNode* node);
 
 public:
     AVLTree();
-    void insert(int key);
-    void postOrderTraversal(void (*visit)(int));
+    void insert(const PackageCenter& PC);
+    void postOrderTraversal();
 };
 
 #endif // AVL_TREE_HPP
