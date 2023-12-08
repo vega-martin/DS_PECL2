@@ -83,14 +83,17 @@ void AVLTree::insert(const PackageCenter& PC) {
     root = insert(root, PC);
 }
 
-void AVLTree::postOrderHelp(avlNode* node) {
-    if (node != nullptr) {
-        postOrderHelp(node->left);
-        postOrderHelp(node->right);
+PackageCenter AVLTree::postOrderHelp(avlNode* node, string postalCode) {
+    if(postalCode == node->PC.postalCode){
+        return node->PC;
+    }
+    else if (node != nullptr) {
+        postOrderHelp(node->left, postalCode);
+        postOrderHelp(node->right, postalCode);
         std::cout << node->PC.postalCode << std::endl;
     }
 }
 
-void AVLTree::postOrderTraversal() {
-    postOrderHelp(root);
+PackageCenter AVLTree::postOrderTraversalSearch(string postalCode) {
+    return postOrderHelp(root, postalCode);
 }

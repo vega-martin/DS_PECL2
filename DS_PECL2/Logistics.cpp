@@ -55,7 +55,7 @@ void packageDelivery(){
         
         // Now we must find what Package Centre is this package assigned to:
         
-        pcTree.postOrderTraversal();
+        //pcTree.postOrderTraversal();
         
         // AQUI VA ALGO DE BUSCAR EL PACKAGE_CENTRE EN EL AVL TREE, PERO OJO 
         // IGUAL QUEREMOS BUSCAR POR CODIGO POSTAL, SE NOS COMPLICA LA COSA
