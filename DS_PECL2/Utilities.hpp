@@ -25,6 +25,10 @@ struct PackageCenter {
     string acronym;
     Coords coordinates;
     Stack hub;
+    PackageCenter() : postalCode(NULL), acronym(NULL){
+        coordinates = Coords();
+        hub = Stack();
+    }
 };
 
 // Getter methods for the logistics' arrays:

@@ -2,6 +2,7 @@
 #include "Utilities.hpp"
 #include "Package.hpp"
 #include <iostream>
+using namespace std;
 
 AVLTree pcTree;
 DLList packageList;
@@ -54,12 +55,13 @@ void packageDelivery(){
         string postalCode = pLabel.substr(pLabel.length() - 5,5); // Last 5 characters (postal code)
         
         // Now we must find what Package Centre is this package assigned to:
+        PackageCenter searchedPC = pcTree.postOrderTraversalSearch(postalCode);
         
-        //pcTree.postOrderTraversal();
+        // Insert the package in the PC stack:
+        searchedPC.hub.push(p);
         
-        // AQUI VA ALGO DE BUSCAR EL PACKAGE_CENTRE EN EL AVL TREE, PERO OJO 
-        // IGUAL QUEREMOS BUSCAR POR CODIGO POSTAL, SE NOS COMPLICA LA COSA
-        // A VER SI ERES CAPAZ DE TERMINARLO
+        // Just testing
+        cout << searchedPC.postalCode << searchedPC.acronym << searchedPC.hub.length() << endl;
         
         }
     }

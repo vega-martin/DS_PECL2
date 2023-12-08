@@ -11,6 +11,9 @@ enum Status {SPCS, Hub, Delivered};
 struct Coords {
     string latitude;
     string longitude;
+    
+    Coords() : latitude("null"), longitude("null") {}
+    Coords(const std::string& lat, const std::string& lon) : latitude(lat), longitude(lon) {}
 };
 
 struct PackageLabel {

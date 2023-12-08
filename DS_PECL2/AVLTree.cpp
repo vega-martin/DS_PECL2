@@ -88,10 +88,10 @@ PackageCenter AVLTree::postOrderHelp(avlNode* node, string postalCode) {
         return node->PC;
     }
     else if (node != nullptr) {
-        postOrderHelp(node->left, postalCode);
-        postOrderHelp(node->right, postalCode);
-        std::cout << node->PC.postalCode << std::endl;
+        PackageCenter pcLeft = postOrderHelp(node->left, postalCode);
+        PackageCenter pcRight = postOrderHelp(node->right, postalCode);
     }
+    return PackageCenter(); // Empty PackageCenter 
 }
 
 PackageCenter AVLTree::postOrderTraversalSearch(string postalCode) {
