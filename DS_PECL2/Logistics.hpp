@@ -14,7 +14,7 @@ void generatePackages();
 void packageDelivery();
 
 // Show package information:
-void getNextPackages(const string& postalCode);
+void getNextPackagesToBeDelivered(const string& postalCode);
 
 // Stadistics methods:
 int countPackagesInPC(const string& postalCode);

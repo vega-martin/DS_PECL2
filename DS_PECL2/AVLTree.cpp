@@ -129,7 +129,7 @@ void AVLTree::searchPackageCentre(const string& postalCode) {
     }
 }
 
-PackageCenter AVLTree::getPC(const string& postalCode) {
+PackageCenter& AVLTree::getPC(const string& postalCode) {
     avlNode* targetNode = findNode(root, postalCode);
     return targetNode->PC;
 }

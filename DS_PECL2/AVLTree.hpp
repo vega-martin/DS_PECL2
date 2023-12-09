@@ -39,7 +39,7 @@ public:
     void insert(const PackageCenter& PC);
     void searchPackageCentre(const string& postalCode);
     void searchPackageCentre2();
-    PackageCenter getPC(const string& postalCode);
+    PackageCenter& getPC(const string& postalCode);
 };
 
 #endif // AVL_TREE_HPP

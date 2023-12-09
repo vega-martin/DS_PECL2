@@ -46,7 +46,7 @@ void mainMenu(){
                         cout << "Introduce the postal code of the Package Centre you are interested in:" << endl;
                         getline(cin >> ws, postalCode);
                         cout << endl;
-                        getNextPackages(postalCode);  
+                        getNextPackagesToBeDelivered(postalCode);  
                         break;
                                
                     case 2: // Show statistics of all Package Centres

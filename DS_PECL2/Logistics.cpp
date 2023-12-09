@@ -38,26 +38,22 @@ void generatePackages(){
 
 void packageDelivery(){
     
-    for (int i = 0; i < PACKAGES_PER_DELIVERY ; i++){
+    for (int i = 0; i < PACKAGES_PER_DELIVERY; i++){
         
         // We must first check if there are pending packages:
-        
         if (packageList.isEmpty()){
             cout << "Oh no! The package list emptied out! The leftover packages will be delivered now..." << endl;
-            return; // ESTO DEBERÍA HACER QUE SE SALIERA DEL METODO
+            return;
         }
         
-        // The usual scenario
-        
-        /* To begin with the delivery, we must know where the package must
-         * be sent. Therefore, we need to obtain its postal code: */
-        
+        // To begin with the delivery, we must know where the package must
+        // be sent. Therefore, we need to obtain its postal code: 
         Package p = packageList.removeFront();
         string pLabel = p.getLabel().packageId;
         string postalCode = pLabel.substr(pLabel.length() - 5,5); // Last 5 characters (postal code)
         
         // Now we must find what Package Centre is this package assigned to:
-        PackageCenter searchedPC = pcTree.getPC(postalCode);
+        PackageCenter& searchedPC = pcTree.getPC(postalCode);
         
         // Insert the package in the PC stack if its not full:
         if (!searchedPC.hub.isFull()) {
@@ -87,7 +83,7 @@ void printNumPackagesPC() {
     }
 }
 
-void getNextPackages(const string& postalCode) {
+void getNextPackagesToBeDelivered(const string& postalCode) {
 
     // We have to make sure the introduced postal code matches any existing PCentre:
     const string* postalCodesArray = getPostalCodes();
