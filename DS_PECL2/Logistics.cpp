@@ -1,6 +1,7 @@
 #include "Logistics.hpp"
 #include "Utilities.hpp"
 #include "Package.hpp"
+#include "Stack.hpp"
 #include <iostream>
 using namespace std;
 
@@ -34,47 +35,52 @@ void generatePackages(){
 };
 
 void packageDelivery(){
-    
-    for (int i = 0; i < PACKAGES_PER_DELIVERY; i++){
+    //PACKAGES_PER_DELIVERY
+    for (int i = 0; i < 5 ; i++){
         
         // We must first check if there are pending packages:
-   
+        
         if (packageList.isEmpty()){
             cout << "Oh no! The package list emptied out! The leftover packages will be delivered now..." << endl;
             return; // ESTO DEBERÍA HACER QUE SE SALIERA DEL METODO
         }
         
-        else { // The usual scenario
+        // The usual scenario
         
         /* To begin with the delivery, we must know where the package must
          * be sent. Therefore, we need to obtain its postal code: */
-    
+        
         Package p = packageList.removeFront();
         string pLabel = p.getLabel().packageId;
         string postalCode = pLabel.substr(pLabel.length() - 5,5); // Last 5 characters (postal code)
         
         // Now we must find what Package Centre is this package assigned to:
         PackageCenter searchedPC = pcTree.getPC(postalCode);
-        // Insert the package in the PC stack:
-        searchedPC.hub.push(p);
-        // Just testing
-        cout << searchedPC.postalCode << "   " << searchedPC.acronym << "   " << searchedPC.hub.length() << endl;
         
+        // Insert the package in the PC stack if its not full:
+        if (!searchedPC.hub.isFull()) {
+            searchedPC.hub.push(p);
         }
+        
     }
     // At the end of the method, the global variable stepsTaken must be updated:
     increaseStepsTaken();
 }
 
-int countPackagesInPC(std::string postalCode) {
+int countPackagesInPC(const string& postalCode) {
     PackageCenter searchedPC = pcTree.getPC(postalCode);
-    return searchedPC.hub.length();
+    if (searchedPC.hub.isEmpty()) {
+        return 0;
+    } else {
+        return searchedPC.hub.length();
+    }
 }
 
 void printNumPackagesPC() {
     cout << endl << " The number of packages in each Package Centre at the moment is:" << endl << endl;
     for (int i = 0; i < PACKAGE_CENTRES; i++){
+        int numPackages = countPackagesInPC(postalCodes[i]);
         cout << "- Package Centre " << acronyms[i] << " with postal code " << postalCodes[i] << ": " <<
-        countPackagesInPC(postalCodes[i]) << " packages." << endl;
+        numPackages << " packages." << endl;
     }
 }

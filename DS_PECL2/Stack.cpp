@@ -1,7 +1,6 @@
 #include <stdexcept>
 #include "Stack.hpp"
 #include "Utilities.hpp"
-using namespace std;
 
 Stack::Stack() : top(nullptr) {}
 
@@ -44,7 +43,7 @@ int Stack::length(){
         counter++;
         current = current->next;
     }
-
+    free(current);
     return counter;
 }
 

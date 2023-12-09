@@ -14,7 +14,7 @@ void generatePackages();
 void packageDelivery();
 
 // Stadistics methods:
-int countPackagesInPC(std::string postalCode);
+int countPackagesInPC(const string& postalCode);
 void printNumPackagesPC();
 
 
