@@ -7,73 +7,6 @@
 #include <cstdlib>
 using namespace std;
 
-void startingMenu(){
-    int choice;
-    cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
-    cout << endl;
-    do {
-        cout << "(Just in case we want to add any extra improvement)" << endl << endl;
-        cout << "STARTING MENU || Enter a number to choose an action:" << endl << endl;
-        cout << " 1. Start the simulation and go to main the menu (You won't be able to come back to this menu!)" << endl;
-        cout << " 0. Exit" << endl << endl;
-        cout << "Enter a number: " << endl;
-        
-        // Stores input as string
-        string input;
-        getline(cin, input);
-        
-        if (!input.empty()) {
-            try {
-                choice = stoi(input); // String to integer
-                switch (choice) {
-
-                    case 0: // Exit
-                        cout << endl;
-                        cout << "Goodbye!" << endl;
-                        exit(0);
-                        break;
-                    
-                    case 1: // Start the simulation and go to main menu
-                        system("cls");
-                        generatePackages(); 
-                        cout << "Packages are being created..." << endl;
-                        sleep(2);
-                        cout << "Packages have been created successfully." << endl;
-                        cout << "Redirecting to the main menu..." << endl;
-                        generatePackageCentres();
-                        sleep(2);
-                        system("cls");
-                        mainMenu();
-                        break;
-                    
-                    default: // Not a valid number
-                        cout << endl << "Invalid input. Please enter a valid number." << endl;
-                        sleep(1);
-                        system("cls");
-                        break;
-                }
-            
-            // Catching exceptions
-            } catch (const invalid_argument& e) {
-                cout << endl << "Invalid input. Please enter a valid number." << endl;
-                sleep(1);
-                system("cls");
-                
-            } catch (const out_of_range& e) {
-                cout << endl << "Invalid input. Please enter a valid number." << endl;
-                sleep(1);
-                system("cls");
-            }
-                
-        } else { // If the input buffer is empty
-            cout << endl << "Invalid input. Please enter a valid number." << endl;
-            sleep(1);
-            system("cls");
-        }        
-    } while (true);
-}
-
-
 void mainMenu(){
     int choice;
     cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
@@ -108,12 +41,12 @@ void mainMenu(){
                         exit(0);
                         break;
 
-                    case 1: // Show packages ready to be sent to a given Packet Centre
+                    case 1: // Show packages ready to be sent to a given Package Centre
                         cout << endl;
                         cout << "Introduce the postal code of the Package Centre you are interested in:" << endl;
                         getline(cin >> ws, postalCode);
                         cout << endl;
-                        getNextPackage(postalCode);  // NI QUE FUNCIONASE, QUIERO LLORAR :_(
+                        getNextPackages(postalCode);  
                         break;
                                
                     case 2: // Show statistics of all Package Centres

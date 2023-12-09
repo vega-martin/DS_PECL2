@@ -2,6 +2,7 @@
 #include "Utilities.hpp"
 #include "Package.hpp"
 #include "Stack.hpp"
+#include "AVLTree.hpp"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -86,9 +87,43 @@ void printNumPackagesPC() {
     }
 }
 
-void getNextPackage(const string& postalCode) {
-    cout << setw(14) << "Package id:" << setw(17) << packageList.getFront().getLabel().packageId <<
-    setw(12) << "Client ID:" << setw(13) << packageList.getFront().getLabel().clientId <<
-    setw(18) << "Package latitude:" << setw(14) << packageList.getFront().getLabel().coordinates.latitude <<
-    setw(20) << "Package longitude:" << setw(14) << packageList.getFront().getLabel().coordinates.longitude << endl;
+void getNextPackages(const string& postalCode) {
+
+    // We have to make sure the introduced postal code matches any existing PCentre:
+    const string* postalCodesArray = getPostalCodes();
+    bool isCorrect = false; //Checking variable
+    
+    int arrayLength = sizeof(postalCodes) / sizeof(postalCodes[0]); //Length must be calculated like this
+    
+    for (int i = 0; i < arrayLength; i++){ 
+        if (postalCode == postalCodesArray[i]){ // Match found
+            isCorrect = true;
+            break;
+        } 
+    }
+    
+    // If there was no match, the method must end here:
+    if (isCorrect == false){
+        cout << "Wrong postal code!!" << endl;
+        return;
+    }
+    
+    // Exception handled, now the method does its thing:
+    DoublyNode* current = packageList.getHead();
+
+    while (current != nullptr) {
+
+        Package p = current->element;
+        PackageLabel pl = p.getLabel();
+        string x = pl.packageId.substr(pl.packageId.length()-5,5);
+        
+        if (postalCode == x) {
+            cout     << "Package id:"        << setw(25) << pl.packageId <<
+            setw(20) << "Client ID:"         << setw(15) << pl.clientId <<
+            setw(25) << "Package latitude:"  << setw(15) << pl.coordinates.latitude <<
+            setw(25) << "Package longitude:" << setw(15) << pl.coordinates.longitude << 
+            setw(20) << "Postal code:"       << setw(10) << x << endl;
+        }
+        current = current->next;
+    }
 }

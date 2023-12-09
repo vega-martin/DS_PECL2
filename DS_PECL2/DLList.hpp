@@ -18,6 +18,7 @@ private:
 
 public:
     DLList();
+    DoublyNode* getHead() const;
     void insertFront(const Package& element);
     void insertBack(const Package& element);
     Package removeFront();
@@ -27,7 +28,10 @@ public:
     Package getFront() const;
     Package getBack() const;
     
-    Package searchPakage(const string& labelID);
+    Package searchPackage(const string& labelID);
+    
+    // New method to calculate the length of the list
+    int length() const;
 };
 
 #endif // DLLIST_HPP

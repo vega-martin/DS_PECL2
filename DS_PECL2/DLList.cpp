@@ -2,6 +2,10 @@
 
 DLList::DLList() : head(nullptr), tail(nullptr) {}
 
+DoublyNode* DLList::getHead() const {
+    return head;
+}
+
 void DLList::insertFront(const Package& element) {
     DoublyNode* newNode = new DoublyNode(element);
     if (head == nullptr) {
@@ -86,7 +90,7 @@ Package DLList::getBack() const {
     return tail->element;
 }
 
-Package DLList::searchPakage(const string& labelID){
+Package DLList::searchPackage(const string& labelID){
     if (isEmpty()) {
         throw std::underflow_error("Empty list");
     }
@@ -103,4 +107,16 @@ Package DLList::searchPakage(const string& labelID){
 
     delete temp;
     return value;
+}
+
+int DLList::length() const {
+    int count = 0;
+    DoublyNode* current = head;
+
+    while (current != nullptr) {
+        count++;
+        current = current->next;
+    }
+
+    return count;
 }

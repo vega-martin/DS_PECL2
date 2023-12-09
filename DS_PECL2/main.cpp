@@ -1,13 +1,16 @@
 #include "Menu.hpp"
-
+#include "Logistics.hpp"
 
 int main() {
     
-    /* Global instance of the Logistics class
-     * It will be used across the whole program */
+    // Packages are generated and inserted into the doubly linked list:    
+    generatePackages();
+    
+    // Package Centers are established and inserted into the self balancing tree:
+    generatePackageCentres();
     
     // Main menu is executed here:
-    startingMenu();
+    mainMenu();
 
     return 0;
 }
