@@ -95,6 +95,8 @@ void mainMenu(){
         cout << "Enter a number: " << endl;
 
         string input;
+        string postalCode;
+        string label;
         getline(cin, input);
         if (!input.empty()) {
             try {
@@ -108,7 +110,10 @@ void mainMenu(){
 
                     case 1: // Show packages ready to be sent to a given Packet Centre
                         cout << endl;
-                        cout << "Nothing is going on here right now :(  -> packages ready to be delivered to PCs" << endl;
+                        cout << "Introduce the postal code of the Package Centre you are interested in:" << endl;
+                        getline(cin >> ws, postalCode);
+                        cout << endl;
+                        getNextPackage(postalCode);  // NI QUE FUNCIONASE, QUIERO LLORAR :_(
                         break;
                                
                     case 2: // Show statistics of all Package Centres
@@ -120,9 +125,8 @@ void mainMenu(){
                     
                     case 3: // Search for a package
                         cout << endl << "Introduce the label of the package you are looking for:" << endl;
-                        // string label;
-                        // getline(cin >> ws, label);
-                        // cout << endl;
+                        getline(cin >> ws, label);
+                        cout << endl;
                         break;
                     
                     case 4: // Delete a package
@@ -131,7 +135,7 @@ void mainMenu(){
                         // getline(cin >> ws, label);
                         // cout << endl;
                         break;
-
+                    
                     case 5: // Transport package form Salamanca's PCS to a given Package Centre
                         cout << endl << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
                         break;

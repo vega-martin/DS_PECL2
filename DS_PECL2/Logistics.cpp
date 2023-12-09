@@ -3,6 +3,7 @@
 #include "Package.hpp"
 #include "Stack.hpp"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 AVLTree pcTree;
@@ -35,8 +36,8 @@ void generatePackages(){
 };
 
 void packageDelivery(){
-    //PACKAGES_PER_DELIVERY
-    for (int i = 0; i < 5 ; i++){
+    
+    for (int i = 0; i < PACKAGES_PER_DELIVERY ; i++){
         
         // We must first check if there are pending packages:
         
@@ -83,4 +84,11 @@ void printNumPackagesPC() {
         cout << "- Package Centre " << acronyms[i] << " with postal code " << postalCodes[i] << ": " <<
         numPackages << " packages." << endl;
     }
+}
+
+void getNextPackage(const string& postalCode) {
+    cout << setw(14) << "Package id:" << setw(17) << packageList.getFront().getLabel().packageId <<
+    setw(12) << "Client ID:" << setw(13) << packageList.getFront().getLabel().clientId <<
+    setw(18) << "Package latitude:" << setw(14) << packageList.getFront().getLabel().coordinates.latitude <<
+    setw(20) << "Package longitude:" << setw(14) << packageList.getFront().getLabel().coordinates.longitude << endl;
 }

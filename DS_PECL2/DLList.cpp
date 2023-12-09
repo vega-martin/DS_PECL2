@@ -85,3 +85,22 @@ Package DLList::getBack() const {
     }
     return tail->element;
 }
+
+Package DLList::searchPakage(const string& labelID){
+    if (isEmpty()) {
+        throw std::underflow_error("Empty list");
+    }
+    
+    Package value = head->element;
+    DoublyNode* temp = head;
+
+    while (temp->element.getLabel().packageId != labelID) {
+        temp = temp->next;
+    }
+    if (temp->element.getLabel().packageId == labelID) {
+        value = temp->element;
+    }
+
+    delete temp;
+    return value;
+}

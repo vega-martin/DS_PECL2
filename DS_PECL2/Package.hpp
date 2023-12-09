@@ -30,7 +30,7 @@ private:
      
     string generateDate();
     string postalCodeAssignment(const Coords &coordinates);
-     
+    
     string generateClientId();
     Coords generateCoordinates();
     string generatePackageNumber();

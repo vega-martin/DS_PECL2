@@ -26,6 +26,8 @@ public:
     void makeNull();
     Package getFront() const;
     Package getBack() const;
+    
+    Package searchPakage(const string& labelID);
 };
 
 #endif // DLLIST_HPP
