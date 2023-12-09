@@ -57,13 +57,13 @@ void mainMenu(){
                         break;        
                     
                     case 3: // Search for a package
-                        cout << endl << "Introduce the label of the package you are looking for:" << endl;
+                        cout << endl << "Introduce the number of the package you are looking for:" << endl;
                         getline(cin >> ws, label);
                         cout << endl;
                         break;
                     
                     case 4: // Delete a package
-                        cout << endl << "Introduce the label of the package you want to delete:" << endl;
+                        cout << endl << "Introduce the number of the package you want to delete:" << endl;
                         // string label;
                         // getline(cin >> ws, label);
                         // cout << endl;
