@@ -60,6 +60,11 @@ void mainMenu(){
                         cout << endl << "Introduce the number of the package you are looking for:" << endl;
                         getline(cin >> ws, label);
                         cout << endl;
+                        searchPackage(label);
+                        sleep(3);
+                        // Clearing the input buffer
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        system("cls");
                         break;
                     
                     case 4: // Delete a package

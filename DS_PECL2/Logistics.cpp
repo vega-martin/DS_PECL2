@@ -151,10 +151,20 @@ void searchPackage(string label) {
             cout << "The package is currently located at the Central Station" << endl;
             return;
             
+        } else {
+            const string* postalCodesArray = getPostalCodes();
+            const string* acronymsArray = getAcronyms();
+            
+            for (int i = 0; i < PACKAGE_CENTRES; i++){
+                PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);
+                if(searchedPC.hub.searchPackageByNum(strNum) == 1){
+                    cout << "The package is currently located at the " << acronymsArray[i] << "package center." << endl;
+                    return;
+                }
+            }
+            
+            cout << "Sorry, the package have not been found." << endl;
         }
-
-        // AQUI TOCA COMPARAR EN LOS HUBS, SI NO SE ENCONTRARA TAMPOCO EN NINGUNO
-        // ES QUE EL PAQUETE SE HA BORRADO, PERO ESO DE MOMENTO NO PODRÍA PASAR PORQUE NO PODEMOS BORRAR PAQUETES
         
     // Catching exceptions
     } catch (const invalid_argument& e) {
