@@ -127,7 +127,7 @@ void getNextPackagesToBeDelivered(const string& postalCode) {
     }
 }
 
-void searchPackage(string label) {
+int searchPackage(string label) {
     // Invalid inputs: not an integer, or an int out of (1-PACKAGE_CARGO) range:
     int number;
     try {
@@ -137,7 +137,7 @@ void searchPackage(string label) {
             cout << endl << "Invalid input. Please enter a valid number." << endl;
             sleep(1);
             system("cls");
-            return;
+            return -1;
         }
     
         // Convert the input to a 4 digit long string (to match the package label's format):
@@ -148,22 +148,18 @@ void searchPackage(string label) {
         
         // We begin searching in the Central Station (doubly-linked list):    
         if (packageList.searchPackageByNum(strNum) == 1){
-            cout << "The package is currently located at the Central Station" << endl;
-            return;
+            return 9;
             
         } else {
             const string* postalCodesArray = getPostalCodes();
-            const string* acronymsArray = getAcronyms();
             
             for (int i = 0; i < PACKAGE_CENTRES; i++){
                 PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);
                 if(searchedPC.hub.searchPackageByNum(strNum) == 1){
-                    cout << "The package is currently located at the " << acronymsArray[i] << "package center." << endl;
-                    return;
+                    return i;
                 }
             }
-            
-            cout << "Sorry, the package have not been found." << endl;
+            return -2;
         }
         
     // Catching exceptions
@@ -171,12 +167,35 @@ void searchPackage(string label) {
         cout << endl << "Invalid input. Please enter a valid number." << endl;
         sleep(1);
         system("cls");
-        return;
+        return -1;
         
     } catch (const out_of_range& e) {
         cout << endl << "Invalid input. Please enter a valid number." << endl;
         sleep(1);
         system("cls");
+        return -1;
+    }
+}
+
+void searchAnswer(string label) {
+    int result = searchPackage(label);
+    /* If result = -1 -> invalid input (controlled in searchPackage method)
+     * If result = -2 -> package not found
+     * If result = [0,8] -> in which PC the pakage is located
+     * If result = 9 -> package in Central Station
+     */
+     
+    if(result == -1) {
         return;
+    }
+    else if (result == -2) {
+        cout << "Sorry, the package have not been found." << endl;
+    }
+    else if (result == 9) {
+        cout << "The package is currently located at the Central Station" << endl;
+    }
+    else {
+        const string* acronymsArray = getAcronyms();
+        cout << "The package is currently located at the " << acronymsArray[result] << " package center." << endl;
     }
 }

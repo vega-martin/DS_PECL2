@@ -21,7 +21,11 @@ int countPackagesInPC(const string& postalCode);
 void printNumPackagesPC();
 
 // Search for the location of a package, wherever in the system:
-void searchPackage(string label);
+int searchPackage(string label);
+void searchAnswer(string label);
+
+// Delete package:
+void deletePackage(string label);
 
 
 #endif // LOGISTICS_HPP
