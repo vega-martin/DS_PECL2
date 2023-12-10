@@ -1,6 +1,8 @@
 #include <stdexcept>
 #include "Stack.hpp"
 #include "Utilities.hpp"
+#include <iostream>
+using namespace std;
 
 Stack::Stack() : top(nullptr) {}
 
@@ -60,7 +62,6 @@ int Stack::searchPackageByNum(string strNum){
     }
     
     // We traverse the list:
-    
     StackNode* current = top;
     
     while (current->element.getLabel().packageId.substr(0,4) != strNum) {

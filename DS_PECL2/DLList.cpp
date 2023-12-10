@@ -1,4 +1,6 @@
 #include "DLList.hpp"
+#include <iostream>
+using namespace std;
 
 DLList::DLList() : head(nullptr), tail(nullptr) {}
 
@@ -108,7 +110,6 @@ int DLList::searchPackageByNum(string strNum){
     }
     
     // We traverse the list:
-    
     DoublyNode* current = head;
     
     while (current->element.getLabel().packageId.substr(0,4) != strNum) {

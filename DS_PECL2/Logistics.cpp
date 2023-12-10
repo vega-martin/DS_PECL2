@@ -139,22 +139,22 @@ int searchPackage(string label) {
             system("cls");
             return -1;
         }
-    
         // Convert the input to a 4 digit long string (to match the package label's format):
         string strNum = to_string(number);
         while(strNum.length() < 4) {
             strNum = "0" + strNum;
         }
         
-        // We begin searching in the Central Station (doubly-linked list):    
+        // We begin searching in the Central Station (doubly-linked list):
         if (packageList.searchPackageByNum(strNum) == 1){
             return 9;
             
         } else {
+            cout << "entered else" << endl;
             const string* postalCodesArray = getPostalCodes();
             
             for (int i = 0; i < PACKAGE_CENTRES; i++){
-                PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);
+                PackageCenter& searchedPC = pcTree.getPC(postalCodesArray[i]);
                 if(searchedPC.hub.searchPackageByNum(strNum) == 1){
                     return i;
                 }
@@ -199,3 +199,4 @@ void searchAnswer(string label) {
         cout << "The package is currently located at the " << acronymsArray[result] << " package center." << endl;
     }
 }
+
