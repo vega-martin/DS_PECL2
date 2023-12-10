@@ -90,25 +90,6 @@ Package DLList::getBack() const {
     return tail->element;
 }
 
-Package DLList::searchPackage(const string& labelID){
-    if (isEmpty()) {
-        throw std::underflow_error("Empty list");
-    }
-    
-    Package value = head->element;
-    DoublyNode* temp = head;
-
-    while (temp->element.getLabel().packageId != labelID) {
-        temp = temp->next;
-    }
-    if (temp->element.getLabel().packageId == labelID) {
-        value = temp->element;
-    }
-
-    delete temp;
-    return value;
-}
-
 int DLList::length() const {
     int count = 0;
     DoublyNode* current = head;
@@ -119,4 +100,23 @@ int DLList::length() const {
     }
 
     return count;
+}
+
+int DLList::searchPackageByNum(string strNum){
+    if (isEmpty()) {
+        return 0; // Empty list, can't be found
+    }
+    
+    // We traverse the list:
+    
+    DoublyNode* current = head;
+    
+    while (current->element.getLabel().packageId.substr(0,4) != strNum) {
+        current = current->next;
+    }
+    if (current->element.getLabel().packageId.substr(0,4) == strNum) {
+        delete current;
+        return 1; // Found the element
+    }
+    return 0; // Element not found in the list
 }

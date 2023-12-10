@@ -16,9 +16,12 @@ void packageDelivery();
 // Show package information:
 void getNextPackagesToBeDelivered(const string& postalCode);
 
-// Stadistics methods:
+// Statistics methods:
 int countPackagesInPC(const string& postalCode);
 void printNumPackagesPC();
+
+// Search for the location of a package, wherever in the system:
+void searchPackage(int number);
 
 
 #endif // LOGISTICS_HPP

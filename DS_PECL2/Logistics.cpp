@@ -3,6 +3,7 @@
 #include "Package.hpp"
 #include "Stack.hpp"
 #include "AVLTree.hpp"
+#include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -122,4 +123,28 @@ void getNextPackagesToBeDelivered(const string& postalCode) {
         }
         current = current->next;
     }
+}
+
+void searchPackage(int number){
+    
+    // Invalid inputs: not an integer, or an int out of (1-PACKAGE_CARGO) range:
+    if (!(cin >> number) || (number < 1) || (number > PACKAGE_CARGO)) {
+        cout << "Invalid input. Please enter a valid package number" << endl;
+        return;
+    }
+    // Convert the input to a 4 digit long string (to match the package label's format):
+    string strNum = to_string(number);
+    while(strNum.length() < 4) {
+        strNum = "0" + strNum;
+    }
+    
+    // We begin searching in the Central Station (doubly-linked list):    
+    if (packageList.searchPackageByNum(strNum) == 1){
+        cout << "The package is currently located at the Central Station" << endl;
+        return;
+    }
+
+    // AQUI TOCA COMPARAR EN LOS HUBS, SI NO SE ENCONTRARA TAMPOCO EN NINGUNO
+    // ES QUE EL PAQUETE SE HA BORRADO, PERO ESO DE MOMENTO NO PODRÍA PASAR PORQUE NO PODEMOS BORRAR PAQUETES
+    
 }

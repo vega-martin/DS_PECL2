@@ -28,7 +28,8 @@ public:
     Package getFront() const;
     Package getBack() const;
     
-    Package searchPackage(const string& labelID);
+    // Searches for a matching package number inside the list:    
+    int searchPackageByNum(string strNum);
     
     // New method to calculate the length of the list
     int length() const;
