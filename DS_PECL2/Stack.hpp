@@ -23,6 +23,7 @@ public:
     // We must extend the basic implementation of a stack with these methods:
     int length();
     bool isFull();
+    int searchPackageByNum(string strNum);
 };
 
 #endif // STACK_HPP

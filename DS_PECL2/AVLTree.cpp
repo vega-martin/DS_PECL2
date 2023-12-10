@@ -133,17 +133,3 @@ PackageCenter& AVLTree::getPC(const string& postalCode) {
     avlNode* targetNode = findNode(root, postalCode);
     return targetNode->PC;
 }
-
-// Modified postOrderTraversalSearch method
-void AVLTree::postOrderTraversalSearch2(avlNode* node) {
-    if (node != nullptr) {
-        postOrderTraversalSearch2(node->left);
-        postOrderTraversalSearch2(node->right);
-        std::cout << "Found: " << node->PC.postalCode << std::endl;
-    }
-}
-
-// Wrapper function that calls the modified postOrderTraversalSearch
-void AVLTree::searchPackageCentre2() {
-    postOrderTraversalSearch2(root);
-}

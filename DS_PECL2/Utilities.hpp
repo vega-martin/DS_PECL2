@@ -41,7 +41,5 @@ void increasePackageNumber();
 int getStepsTaken();
 void increaseStepsTaken();
 
-// Other various methods:
-void locateInPC(PackageCenter PC);
 
 #endif // UTILITIES_HPP

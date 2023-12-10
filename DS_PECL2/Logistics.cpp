@@ -6,6 +6,8 @@
 #include "DLList.hpp"
 #include <iostream>
 #include <iomanip>
+#include <unistd.h>
+#include <cstdlib>
 using namespace std;
 
 AVLTree pcTree;
@@ -115,36 +117,56 @@ void getNextPackagesToBeDelivered(const string& postalCode) {
         string x = pl.packageId.substr(pl.packageId.length()-5,5);
         
         if (postalCode == x) {
-            cout     << "Package id:"        << setw(25) << pl.packageId <<
-            setw(20) << "Client ID:"         << setw(15) << pl.clientId <<
-            setw(25) << "Package latitude:"  << setw(15) << pl.coordinates.latitude <<
-            setw(25) << "Package longitude:" << setw(15) << pl.coordinates.longitude << 
-            setw(20) << "Postal code:"       << setw(10) << x << endl;
+            cout     << "Package id:"        << setw(20) << pl.packageId <<
+            setw(18) << "Client ID:"         << setw(12) << pl.clientId <<
+            setw(20) << "Package latitude:"  << setw(12) << pl.coordinates.latitude <<
+            setw(20) << "Package longitude:" << setw(12) << pl.coordinates.longitude << 
+            setw(14) << "Postal code:"       << setw(9) << x << endl;
         }
         current = current->next;
     }
 }
 
-void searchPackage(int number){
-    
+void searchPackage(string label) {
     // Invalid inputs: not an integer, or an int out of (1-PACKAGE_CARGO) range:
-    if (!(cin >> number) || (number < 1) || (number > PACKAGE_CARGO)) {
-        cout << "Invalid input. Please enter a valid package number" << endl;
-        return;
-    }
-    // Convert the input to a 4 digit long string (to match the package label's format):
-    string strNum = to_string(number);
-    while(strNum.length() < 4) {
-        strNum = "0" + strNum;
-    }
+    int number;
+    try {
+        number = stoi(label);
+        
+        if((number < 1) || (number > PACKAGE_CARGO)) {
+            cout << endl << "Invalid input. Please enter a valid number." << endl;
+            sleep(1);
+            system("cls");
+            return;
+        }
     
-    // We begin searching in the Central Station (doubly-linked list):    
-    if (packageList.searchPackageByNum(strNum) == 1){
-        cout << "The package is currently located at the Central Station" << endl;
-        return;
-    }
+        // Convert the input to a 4 digit long string (to match the package label's format):
+        string strNum = to_string(number);
+        while(strNum.length() < 4) {
+            strNum = "0" + strNum;
+        }
+        
+        // We begin searching in the Central Station (doubly-linked list):    
+        if (packageList.searchPackageByNum(strNum) == 1){
+            cout << "The package is currently located at the Central Station" << endl;
+            return;
+            
+        }
 
-    // AQUI TOCA COMPARAR EN LOS HUBS, SI NO SE ENCONTRARA TAMPOCO EN NINGUNO
-    // ES QUE EL PAQUETE SE HA BORRADO, PERO ESO DE MOMENTO NO PODRÍA PASAR PORQUE NO PODEMOS BORRAR PAQUETES
-    
+        // AQUI TOCA COMPARAR EN LOS HUBS, SI NO SE ENCONTRARA TAMPOCO EN NINGUNO
+        // ES QUE EL PAQUETE SE HA BORRADO, PERO ESO DE MOMENTO NO PODRÍA PASAR PORQUE NO PODEMOS BORRAR PAQUETES
+        
+    // Catching exceptions
+    } catch (const invalid_argument& e) {
+        cout << endl << "Invalid input. Please enter a valid number." << endl;
+        sleep(1);
+        system("cls");
+        return;
+        
+    } catch (const out_of_range& e) {
+        cout << endl << "Invalid input. Please enter a valid number." << endl;
+        sleep(1);
+        system("cls");
+        return;
+    }
 }

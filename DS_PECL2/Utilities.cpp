@@ -42,7 +42,3 @@ void increaseStepsTaken(){
     stepsTaken++;
 }
 
-// Other methods:
-void locateInPC(PackageCenter PC){
-    
-}

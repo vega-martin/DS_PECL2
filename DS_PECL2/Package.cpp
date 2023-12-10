@@ -2,6 +2,10 @@
 #include <random>
 #include "Package.hpp"
 #include "Utilities.hpp"
+#include <vector>
+#include <iostream>
+#include <sstream>
+#include <iterator>
 using namespace std;
 
 thread_local mt19937 Package::gen(random_device{}());
@@ -73,18 +77,35 @@ string Package::postalCodeAssignment(const Coords &coordinates) {
     string postalCode;
     const string* postalCodesArray = getPostalCodes();
     const Coords* coordinatesArray = getCoordinates();
-
+    
     double minDistance = 100000;
     int minIndex = -1;
+    
+    // Convert coordinates to decimal:
+    vector<string> lat;
+    istringstream iss(coordinates.latitude);
+    string s;
+    while (iss >> s) {
+        lat.push_back(s);
+    }
+    vector<string> lon;
+    istringstream ist(coordinates.longitude);
+    string t;
+    while (ist >> t) {
+        lon.push_back(t);
+    }
+    double latDec = stod(lat[0]) + (stod(lat[1]) / 60) + (stod(lat[2]) / 3600);
+    double lonDec = stod(lon[0]) + (stod(lon[1]) / 60) + (stod(lon[2]) / 3600);
 
-    for (int i = 0; i < 9; i++) {
+    // Getting the distance and assignment of postal code;
+    for (int i = 0; i < PACKAGE_CENTRES; i++) {
         const Coords& centerCoords = coordinatesArray[i];
 
         double distance = sqrt(
-            pow(stod(coordinates.latitude) - stod(centerCoords.latitude), 2) +
-            pow(stod(coordinates.longitude) - stod(centerCoords.longitude), 2)
+            pow(latDec - stod(centerCoords.latitude), 2) +
+            pow(lonDec - stod(centerCoords.longitude), 2)
         );
-
+        
         if (distance < minDistance) {
             minDistance = distance;
             minIndex = i;
@@ -94,7 +115,7 @@ string Package::postalCodeAssignment(const Coords &coordinates) {
     if (minIndex != -1) {
         postalCode = postalCodesArray[minIndex];
     }
-
+    
     return postalCode;
 }
 

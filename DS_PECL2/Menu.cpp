@@ -9,9 +9,9 @@ using namespace std;
 
 void mainMenu(){
     int choice;
-    cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
-    cout << endl;
     do {
+        cout << setw(85) << "-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------" << endl;
+        cout << endl;
         cout << "MAIN MENU || Steps taken: " << getStepsTaken() << endl << endl;
         cout << "Enter a number to choose an action:" << endl << endl;
         cout << " 1. Show packages ready to be sent to a given Package Centre." << endl;
@@ -51,7 +51,7 @@ void mainMenu(){
                                
                     case 2: // Show statistics of all Package Centres
                         cout << endl << "Redirecting to the statistics menu..." << endl;
-                        sleep(2);
+                        sleep(1);
                         system("cls");
                         statisticsMenu();
                         break;        
@@ -64,7 +64,6 @@ void mainMenu(){
                     
                     case 4: // Delete a package
                         cout << endl << "Introduce the number of the package you want to delete:" << endl;
-                        // string label;
                         // getline(cin >> ws, label);
                         // cout << endl;
                         break;
@@ -113,10 +112,9 @@ void mainMenu(){
 
 void statisticsMenu() {
     int choice;
-    
-    cout << setw(85) << "-------------------------------------------------   STATISTICS MENU   ------------------------------------------------" << endl;
-    cout << endl;
     do {
+        cout << setw(85) << "-------------------------------------------------   STATISTICS MENU   ------------------------------------------------" << endl;
+        cout << endl;
         cout << "Enter a number to choose an action:" << endl << endl;
         cout << " 1. Show number of packages in each Package Centre at the moment." << endl;
         cout << " 2. Show total number of packages that had gone to each Package Centre." << endl;
@@ -155,24 +153,24 @@ void statisticsMenu() {
                         break;
                                
                     case 2: // Show total number of packages that had gone to each Package Centre
-                        cout << endl << "Nothing is going on here right now :(  -> PCs statistics" << endl;
+                        cout << endl << "Introduce the postal code of the Package Centre you are interested in:" << endl;
                         break;        
                     
                     case 3: // Package Centre with most Packages
-                        cout << endl << "Introduce the label of the package you are looking for:" << endl;
+                        cout << endl << "Nothing is going on here right now :(" << endl;
                         break;
                     
                     case 4: // Package Centre with least Packages
-                        cout << endl << "Introduce the label of the package you want to delete:" << endl;
+                        cout << endl << "Nothing is going on here right now :(" << endl;
                         break;
 
                     case 5: // Absolute and relative frequecies of each Package Centre
-                        cout << endl << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
+                        cout << endl << "Nothing is going on here right now :(" << endl;
                         break;
                     
                     case 6: // Go back to the main menu
                         cout << endl << "Redirecting to the main menu..." << endl;
-                        sleep(2);
+                        sleep(1);
                         system("cls");
                         mainMenu();
                         break;  
