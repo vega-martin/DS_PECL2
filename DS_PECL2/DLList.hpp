@@ -28,11 +28,10 @@ public:
     Package getFront() const;
     Package getBack() const;
     
-    // Searches for a matching package number inside the list:    
+    // We must extend the basic implementation of a stack with these methods:
+    int length() const;  
     int searchPackageByNum(string strNum);
-    
-    // New method to calculate the length of the list
-    int length() const;
+    void deleteNode(string strNum);
 };
 
 #endif // DLLIST_HPP

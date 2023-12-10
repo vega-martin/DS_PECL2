@@ -26,7 +26,7 @@ void mainMenu(){
         cout << "If you press the ENTER key without entering any option \npackages WILL be processed!!\n" << endl;
         cout << "=====================================================================================\n" << endl;
         cout << "Enter a number: " << endl;
-
+        
         string input;
         string postalCode;
         string label;
@@ -69,8 +69,13 @@ void mainMenu(){
                     
                     case 4: // Delete a package
                         cout << endl << "Introduce the number of the package you want to delete:" << endl;
-                        // getline(cin >> ws, label);
-                        // cout << endl;
+                        getline(cin >> ws, label);
+                        cout << endl;
+                        deletePackage(label);
+                        sleep(3);
+                        // Clearing the input buffer
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        system("cls");
                         break;
                     
                     case 5: // Transport package form Salamanca's PCS to a given Package Centre
@@ -147,7 +152,7 @@ void statisticsMenu() {
 
                     case 1: // Show number of packages in each Package Centre at the moment
                         printNumPackagesPC();
-                        cout << endl << "Press any key to continue..." << endl;
+                        cout << endl << "Press ENTER key to continue..." << endl;
                         // Wait for the user to press a key
                         while (!wait) {
                             if (getchar()) {

@@ -24,6 +24,7 @@ public:
     int length();
     bool isFull();
     int searchPackageByNum(string strNum);
+    void deleteNode(string strNum);
 };
 
 #endif // STACK_HPP

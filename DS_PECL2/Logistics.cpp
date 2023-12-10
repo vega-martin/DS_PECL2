@@ -41,7 +41,7 @@ void generatePackages(){
 
 void packageDelivery(){
     
-    for (int i = 0; i < PACKAGES_PER_DELIVERY; i++){
+    for(int i = 0; i < PACKAGES_PER_DELIVERY; i++){
         
         // We must first check if there are pending packages:
         if (packageList.isEmpty()){
@@ -61,7 +61,7 @@ void packageDelivery(){
         
         // The stack can't be full , so we must check that:
         if (searchedPC.hub.isFull()){
-            cout << "The Package Centre in " << searchedPC.acronym << "has been filled up! " 
+            cout << "The Package Centre in " << searchedPC.acronym << " has been filled up! " 
             << "Delivering all packages..." << endl;
             
             // Pop all stack elements and enqueue them into the auxiliary queue:
@@ -134,7 +134,12 @@ void getNextPackagesToBeDelivered(const string& postalCode) {
 }
 
 int searchPackage(string label) {
-
+    /* If result = -1 -> invalid input (controlled in searchPackage method)
+     * If result = -2 -> package not found
+     * If result = [0,8] -> in which PC the pakage is located
+     * If result = 9 -> package in Central Station
+     */
+    
     int number;
     try {
         number = stoi(label);   
@@ -186,24 +191,49 @@ int searchPackage(string label) {
 
 void searchAnswer(string label) {
     int result = searchPackage(label);
-    /* If result = -1 -> invalid input (controlled in searchPackage method)
-     * If result = -2 -> package not found
-     * If result = [0,8] -> in which PC the pakage is located
-     * If result = 9 -> package in Central Station
-     */
      
     if(result == -1) {
         return;
     }
     else if (result == -2) {
         cout << "Sorry, the package have not been found." << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
     }
     else if (result == 9) {
         cout << "The package is currently located at the Central Station" << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
     }
     else {
         const string* acronymsArray = getAcronyms();
         cout << "The package is currently located at the " << acronymsArray[result] << " package center." << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
     }
 }
 
+void deletePackage(string label) {
+    int result = searchPackage(label);
+        while(label.length() < 4) {
+            label = "0" + label;
+        }
+    
+    if(result == -1) {
+        return;
+    }
+    else if (result == -2) {
+        cout << "Sorry, the package can't be deleted, it has already been delivered." << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
+    }
+    else if (result == 9) {
+        packageList.deleteNode(label);
+        cout << "The package have been deleted from the Central Station" << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
+    }
+    else {
+        const string* postalCodesArray = getPostalCodes();
+        const string* acronymsArray = getAcronyms();
+        PackageCenter& searchedPC = pcTree.getPC(postalCodesArray[result]);
+        searchedPC.hub.deleteNode(label);
+        cout << "The package have been deleted from the " << acronymsArray[result] << " package center." << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
+    }
+}

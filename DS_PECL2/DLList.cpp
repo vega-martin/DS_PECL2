@@ -109,7 +109,7 @@ int DLList::searchPackageByNum(string strNum) {
     }
 
     // We traverse the list:
-    DoublyNode* current = getHead();
+    DoublyNode* current = head;
 
     while (current != nullptr) {
         if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
@@ -119,4 +119,43 @@ int DLList::searchPackageByNum(string strNum) {
     }
     delete current;
     return 0; // Element not found in the list
+}
+
+void DLList::deleteNode(string strNum) {
+    if (isEmpty()) {
+        return; // Empty list, can't be found
+    }
+
+    // We traverse the list:
+    DoublyNode* current = head;
+    
+    // Special case: the node we are looking for is the first one
+    if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
+        head = current->next;
+        head->prev = nullptr;
+        delete current;
+        return;
+    }
+    
+    // Search for the node and delete it
+    while (current != nullptr) {
+        if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
+            if (current != tail){
+                current->prev->next = current->next;
+                current->next->prev = current->prev;
+                current->next = nullptr;
+                current->prev = nullptr;
+                delete current;
+                return;
+            
+            } else { // If the node we want to delete is the last one
+                current->prev->next = nullptr;
+                current->next = nullptr;
+                current->prev = nullptr;
+                delete current;
+                return;
+            }
+        }
+        current = current->next;
+    }
 }
