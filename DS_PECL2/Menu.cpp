@@ -20,8 +20,8 @@ void mainMenu(){
         cout << " 4. Delete package." << endl;
         cout << " 5. Transport package form Salamanca's Package Central Station to a given Package Centre." << endl;
         cout << " 6. Transport package from its Package Centre to a different Package Centre." << endl;
-        cout << " 7. Carry on with the packages' delivery." << endl;
-        cout << " 0. Exit\n" << endl;
+        cout << " 7. Deliver all packages inside every Package Centre." << endl;
+        cout << " 0. Exit" << endl << endl;
         cout << "===  BEWARE  ========================================================================\n" << endl;
         cout << "If you press the ENTER key without entering any option \npackages WILL be processed!!\n" << endl;
         cout << "=====================================================================================\n" << endl;
@@ -147,7 +147,7 @@ void statisticsMenu() {
 
                     case 1: // Show number of packages in each Package Centre at the moment
                         printNumPackagesPC();
-                        cout << endl << "Press ENTER key to continue..." << endl;
+                        cout << endl << "Press any key to continue..." << endl;
                         // Wait for the user to press a key
                         while (!wait) {
                             if (getchar()) {

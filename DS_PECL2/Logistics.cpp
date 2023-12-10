@@ -46,6 +46,7 @@ void packageDelivery(){
         // We must first check if there are pending packages:
         if (packageList.isEmpty()){
             cout << "Oh no! The package list emptied out! The leftover packages will be delivered now..." << endl;
+            //emptyAllHubs(); NOT DONE YET
             return;
         }
         
@@ -58,23 +59,28 @@ void packageDelivery(){
         // Now we must find what Package Centre is this package assigned to:
         PackageCenter& searchedPC = pcTree.getPC(postalCode);
         
-        // Insert the package in the PC stack if its not full:
-        if (!searchedPC.hub.isFull()) {
-            searchedPC.hub.push(p);
+        // The stack can't be full , so we must check that:
+        if (searchedPC.hub.isFull()){
+            cout << "The Package Centre in " << searchedPC.acronym << "has been filled up! " 
+            << "Delivering all packages..." << endl;
+            
+            // Pop all stack elements and enqueue them into the auxiliary queue:
+            while (!searchedPC.hub.isEmpty()){
+                searchedPC.auxQueue.enqueue(searchedPC.hub.pop());
+            }
         }
         
+        // Now the new package can be pushed into the stack:
+        searchedPC.hub.push(p);
     }
+    
     // At the end of the method, the global variable stepsTaken must be updated:
     increaseStepsTaken();
 }
 
 int countPackagesInPC(const string& postalCode) {
     PackageCenter searchedPC = pcTree.getPC(postalCode);
-    if (searchedPC.hub.isEmpty()) {
-        return 0;
-    } else {
-        return searchedPC.hub.length();
-    }
+    return searchedPC.hub.length();
 }
 
 void printNumPackagesPC() {
@@ -128,17 +134,20 @@ void getNextPackagesToBeDelivered(const string& postalCode) {
 }
 
 int searchPackage(string label) {
-    // Invalid inputs: not an integer, or an int out of (1-PACKAGE_CARGO) range:
+
     int number;
     try {
-        number = stoi(label);
+        number = stoi(label);   
+
         
+        // Invalid inputs: not an integer, or an int out of (1-PACKAGE_CARGO) range    
         if((number < 1) || (number > PACKAGE_CARGO)) {
             cout << endl << "Invalid input. Please enter a valid number." << endl;
             sleep(1);
             system("cls");
             return -1;
         }
+
         // Convert the input to a 4 digit long string (to match the package label's format):
         string strNum = to_string(number);
         while(strNum.length() < 4) {
@@ -147,20 +156,18 @@ int searchPackage(string label) {
         
         // We begin searching in the Central Station (doubly-linked list):
         if (packageList.searchPackageByNum(strNum) == 1){
-            return 9;
+            return 9;   
+        } 
+        
+        const string* postalCodesArray = getPostalCodes();
             
-        } else {
-            cout << "entered else" << endl;
-            const string* postalCodesArray = getPostalCodes();
-            
-            for (int i = 0; i < PACKAGE_CENTRES; i++){
-                PackageCenter& searchedPC = pcTree.getPC(postalCodesArray[i]);
-                if(searchedPC.hub.searchPackageByNum(strNum) == 1){
-                    return i;
-                }
+        for (int i = 0; i < PACKAGE_CENTRES; i++){  
+            PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);  
+            if(searchedPC.hub.searchPackageByNum(strNum) == 1){  
+                return i;
             }
-            return -2;
-        }
+        }  
+        return -2; 
         
     // Catching exceptions
     } catch (const invalid_argument& e) {

@@ -1,6 +1,7 @@
 #ifndef UTILITIES_HPP
 #define UTILITIES_HPP
 #include "Stack.hpp"
+#include "Queue.hpp"
 #include <string>
 using namespace std;
 
@@ -25,8 +26,9 @@ struct PackageCenter {
     string acronym;
     Coords coordinates;
     Stack hub;
+    Queue auxQueue;
     
-    PackageCenter() : postalCode(""), acronym(""), coordinates(), hub() {}
+    PackageCenter() : postalCode(""), acronym(""), coordinates(), hub(), auxQueue() {}
     
 };
 

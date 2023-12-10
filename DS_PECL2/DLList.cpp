@@ -1,5 +1,4 @@
 #include "DLList.hpp"
-#include <iostream>
 using namespace std;
 
 DLList::DLList() : head(nullptr), tail(nullptr) {}
@@ -104,20 +103,20 @@ int DLList::length() const {
     return count;
 }
 
-int DLList::searchPackageByNum(string strNum){
+int DLList::searchPackageByNum(string strNum) {
     if (isEmpty()) {
         return 0; // Empty list, can't be found
     }
-    
+
     // We traverse the list:
-    DoublyNode* current = head;
-    
-    while (current->element.getLabel().packageId.substr(0,4) != strNum) {
+    DoublyNode* current = getHead();
+
+    while (current != nullptr) {
+        if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
+            return 1; // Found the element
+        }
         current = current->next;
     }
-    if (current->element.getLabel().packageId.substr(0,4) == strNum) {
-        delete current;
-        return 1; // Found the element
-    }
+    delete current;
     return 0; // Element not found in the list
 }

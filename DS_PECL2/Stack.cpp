@@ -56,20 +56,20 @@ bool Stack::isFull(){
     return (length() >= HUB_CAPACITY);
 }
 
-int Stack::searchPackageByNum(string strNum){
+int Stack::searchPackageByNum(string strNum) {
     if (isEmpty()) {
-        return 0; // Empty list, can't be found
+        return 0; // Empty stack, can't be found
     }
-    
-    // We traverse the list:
+
     StackNode* current = top;
-    
-    while (current->element.getLabel().packageId.substr(0,4) != strNum) {
+
+    while (current != nullptr) {
+        if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
+            return 1; // Found the element
+        }
         current = current->next;
     }
-    if (current->element.getLabel().packageId.substr(0,4) == strNum) {
-        delete current;
-        return 1; // Found the element
-    }
-    return 0; // Element not found in the list
+    delete current;
+    return 0; // Element not found in the stack
 }
+
