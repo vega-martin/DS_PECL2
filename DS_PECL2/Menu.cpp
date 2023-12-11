@@ -220,7 +220,15 @@ void statisticsMenu() {
                         break;
 
                     case 5: // Absolute and relative frequecies of each Package Centre
-                        cout << endl << "Nothing is going on here right now :(" << endl;
+                        printFrequencies();
+                        cout << endl << "Press ENTER to continue..." << endl;
+                        // Wait for the user to press a key
+                        while (!wait) {
+                            if (getchar()) {
+                                wait = true;
+                            }
+                        }
+                        system("cls");
                         break;
                     
                     case 6: // Go back to the main menu

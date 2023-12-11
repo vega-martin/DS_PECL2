@@ -132,6 +132,27 @@ void printShortestHub(){
     cout << "Its postal code is " << postalCodes[minIndex] << endl;
 }
 
+void printFrequencies() {
+    int sample = 0;
+    // Calculate sample
+    for (int i = 0; i < PACKAGE_CENTRES; i++){
+        PackageCenter searchedPC = pcTree.getPC(postalCodes[i]);
+        int numPackages = searchedPC.hub.length();
+        int numDeliveredPackages = searchedPC.auxQueue.length();
+        sample = sample + numPackages + numDeliveredPackages;
+    }
+    
+    for (int i = 0; i < PACKAGE_CENTRES; i++){
+        PackageCenter searchedPC = pcTree.getPC(postalCodes[i]);
+        int numPackages = searchedPC.hub.length();
+        int numDeliveredPackages = searchedPC.auxQueue.length();
+        int absFreq = numPackages + numDeliveredPackages;
+        cout     << "Package centre:"    << setw(5) << acronyms[i] <<
+        setw(16) << "Postal code:"       << setw(9) << postalCodes[i] <<
+        setw(23) << "Absolute frequency:"<< setw(7) << absFreq <<
+        setw(23) << "Relative frequency:"<< setw(9) << absFreq << "/" << sample << endl;
+    }
+}
 
 void getNextPackagesToBeDelivered(const string& postalCode) {
 

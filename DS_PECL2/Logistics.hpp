@@ -23,6 +23,7 @@ void printNumPackagesPC();
 void printNumPackagesQueue();
 void printLongestHub();
 void printShortestHub();
+void printFrequencies();
 
 // Search for the location of a package, wherever in the system:
 int searchPackage(string label);
