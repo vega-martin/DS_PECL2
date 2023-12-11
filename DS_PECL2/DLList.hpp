@@ -32,6 +32,7 @@ public:
     int length() const;  
     int searchPackageByNum(string strNum);
     void deleteNode(string strNum);
+    Package removeNode(string strNum);
 };
 
 #endif // DLLIST_HPP

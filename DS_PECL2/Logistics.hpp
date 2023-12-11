@@ -27,5 +27,9 @@ void searchAnswer(string label);
 // Delete package:
 void deletePackage(string label);
 
+//Transport packages form SPCS to a given PC
+void fromSPCStoPC(string label, string postalCode);
+void fromPCtoPC(string label, string postalCode);
+
 
 #endif // LOGISTICS_HPP

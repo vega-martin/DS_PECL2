@@ -104,3 +104,36 @@ void Stack::deleteNode(string strNum){
     delete current;
     
 }
+
+Package Stack::removeNode(string strNum) {
+    if (isEmpty()) {
+        return Package(); // Empty stack, can't be deleted
+    }
+
+    // Special case: the node we are looking for is the first one
+    if (top->element.getLabel().packageId.substr(0, 4) == strNum) {
+        top = top->next;
+        return pop();
+    }
+    
+    Package value;
+    StackNode* prev = nullptr;
+    StackNode* current = top;
+
+    // Search for the node
+    while (current != nullptr && current->element.getLabel().packageId.substr(0, 4) != strNum) {
+        prev = current;
+        current = current->next;
+    }
+
+    // If the node wasn't found
+    if (current == nullptr) {
+        return Package();
+    }
+
+    // Adjust pointers and delete node
+    value = current->element;
+    prev->next = current->next;
+    delete current;
+    return value;
+}

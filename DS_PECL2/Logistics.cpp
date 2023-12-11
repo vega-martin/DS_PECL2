@@ -98,9 +98,7 @@ void getNextPackagesToBeDelivered(const string& postalCode) {
     const string* postalCodesArray = getPostalCodes();
     bool isCorrect = false; //Checking variable
     
-    int arrayLength = sizeof(postalCodes) / sizeof(postalCodes[0]); //Length must be calculated like this
-    
-    for (int i = 0; i < arrayLength; i++){ 
+    for (int i = 0; i < PACKAGE_CENTRES; i++){ 
         if (postalCode == postalCodesArray[i]){ // Match found
             isCorrect = true;
             break;
@@ -171,7 +169,7 @@ int searchPackage(string label) {
             if(searchedPC.hub.searchPackageByNum(strNum) == 1){  
                 return i;
             }
-        }  
+        }
         return -2; 
         
     // Catching exceptions
@@ -212,9 +210,10 @@ void searchAnswer(string label) {
 
 void deletePackage(string label) {
     int result = searchPackage(label);
-        while(label.length() < 4) {
-            label = "0" + label;
-        }
+    // Apply format
+    while(label.length() < 4) {
+        label = "0" + label;
+    }
     
     if(result == -1) {
         return;
@@ -234,6 +233,85 @@ void deletePackage(string label) {
         PackageCenter& searchedPC = pcTree.getPC(postalCodesArray[result]);
         searchedPC.hub.deleteNode(label);
         cout << "The package have been deleted from the " << acronymsArray[result] << " package center." << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
+    }
+}
+
+void fromSPCStoPC(string label, string postalCode){
+    // Apply format
+    while(label.length() < 4) {
+        label = "0" + label;
+    }
+    
+    // We have to make sure the introduced postal code matches any existing PCentre:
+    const string* postalCodesArray = getPostalCodes();
+    bool isCorrect = false; //Checking variable
+    for (int i = 0; i < PACKAGE_CENTRES; i++){ 
+        if (postalCode == postalCodesArray[i]){ // Match found
+            isCorrect = true;
+            break;
+        } 
+    }
+    // If there was no match, the method must end here:
+    if (isCorrect == false){
+        cout << "Wrong postal code!!" << endl;
+        return;
+    }
+    
+    // Search if the package is in the SPCS
+    if (packageList.searchPackageByNum(label) == 0){
+        cout << "Sorry, the package was not found at the SPCS. Maybe it is already in a package centre." << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
+        return;
+    }
+    
+    // Move from SPCS to PC
+    Package p = packageList.removeNode(label);
+    PackageCenter& searchedPC = pcTree.getPC(postalCode);
+    searchedPC.hub.push(p);
+    
+    cout << "The package has been successfully transported." << endl;
+    cout << endl << "Press ENTER key to continue..." << endl;
+}
+
+void fromPCtoPC(string label, string postalCode) {
+    // Apply format
+    while(label.length() < 4) {
+        label = "0" + label;
+    }
+    
+    // We have to make sure the introduced postal code matches any existing PCentre:
+    const string* postalCodesArray = getPostalCodes();
+    bool isCorrect = false; //Checking variable
+    for (int i = 0; i < PACKAGE_CENTRES; i++){ 
+        if (postalCode == postalCodesArray[i]){ // Match found
+            isCorrect = true;
+            break;
+        } 
+    }
+    // If there was no match, the method must end here:
+    if (isCorrect == false){
+        cout << "Wrong postal code!!" << endl;
+        return;
+    }
+    
+    bool found = false;
+    // Search in every PC just in case it has already been moved
+    for (int i = 0; i < PACKAGE_CENTRES; i++){  
+        PackageCenter& searchedPC = pcTree.getPC(postalCodesArray[i]);  
+        if(searchedPC.hub.searchPackageByNum(label) == 1){
+            // Move from the PC the package is locate to another PC
+            Package p = searchedPC.hub.removeNode(label);
+            PackageCenter& toPC = pcTree.getPC(postalCode);
+            toPC.hub.push(p);
+            found = true;
+            cout << "The package has been successfully transported." << endl;
+            cout << endl << "Press ENTER key to continue..." << endl;
+        }
+    }
+    
+    if(!found){
+        cout << "Sorry, the package was not found at its corresponding package centre. Maybe it is at the SPCS or has already been delivered." << endl;
         cout << endl << "Press ENTER key to continue..." << endl;
     }
 }

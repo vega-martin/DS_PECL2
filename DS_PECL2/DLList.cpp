@@ -159,3 +159,47 @@ void DLList::deleteNode(string strNum) {
         current = current->next;
     }
 }
+
+Package DLList::removeNode(string strNum) {
+    if (isEmpty()) {
+        return Package(); // Empty list, can't be found
+    }
+
+    // We traverse the list:
+    DoublyNode* current = head;
+    Package value;
+    
+    // Special case: the node we are looking for is the first one
+    if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
+        head = current->next;
+        head->prev = nullptr;
+        value = current->element;
+        delete current;
+        return value;
+    }
+    
+    // Search for the node and delete it
+    while (current != nullptr) {
+        if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
+            if (current != tail){
+                value = current->element;
+                current->prev->next = current->next;
+                current->next->prev = current->prev;
+                current->next = nullptr;
+                current->prev = nullptr;
+                delete current;
+            
+            } else { // If the node we want to delete is the last one
+                value = current->element;
+                current->prev->next = nullptr;
+                current->next = nullptr;
+                current->prev = nullptr;
+                delete current;
+            }
+        }
+        current = current->next;
+    }
+    
+    return value;
+    
+}

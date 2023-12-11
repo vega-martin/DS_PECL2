@@ -61,7 +61,7 @@ void mainMenu(){
                         getline(cin >> ws, label);
                         cout << endl;
                         searchAnswer(label);
-                        sleep(3);
+                        sleep(2);
                         // Clearing the input buffer
                         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         system("cls");
@@ -72,14 +72,22 @@ void mainMenu(){
                         getline(cin >> ws, label);
                         cout << endl;
                         deletePackage(label);
-                        sleep(3);
+                        sleep(2);
                         // Clearing the input buffer
                         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         system("cls");
                         break;
                     
                     case 5: // Transport package form Salamanca's PCS to a given Package Centre
-                        cout << endl << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
+                        //cout << endl << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
+                        cout << endl << "Enter the number of the package you want to transport:" << endl;
+                        getline(cin >> ws, label);
+                        cout << "Enter the postal code of the Package Centre you want to send the package to:" << endl;
+                        getline(cin >> ws, postalCode);
+                        fromSPCStoPC(label, postalCode);
+                        sleep(2);
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        system("cls");
                         break;
                     
                     case 6: // Transport package from its Package Centre to a different Package Centre
@@ -87,7 +95,7 @@ void mainMenu(){
                         break;
                     
                     case 7: // Carry on with the packages' delivery
-                        cout << endl << "Nothing is going on here right now :(  -> 1 Step" << endl;
+                        cout << endl << "Nothing is going on here right now :(  -> deliver package" << endl;
                         break;    
                     
                     default: // Not valid number
