@@ -46,7 +46,11 @@ void mainMenu(){
                         cout << "Introduce the postal code of the Package Centre you are interested in:" << endl;
                         getline(cin >> ws, postalCode);
                         cout << endl;
-                        getNextPackagesToBeDelivered(postalCode);  
+                        getNextPackagesToBeDelivered(postalCode);
+                        // Clearing the input buffer
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        cout << endl << "Press ENTER key to continue..." << endl;
+                        system("cls"); 
                         break;
                                
                     case 2: // Show statistics of all Package Centres
@@ -79,7 +83,6 @@ void mainMenu(){
                         break;
                     
                     case 5: // Transport package form Salamanca's PCS to a given Package Centre
-                        //cout << endl << "Nothing is going on here right now :(  -> transport from SPCS to PC" << endl;
                         cout << endl << "Enter the number of the package you want to transport:" << endl;
                         getline(cin >> ws, label);
                         cout << "Enter the postal code of the Package Centre you want to send the package to:" << endl;
@@ -91,7 +94,14 @@ void mainMenu(){
                         break;
                     
                     case 6: // Transport package from its Package Centre to a different Package Centre
-                        cout << endl << "Nothing is going on here right now :(  -> transport from PC to PC" << endl;
+                        cout << endl << "Enter the number of the package you want to transport:" << endl;
+                        getline(cin >> ws, label);
+                        cout << "Enter the postal code of the Package Centre you want to send the package to:" << endl;
+                        getline(cin >> ws, postalCode);
+                        fromPCtoPC(label, postalCode);
+                        sleep(2);
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        system("cls");
                         break;
                     
                     case 7: // Carry on with the packages' delivery

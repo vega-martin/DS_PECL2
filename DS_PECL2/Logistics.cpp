@@ -255,6 +255,7 @@ void fromSPCStoPC(string label, string postalCode){
     // If there was no match, the method must end here:
     if (isCorrect == false){
         cout << "Wrong postal code!!" << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
         return;
     }
     
@@ -292,6 +293,7 @@ void fromPCtoPC(string label, string postalCode) {
     // If there was no match, the method must end here:
     if (isCorrect == false){
         cout << "Wrong postal code!!" << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
         return;
     }
     
