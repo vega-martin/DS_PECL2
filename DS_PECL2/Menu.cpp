@@ -104,8 +104,11 @@ void mainMenu(){
                         system("cls");
                         break;
                     
-                    case 7: // Carry on with the packages' delivery
-                        cout << endl << "Nothing is going on here right now :(  -> deliver package" << endl;
+                    case 7: // Deliver all packages inside every Package Centre
+                        emptyAllHubs();
+                        cout << endl << "All packages inside every Package Centre have been delivered" << endl;
+                        sleep(2);
+                        system("cls");
                         break;    
                     
                     default: // Not valid number
@@ -170,7 +173,7 @@ void statisticsMenu() {
 
                     case 1: // Show number of packages in each Package Centre at the moment
                         printNumPackagesPC();
-                        cout << endl << "Press ENTER key to continue..." << endl;
+                        cout << endl << "Press ENTER to continue..." << endl;
                         // Wait for the user to press a key
                         while (!wait) {
                             if (getchar()) {
@@ -181,15 +184,39 @@ void statisticsMenu() {
                         break;
                                
                     case 2: // Show total number of packages that had gone to each Package Centre
-                        cout << endl << "Introduce the postal code of the Package Centre you are interested in:" << endl;
+                        printNumPackagesQueue();
+                        cout << endl << "Press ENTER to continue..." << endl;
+                        // Wait for the user to press a key
+                        while (!wait) {
+                            if (getchar()) {
+                                wait = true;
+                            }
+                        }
+                        system("cls");
                         break;        
                     
                     case 3: // Package Centre with most Packages
-                        cout << endl << "Nothing is going on here right now :(" << endl;
+                        printLongestHub();
+                        cout << endl << "Press ENTER to continue..." << endl;
+                        // Wait for the user to press a key
+                        while (!wait) {
+                            if (getchar()) {
+                                wait = true;
+                            }
+                        }
+                        system("cls");
                         break;
                     
                     case 4: // Package Centre with least Packages
-                        cout << endl << "Nothing is going on here right now :(" << endl;
+                        printShortestHub();
+                        cout << endl << "Press ENTER to continue..." << endl;
+                        // Wait for the user to press a key
+                        while (!wait) {
+                            if (getchar()) {
+                                wait = true;
+                            }
+                        }
+                        system("cls");
                         break;
 
                     case 5: // Absolute and relative frequecies of each Package Centre

@@ -12,6 +12,7 @@ void generatePackages();
 
 // Methods to move packages:
 void packageDelivery();
+void emptyAllHubs();
 
 // Show package information:
 void getNextPackagesToBeDelivered(const string& postalCode);
@@ -19,6 +20,9 @@ void getNextPackagesToBeDelivered(const string& postalCode);
 // Statistics methods:
 int countPackagesInPC(const string& postalCode);
 void printNumPackagesPC();
+void printNumPackagesQueue();
+void printLongestHub();
+void printShortestHub();
 
 // Search for the location of a package, wherever in the system:
 int searchPackage(string label);

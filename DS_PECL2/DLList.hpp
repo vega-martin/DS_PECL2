@@ -31,8 +31,7 @@ public:
     // We must extend the basic implementation of a stack with these methods:
     int length() const;  
     int searchPackageByNum(string strNum);
-    void deleteNode(string strNum);
-    Package removeNode(string strNum);
+    Package removePackage(string strNum);
 };
 
 #endif // DLLIST_HPP

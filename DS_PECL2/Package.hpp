@@ -4,8 +4,6 @@
 #include <random>
 using namespace std;
 
-//extern int packageCounter;
-
 enum Status {SPCS, Hub, Delivered};
 
 struct Coords {
@@ -39,6 +37,7 @@ private:
 public:
 
     Package();
+    ~Package();
     static thread_local mt19937 gen;
     Status getStatus();
     void setStatus(Status newStatus);

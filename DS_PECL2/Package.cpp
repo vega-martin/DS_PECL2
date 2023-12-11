@@ -172,6 +172,8 @@ Package::Package(){
     
 }
 
+Package::~Package(){}
+
 // A few required setter and getter methods:
 
 Status Package::getStatus(){

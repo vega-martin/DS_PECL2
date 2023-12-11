@@ -73,39 +73,7 @@ int Stack::searchPackageByNum(string strNum) {
     return 0; // Element not found in the stack
 }
 
-void Stack::deleteNode(string strNum){
-    if (isEmpty()) {
-        return; // Empty stack, can't be deleted
-    }
-
-    StackNode* prev = nullptr;
-    StackNode* current = top;
-
-    // Special case: the node we are looking for is the first one
-    if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
-        top = current->next;
-        delete current;
-        return;
-    }
-
-    // Search for the node
-    while (current != nullptr && current->element.getLabel().packageId.substr(0, 4) != strNum) {
-        prev = current;
-        current = current->next;
-    }
-
-    // If the node wasn't found
-    if (current == nullptr) {
-        return;
-    }
-
-    // Adjust pointers and delete node
-    prev->next = current->next;
-    delete current;
-    
-}
-
-Package Stack::removeNode(string strNum) {
+Package Stack::removePackage(string strNum) {
     if (isEmpty()) {
         return Package(); // Empty stack, can't be deleted
     }
