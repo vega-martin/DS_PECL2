@@ -149,7 +149,7 @@ void statisticsMenu() {
         cout << endl;
         cout << "Enter a number to choose an action:" << endl << endl;
         cout << " 1. Show number of packages in each Package Centre at the moment." << endl;
-        cout << " 2. Show total number of packages that had gone to each Package Centre." << endl;
+        cout << " 2. Show total number of packages that have been delivered from each Package Centre." << endl;
         cout << " 3. Package Centre with most Packages." << endl;
         cout << " 4. Package Centre with least Packages." << endl;
         cout << " 5. Absolute and relative frequecies of each Package Centre." << endl;

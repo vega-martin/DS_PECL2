@@ -3,7 +3,7 @@
 
 int main() {
     
-    // If you wish to redirect the consol output to a .txt file, uncomment the following line:
+    // If you wish to redirect the console output to a .txt file, uncomment the following line:
     //freopen("debug.txt", "w", stdout);
     
     // Packages are generated and inserted into the doubly linked list:    
