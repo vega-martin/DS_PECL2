@@ -1,0 +1,73 @@
+-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------
+
+MAIN MENU || Steps taken: 0
+
+Enter a number to choose an action:
+
+ 1. Show packages ready to be sent to a given Package Centre.
+ 2. Show statistics of all Package Centres.
+ 3. Search package.
+ 4. Delete package.
+ 5. Transport package form Salamanca's Package Central Station to a given Package Centre.
+ 6. Transport package from its Package Centre to a different Package Centre.
+ 7. Deliver all packages inside every Package Centre.
+ 0. Exit
+
+===  BEWARE  ========================================================================
+
+If you press the ENTER key without entering any option 
+packages WILL be processed!!
+
+=====================================================================================
+
+Enter a number: 
+The Package Centre in SAL has been filled up! Delivering all packages...
+The Package Centre in CDB has been filled up! Delivering all packages...
+The Package Centre in VDT has been filled up! Delivering all packages...
+The Package Centre in MOZ has been filled up! Delivering all packages...
+The Package Centre in PER has been filled up! Delivering all packages...
+The Package Centre in ROD has been filled up! Delivering all packages...
+The Package Centre in CDV has been filled up! Delivering all packages...
+The Package Centre in ALD has been filled up! Delivering all packages...
+
+Packages are being delivered...
+-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------
+
+MAIN MENU || Steps taken: 5
+
+Enter a number to choose an action:
+
+ 1. Show packages ready to be sent to a given Package Centre.
+ 2. Show statistics of all Package Centres.
+ 3. Search package.
+ 4. Delete package.
+ 5. Transport package form Salamanca's Package Central Station to a given Package Centre.
+ 6. Transport package from its Package Centre to a different Package Centre.
+ 7. Deliver all packages inside every Package Centre.
+ 0. Exit
+
+===  BEWARE  ========================================================================
+
+If you press the ENTER key without entering any option 
+packages WILL be processed!!
+
+=====================================================================================
+
+Enter a number: 
+
+Redirecting to the statistics menu...
+-------------------------------------------------   STATISTICS MENU   ------------------------------------------------
+
+Enter a number to choose an action:
+
+ 1. Show number of packages in each Package Centre at the moment.
+ 2. Show total number of packages that had gone to each Package Centre.
+ 3. Package Centre with most Packages.
+ 4. Package Centre with least Packages.
+ 5. Absolute and relative frequecies of each Package Centre.
+ 6. Go back to the main menu.
+ 0. Exit the program.
+
+Enter a number: 
+
+Goodbye!

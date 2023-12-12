@@ -12,12 +12,12 @@ using namespace std;
 #define HUB_CAPACITY 86
 
 // Global variables holding logistics' info:
-extern string postalCodes[9];
-extern string acronyms[9];
-extern Coords coordinates[9];
+extern string postalCodesArray[9];
+extern string acronymsArray[9];
+extern Coords coordinatesArray[9];
 
 // Other required global variables:
-extern int packageNumber;
+extern int packageCounter;
 extern int stepsTaken;
 
 // Every PC is modelled as follows:
@@ -31,17 +31,5 @@ struct PackageCenter {
     PackageCenter() : postalCode(""), acronym(""), coordinates(), hub(), auxQueue() {}
     
 };
-
-// Getter methods for the logistics' arrays:
-const string* getPostalCodes();
-const string* getAcronyms();
-const Coords* getCoordinates();
-
-// Getter + setter methods regarding the other global variables:
-int getPackageNumber();
-void increasePackageNumber();
-int getStepsTaken();
-void increaseStepsTaken();
-
 
 #endif // UTILITIES_HPP

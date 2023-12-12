@@ -3,9 +3,7 @@
 #include "Package.hpp"
 #include "Utilities.hpp"
 #include <vector>
-#include <iostream>
 #include <sstream>
-#include <iterator>
 using namespace std;
 
 thread_local mt19937 Package::gen(random_device{}());
@@ -75,8 +73,6 @@ string Package::generateDate(){
 
 string Package::postalCodeAssignment(const Coords &coordinates) {
     string postalCode;
-    const string* postalCodesArray = getPostalCodes();
-    const Coords* coordinatesArray = getCoordinates();
     
     double minDistance = 100000;
     int minIndex = -1;
@@ -99,11 +95,10 @@ string Package::postalCodeAssignment(const Coords &coordinates) {
 
     // Getting the distance and assignment of postal code;
     for (int i = 0; i < PACKAGE_CENTRES; i++) {
-        const Coords& centerCoords = coordinatesArray[i];
 
         double distance = sqrt(
-            pow(latDec - stod(centerCoords.latitude), 2) +
-            pow(lonDec - stod(centerCoords.longitude), 2)
+            pow(latDec - stod(coordinatesArray[i].latitude), 2) +
+            pow(lonDec - stod(coordinatesArray[i].longitude), 2)
         );
         
         if (distance < minDistance) {
@@ -121,7 +116,7 @@ string Package::postalCodeAssignment(const Coords &coordinates) {
 
 string Package::generatePackageNumber(){
     
-    string packageNumber = to_string(getPackageNumber());
+    string packageNumber = to_string(packageCounter);
     
     // This number must be 4 digits long: 
     while(packageNumber.length() < 4) {
@@ -129,7 +124,7 @@ string Package::generatePackageNumber(){
     }
     
     // Update the Package counter:
-    increasePackageNumber();
+    packageCounter++;
     
     return packageNumber;
 }

@@ -1,6 +1,5 @@
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
-
 #include "Package.hpp"
 
 struct QueueNode {

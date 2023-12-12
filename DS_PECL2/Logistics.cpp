@@ -16,9 +16,9 @@ DLList packageList;
 void generatePackageCentres(){
     for (int i = 0; i < PACKAGE_CENTRES; i++){
         PackageCenter packageCenter;
-        packageCenter.postalCode = postalCodes[i];
-        packageCenter.acronym = acronyms[i];
-        packageCenter.coordinates = coordinates[i];
+        packageCenter.postalCode = postalCodesArray[i];
+        packageCenter.acronym = acronymsArray[i];
+        packageCenter.coordinates = coordinatesArray[i];
         pcTree.insert(packageCenter);
     }
 };
@@ -66,16 +66,20 @@ void packageDelivery(){
             
             // Pop all stack elements and enqueue them into the auxiliary queue:
             while (!searchedPC.hub.isEmpty()){
-                searchedPC.auxQueue.enqueue(searchedPC.hub.pop());
+                Package pa = searchedPC.hub.pop();
+                pa.setStatus(Delivered);
+                searchedPC.auxQueue.enqueue(pa);
             }
         }
         
+        // We can't forget to change the package's status before losing its reference:
+        p.setStatus(Hub);
         // Now the new package can be pushed into the stack:
         searchedPC.hub.push(p);
     }
     
     // At the end of the method, the global variable stepsTaken must be updated:
-    increaseStepsTaken();
+    stepsTaken++;
 }
 
 int countPackagesInPC(const string& postalCode) {
@@ -86,8 +90,8 @@ int countPackagesInPC(const string& postalCode) {
 void printNumPackagesPC() {
     cout << endl << " The number of packages in each Package Centre at the moment is:" << endl << endl;
     for (int i = 0; i < PACKAGE_CENTRES; i++){
-        int numPackages = countPackagesInPC(postalCodes[i]);
-        cout << "- Package Centre " << acronyms[i] << " with postal code " << postalCodes[i] << ": " <<
+        int numPackages = countPackagesInPC(postalCodesArray[i]);
+        cout << "- Package Centre " << acronymsArray[i] << " with postal code " << postalCodesArray[i] << ": " <<
         numPackages << " packages." << endl;
     }
 }
@@ -95,9 +99,9 @@ void printNumPackagesPC() {
 void printNumPackagesQueue() {
     cout << endl << " The number of packages delivered from every Package Centre at this very moment is:" << endl << endl;
     for (int i = 0; i < PACKAGE_CENTRES; i++){
-        PackageCenter searchedPC = pcTree.getPC(postalCodes[i]);
+        PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);
         int numPackages = searchedPC.auxQueue.length();
-        cout << "- Package Centre " << acronyms[i] << " with postal code " << postalCodes[i] << " delivered " <<
+        cout << "- Package Centre " << acronymsArray[i] << " with postal code " << postalCodesArray[i] << " delivered " <<
         numPackages << " packages." << endl;
     }
 }
@@ -106,49 +110,49 @@ void printLongestHub(){
     int maxIndex = 0; // Initialised to avoid any issues
     int maxLength = -1; // Impossible value (any negative integer would work)
     for (int i = 0; i < PACKAGE_CENTRES; i++){
-        int numPackages = countPackagesInPC(postalCodes[i]);
+        int numPackages = countPackagesInPC(postalCodesArray[i]);
         if (numPackages > maxLength){
             maxLength = numPackages;
             maxIndex = i;
         }
     }
-    cout << "The hub with the most packages is located in " << acronyms[maxIndex] <<
+    cout << "The hub with the most packages is located in " << acronymsArray[maxIndex] <<
     ", holding " << maxLength << " packages." << endl;
-    cout << "Its postal code is " << postalCodes[maxIndex] << endl;
+    cout << "Its postal code is " << postalCodesArray[maxIndex] << endl;
 }
 
 void printShortestHub(){
     int minIndex = 0; // Initialised to avoid any issues
     int minLength = HUB_CAPACITY + 1; // Impossible value (any bigger integer would work)
     for (int i = 0; i < PACKAGE_CENTRES; i++){
-        int numPackages = countPackagesInPC(postalCodes[i]);
+        int numPackages = countPackagesInPC(postalCodesArray[i]);
         if (numPackages < minLength){
             minLength = numPackages;
             minIndex = i;
         }
     }
-    cout << "The hub with the fewest packages is located in " << acronyms[minIndex] <<
+    cout << "The hub with the fewest packages is located in " << acronymsArray[minIndex] <<
     ", holding " << minLength << " packages." << endl;
-    cout << "Its postal code is " << postalCodes[minIndex] << endl;
+    cout << "Its postal code is " << postalCodesArray[minIndex] << endl;
 }
 
 void printFrequencies() {
     int sample = 0;
     // Calculate sample
     for (int i = 0; i < PACKAGE_CENTRES; i++){
-        PackageCenter searchedPC = pcTree.getPC(postalCodes[i]);
+        PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);
         int numPackages = searchedPC.hub.length();
         int numDeliveredPackages = searchedPC.auxQueue.length();
         sample = sample + numPackages + numDeliveredPackages;
     }
     
     for (int i = 0; i < PACKAGE_CENTRES; i++){
-        PackageCenter searchedPC = pcTree.getPC(postalCodes[i]);
+        PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);
         int numPackages = searchedPC.hub.length();
         int numDeliveredPackages = searchedPC.auxQueue.length();
         int absFreq = numPackages + numDeliveredPackages;
-        cout     << "Package centre:"    << setw(5) << acronyms[i] <<
-        setw(16) << "Postal code:"       << setw(9) << postalCodes[i] <<
+        cout     << "Package centre:"    << setw(5) << acronymsArray[i] <<
+        setw(16) << "Postal code:"       << setw(9) << postalCodesArray[i] <<
         setw(23) << "Absolute frequency:"<< setw(7) << absFreq <<
         setw(23) << "Relative frequency:"<< setw(9) << absFreq << "/" << sample << endl;
     }
@@ -157,7 +161,6 @@ void printFrequencies() {
 void getNextPackagesToBeDelivered(const string& postalCode) {
 
     // We have to make sure the introduced postal code matches any existing PCentre:
-    const string* postalCodesArray = getPostalCodes();
     bool isCorrect = false; //Checking variable
     
     for (int i = 0; i < PACKAGE_CENTRES; i++){ 
@@ -180,14 +183,14 @@ void getNextPackagesToBeDelivered(const string& postalCode) {
 
         Package p = current->element;
         PackageLabel pl = p.getLabel();
-        string x = pl.packageId.substr(pl.packageId.length()-5,5);
+        string substrCode = pl.packageId.substr(pl.packageId.length()-5,5);
         
-        if (postalCode == x) {
+        if (postalCode == substrCode) {
             cout     << "Package id:"        << setw(20) << pl.packageId <<
             setw(18) << "Client ID:"         << setw(12) << pl.clientId <<
             setw(20) << "Package latitude:"  << setw(12) << pl.coordinates.latitude <<
             setw(20) << "Package longitude:" << setw(12) << pl.coordinates.longitude << 
-            setw(14) << "Postal code:"       << setw(9) << x << endl;
+            setw(14) << "Postal code:"       << setw(9) << substrCode << endl;
         }
         current = current->next;
     }
@@ -222,9 +225,7 @@ int searchPackage(string label) {
         // We begin searching in the Central Station (doubly-linked list):
         if (packageList.searchPackageByNum(strNum) == 1){
             return 9;   
-        } 
-        
-        const string* postalCodesArray = getPostalCodes();
+        }
             
         for (int i = 0; i < PACKAGE_CENTRES; i++){  
             PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);  
@@ -257,16 +258,12 @@ void searchAnswer(string label) {
     }
     else if (result == -2) {
         cout << "Sorry, the package have not been found." << endl;
-        cout << endl << "Press ENTER key to continue..." << endl;
     }
     else if (result == 9) {
         cout << "The package is currently located at the Central Station" << endl;
-        cout << endl << "Press ENTER key to continue..." << endl;
     }
     else {
-        const string* acronymsArray = getAcronyms();
         cout << "The package is currently located at the " << acronymsArray[result] << " package center." << endl;
-        cout << endl << "Press ENTER key to continue..." << endl;
     }
 }
 
@@ -295,22 +292,15 @@ void deletePackage(string label) {
         }
         else if (result == -2) {
             cout << "Sorry, the package can't be deleted, it has already been delivered." << endl;
-            cout << endl << "Press ENTER key to continue..." << endl;
         }
         else if (result == 9) {
             Package p = packageList.removePackage(strNum);
-            p.~Package(); // Deletes the object package
             cout << "The package has been deleted from the Central Station" << endl;
-            cout << endl << "Press ENTER key to continue..." << endl;
         }
         else {
-            const string* postalCodesArray = getPostalCodes();
-            const string* acronymsArray = getAcronyms();
             PackageCenter& searchedPC = pcTree.getPC(postalCodesArray[result]);
             Package p = searchedPC.hub.removePackage(strNum);
-            p.~Package(); // Deletes the object package
             cout << "The package has been deleted from the " << acronymsArray[result] << " Package Centre." << endl;
-            cout << endl << "Press ENTER key to continue..." << endl;
         }
         
     } catch (const invalid_argument& e) {
@@ -348,7 +338,6 @@ void fromSPCStoPC(string label, string postalCode){
         }
         
         // We have to make sure the introduced postal code matches any existing PCentre:
-        const string* postalCodesArray = getPostalCodes();
         bool isCorrect = false; //Checking variable
         for (int i = 0; i < PACKAGE_CENTRES; i++){ 
             if (postalCode == postalCodesArray[i]){ // Match found
@@ -359,14 +348,12 @@ void fromSPCStoPC(string label, string postalCode){
         // If there was no match, the method must end here:
         if (isCorrect == false){
             cout << "Wrong postal code!!" << endl;
-            cout << endl << "Press ENTER key to continue..." << endl;
             return;
         }
         
         // Search if the package is in the SPCS
         if (packageList.searchPackageByNum(strNum) == 0){
             cout << "Sorry, the package was not found at the SPCS. Maybe it is already in a package centre?" << endl;
-            cout << endl << "Press ENTER key to continue..." << endl;
             return;
         }
         
@@ -376,7 +363,6 @@ void fromSPCStoPC(string label, string postalCode){
         searchedPC.hub.push(p);
         
         cout << "The package has been successfully transported." << endl;
-        cout << endl << "Press ENTER key to continue..." << endl;
     
     } catch (const invalid_argument& e) {
         cout << endl << "Invalid input. Please enter a valid number." << endl;
@@ -412,7 +398,6 @@ void fromPCtoPC(string label, string postalCode) {
         }
     
         // We have to make sure the introduced postal code matches any existing PCentre:
-        const string* postalCodesArray = getPostalCodes();
         bool isCorrect = false; //Checking variable
         for (int i = 0; i < PACKAGE_CENTRES; i++){ 
             if (postalCode == postalCodesArray[i]){ // Match found
@@ -423,7 +408,6 @@ void fromPCtoPC(string label, string postalCode) {
         // If there was no match, the method must end here:
         if (isCorrect == false){
             cout << "Wrong postal code!!" << endl;
-            cout << endl << "Press ENTER key to continue..." << endl;
             return;
         }
         
@@ -436,7 +420,7 @@ void fromPCtoPC(string label, string postalCode) {
                 // If the user attempts to move a package to the exact same Centre it currently is:
         
                 if(postalCodesArray[i] == postalCode) {
-                    cout << "The package is already located in the package centre." << endl;
+                    cout << "The package is already located where you want to move it!!" << endl;
                     return;
                 }
                 // Otherwise, the package is moved from where it's currently located to another PC
@@ -446,14 +430,12 @@ void fromPCtoPC(string label, string postalCode) {
                 destinationPC.hub.push(p);
                 found = true;
                 cout << "The package has been successfully transported." << endl;
-                cout << endl << "Press ENTER key to continue..." << endl;
                 return;
             }
         }
         
         if(!found){
             cout << "Sorry, the package was not found at its corresponding package centre. Maybe it is at the SPCS or has already been delivered." << endl;
-            cout << endl << "Press ENTER key to continue..." << endl;
         }
         
     } catch (const invalid_argument& e) {
@@ -471,11 +453,12 @@ void fromPCtoPC(string label, string postalCode) {
 }
 
 void emptyAllHubs(){
-    const string* postalCodesArray = getPostalCodes();
     for (int i = 0; i < PACKAGE_CENTRES; i++){  
             PackageCenter& searchedPC = pcTree.getPC(postalCodesArray[i]);
             while (!searchedPC.hub.isEmpty()){
-                searchedPC.auxQueue.enqueue(searchedPC.hub.pop());
+                Package p = searchedPC.hub.pop();
+                p.setStatus(Delivered);
+                searchedPC.auxQueue.enqueue(p);
             }
     }
 }

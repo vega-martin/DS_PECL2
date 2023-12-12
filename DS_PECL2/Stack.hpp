@@ -1,6 +1,5 @@
 #ifndef STACK_HPP
 #define STACK_HPP
-
 #include "Package.hpp"
 
 struct StackNode {

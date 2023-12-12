@@ -1,7 +1,6 @@
 #include <stdexcept>
 #include "Stack.hpp"
 #include "Utilities.hpp"
-#include <iostream>
 using namespace std;
 
 Stack::Stack() : top(nullptr) {}
