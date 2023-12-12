@@ -15,7 +15,6 @@ Package Stack::pop() {
     if (isEmpty()) {
         throw underflow_error("Empty stack");
     }
-
     Package value = top->element;
     StackNode* temp = top;
     top = top->next;
@@ -79,7 +78,6 @@ Package Stack::removePackage(string strNum) {
 
     // Special case: the node we are looking for is the first one
     if (top->element.getLabel().packageId.substr(0, 4) == strNum) {
-        top = top->next;
         return pop();
     }
     
