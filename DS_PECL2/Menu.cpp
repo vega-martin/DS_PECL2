@@ -47,8 +47,9 @@ void mainMenu(){
                         getline(cin >> ws, postalCode);
                         cout << endl;
                         getNextPackagesToBeDelivered(postalCode);
-                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         cout << endl << "Press ENTER to continue..." << endl;
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        
                         system("cls"); 
                         break;
                                

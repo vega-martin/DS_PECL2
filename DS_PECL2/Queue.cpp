@@ -59,3 +59,20 @@ int Queue::length(){
 
     return counter;
 }
+
+int Queue::searchPackageByNum(string strNum) {
+    if (isEmpty()) {
+        return 0; // Empty queue, can't be found
+    }
+
+    QueueNode* current = front;
+
+    while (current != nullptr) {
+        if (current->element.getLabel().packageId.substr(0, 4) == strNum) {
+            return 1; // Found the element
+        }
+        current = current->next;
+    }
+
+    return 0; // Element not found in the queue
+}

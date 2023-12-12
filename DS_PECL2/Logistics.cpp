@@ -226,13 +226,24 @@ int searchPackage(string label) {
         if (packageList.searchPackageByNum(strNum) == 1){
             return 9;   
         }
-            
+        
+        // Now we search inside all hubs' vans (waiting to be delivered):
         for (int i = 0; i < PACKAGE_CENTRES; i++){  
             PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);  
             if(searchedPC.hub.searchPackageByNum(strNum) == 1){  
                 return i;
             }
         }
+        
+        // Our only possible option now is that the package has already been delivered:
+        for (int i = 0; i < PACKAGE_CENTRES; i++){  
+            PackageCenter searchedPC = pcTree.getPC(postalCodesArray[i]);  
+            if(searchedPC.auxQueue.searchPackageByNum(strNum) == 1){  
+                return 10;
+            }
+        }
+        
+        // If none of the previous options have worked, then we return a different error value:
         return -2; 
         
     // Catching exceptions
@@ -257,13 +268,16 @@ void searchAnswer(string label) {
         return;
     }
     else if (result == -2) {
-        cout << "Sorry, the package have not been found." << endl;
+        cout << "Sorry, the package could not be found." << endl;
     }
     else if (result == 9) {
         cout << "The package is currently located at the Central Station" << endl;
     }
+    else if (result == 10) {
+        cout << "The package has already been successfully delivered!" << endl;
+    }
     else {
-        cout << "The package is currently located at the " << acronymsArray[result] << " package center." << endl;
+        cout << "The package is currently located at the " << acronymsArray[result] << " Package Centre." << endl;
     }
 }
 

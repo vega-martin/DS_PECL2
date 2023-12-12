@@ -23,6 +23,7 @@ public:
     
     // We must extend the basic implementation of a stack with these methods:
     int length();
+    int searchPackageByNum(string strNum);
 };
 
 #endif // QUEUE_HPP

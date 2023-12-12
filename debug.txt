@@ -1,0 +1,55 @@
+-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------
+
+MAIN MENU || Steps taken: 0
+
+Enter a number to choose an action:
+
+ 1. Show packages ready to be sent to a given Package Centre.
+ 2. Show statistics of all Package Centres.
+ 3. Search package.
+ 4. Delete package.
+ 5. Transport package form Salamanca's Package Central Station to a given Package Centre.
+ 6. Transport package from its Package Centre to a different Package Centre.
+ 7. Deliver all packages inside every Package Centre.
+ 0. Exit
+
+===  BEWARE  ========================================================================
+
+If you press the ENTER key without entering any option 
+packages WILL be processed!!
+
+=====================================================================================
+
+Enter a number: 
+
+Enter the number of the package you want to transport:
+Enter the postal code of the Package Centre you want to send the package to:
+The package has been successfully transported.
+
+Press ENTER to continue...
+-------------------------------------   PACKAGE DISTRIBUTION SERVICE SIMULATOR   -------------------------------------
+
+MAIN MENU || Steps taken: 0
+
+Enter a number to choose an action:
+
+ 1. Show packages ready to be sent to a given Package Centre.
+ 2. Show statistics of all Package Centres.
+ 3. Search package.
+ 4. Delete package.
+ 5. Transport package form Salamanca's Package Central Station to a given Package Centre.
+ 6. Transport package from its Package Centre to a different Package Centre.
+ 7. Deliver all packages inside every Package Centre.
+ 0. Exit
+
+===  BEWARE  ========================================================================
+
+If you press the ENTER key without entering any option 
+packages WILL be processed!!
+
+=====================================================================================
+
+Enter a number: 
+
+Enter the number of the package you want to transport:
+Enter the postal code of the Package Centre you want to send the package to:
